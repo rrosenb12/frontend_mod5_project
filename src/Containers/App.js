@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom'
-import './App.css';
-import Home from './Home'
-import NavBar from './NavBar'
-import Login from './Login'
-import Search from './Search'
-import Profile from './Profile'
+import '../App.css';
+import Home from '../Components/Home'
+import NavBar from '../Components/NavBar'
+import Login from '../Components/Login'
+import Search from '../Components/Search'
+import Profile from '../Components/Profile'
 
 class App extends React.Component {
   render(){
