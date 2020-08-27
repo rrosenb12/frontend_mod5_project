@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+h1 {
+  font-family: 'FinkHeavy'
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navbar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  height: 70px;
+  background-image: url('https://preview.redd.it/y5mzeig307b41.png?auto=webp&s=3fcdd59b348f091cd1ada9627a3f58aa993cf926');
+  background-size: cover;
+  text-decoration: none;
+  border-bottom: solid #01372d;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar .navbarbutton {
+  width: 200px;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: rgba(0, 151, 19, 0.1);
+  border: solid #01372d;
+  border-radius: 10px 15px;
+  outline: none;
+  margin-right: 60px;
+  color: #01372d;
+  font-family: 'nintendoP_Humming-E_002pr';
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar .navbarbutton:hover {
+  background-color: #ECEFD5;
+}
+
+.homecontent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
