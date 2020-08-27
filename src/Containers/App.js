@@ -6,6 +6,7 @@ import NavBar from '../Components/NavBar'
 import Login from '../Components/Login'
 import Search from '../Components/Search'
 import Profile from '../Components/Profile'
+import Signup from '../Components/Signup'
 
 
 class App extends React.Component {
@@ -16,6 +17,7 @@ class App extends React.Component {
           <NavBar />
           <Route exact path="/" component={Home}/>
           <Route exact path='/login' component={Login}/>
+          <Route exact path='/signup' component={Signup}/>
           <Route exact path='/search' component={Search}/>
           <Route exact path='/profile' component={Profile}/>
         </div>

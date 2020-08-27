@@ -10,7 +10,7 @@ export default class Home extends React.Component{
     componentDidMount(){
         fetch(`https://www.reddit.com/search.json?q=animal_crossing`)
         .then(response => response.json())
-        .then(redditData => this.setState({redditData: redditData.data.children.slice(5, 10)}))
+        .then(redditData => this.setState({redditData: redditData.data.children.slice(0, 5)}))
     }
 
     itsCardTime = () => {
