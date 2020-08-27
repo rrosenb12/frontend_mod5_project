@@ -3,7 +3,7 @@ body {
 }
 
 h1 {
-  font-family: 'FinkHeavy'
+  font-family: 'FinkHeavy';
 }
 
 .navbar {
@@ -49,6 +49,55 @@ h1 {
   display: inline-block;
   justify-content: center;
   align-items: center;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.homecontent .redditdata .redditcard {
+  border: solid #01372d;
+  border-radius: 15px 15px;
+  margin-top: 20px;
+}
+
+.homecontent .redditdata .redditcard .redditimgcontainer {
+  border-bottom: solid #01372d;
+}
+
+.homecontent .redditdata .redditcard .reddittitle {
+  color: #01372d;
+  margin-left: 20px;
+}
+
+.homecontent .redditdata .redditcard .reddithrefcontainer {
+  background-image: url('https://preview.redd.it/y5mzeig307b41.png?auto=webp&s=3fcdd59b348f091cd1ada9627a3f58aa993cf926');
+  border-radius: 0px 0px 15px 15px;
+}
+
+img.redditimg {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+
+a.reddithref {
+  font-size: 12px;
+  text-decoration: none;
+  color: #01372d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 50px;
+  width: 150px;
+  border-left: solid #01372d;
+  border-right: solid #01372d;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+a.reddithref:hover {
+  background-color: #5ADBC5;
 }
 
 .homecontent .homeimage {
