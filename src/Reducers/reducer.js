@@ -1,6 +1,6 @@
 import { combineReducers } from "redux"
 
-const defaultState = {currentUser: {}, arrayOf: []}
+const defaultState = {currentUser: {}, villagers: []}
 
 function userReducer(state = defaultState.currentUser, action){
     //when your action has this type, return this
@@ -12,7 +12,7 @@ function userReducer(state = defaultState.currentUser, action){
         }
 }
 
-function arrayReducer(state = defaultState.arrayOf, action){
+function villagersReducer(state = defaultState.villagers, action){
     //when your action has this type, return this
     switch (action.type) {
         case 'ADD_Array':
@@ -24,7 +24,7 @@ function arrayReducer(state = defaultState.arrayOf, action){
 
 const rootReducer = combineReducers({
     currentUser: userReducer,
-    arrayOf: arrayReducer
+    villagers: villagersReducer
     //will be return value of combine reducers function, which returns new state object
 })
 
