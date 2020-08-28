@@ -16,8 +16,9 @@ class Search extends React.Component{
     handleSearchForChange = (e) => {
         this.setState({
             searchFor: e.target.value
+        }, () => {
+            this.state.searchFor === 'Villagers' && this.props.fetchVillagers()
         })
-        this.props.fetchVillagers()
     }
 
     handleSearchByChange = (e) => {
@@ -69,6 +70,12 @@ class Search extends React.Component{
             if (this.state.searchBy === 'Name'){
                 let villagersArray = this.props.villagers.filter(villager => villager.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
                 this.setState({searchArray: villagersArray})
+            } else if (this.state.searchBy === 'Personality'){
+                let villagersArray = this.props.villagers.filter(villager => villager.personality.toLowerCase() === this.state.searchValue.toLowerCase())
+                this.setState({searchArray: villagersArray})
+            } else if (this.state.searchBy === 'Species') {
+                let villagersArray = this.props.villagers.filter(villager => villager.species.toLowerCase() === this.state.searchValue.toLowerCase())
+                this.setState({searchArray: villagersArray})
             }
         }
     }
@@ -101,7 +108,7 @@ class Search extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {villagers: state.villagers.state}
+    return {villagers: state.villagers.state, fish: state.fish.state}
 }
 
 export default connect(mapStateToProps, {fetchVillagers, fetchFish})(Search)
