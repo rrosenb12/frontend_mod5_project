@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchVillagers, fetchFish} from '../actions'
 import SearchVillagersResults from './SearchVillagersResults'
+import SearchFishResults from './SearchFishResults'
 
 class Search extends React.Component{
 
@@ -18,6 +19,7 @@ class Search extends React.Component{
             searchFor: e.target.value
         }, () => {
             this.state.searchFor === 'Villagers' && this.props.fetchVillagers()
+            this.state.searchFor === 'Fish' && this.props.fetchFish()
         })
     }
 
@@ -50,11 +52,13 @@ class Search extends React.Component{
                 </>
             )
         } else if (this.state.searchFor === 'Fish') {
+            console.log(this.props.fish)
             return (
                 <>
                     <h1>Search by:</h1>
                     <select onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
+                        <option value="All">All</option>
                         <option value="Name">Name</option>
                         <option value="Availability">Availability</option>
                         <option value="Price">Price</option>
@@ -77,6 +81,12 @@ class Search extends React.Component{
                 let villagersArray = this.props.villagers.filter(villager => villager.species.toLowerCase() === this.state.searchValue.toLowerCase())
                 this.setState({searchArray: villagersArray})
             }
+        } 
+        else if (this.state.searchFor === 'Fish') {
+            if (this.state.searchBy === 'All') {
+                let fishArray = this.props.fish
+                this.setState({searchArray: fishArray})
+            }
         }
     }
 
@@ -94,14 +104,12 @@ class Search extends React.Component{
                 </select>
                 {this.handleSearchBy()}
                 {this.state.paramsSet && 
-                    <>
-                        <form onSubmit={this.handleSubmit}>
-                            <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
-                            <input type="submit"/>
-                        </form>
-                    </>
-                }
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
+                    <input type="submit"/>
+                </form>}
                 {this.state.searchFor === 'Villagers' && <SearchVillagersResults searchArray={this.state.searchArray}/>}
+                {this.state.searchFor === 'Fish' && <SearchFishResults searchArray={this.state.searchArray}/>}
             </>
         )    
     }
