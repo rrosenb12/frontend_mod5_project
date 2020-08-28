@@ -40,24 +40,11 @@ class Signup extends React.Component{
         })
         fetch('http://localhost:3000/users', {
             method: 'POST',
-            body: ( formData)
+            body: (formData)
             })
             .then(response => response.json())
             .then(console.log)
             .catch(error=>console.log(error));
-        // fetch('http://localhost:3000/users', {
-        //     method: 'POST',
-        //     headers: {
-        //         'accepts': 'application/json',
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({
-        //         username: this.state.username,
-        //         password: this.state.password
-        //     })
-        // })
-        // .then(response => response.json())
-        // .then(resp => this.props.fetchUser(resp))
     }
 
 
