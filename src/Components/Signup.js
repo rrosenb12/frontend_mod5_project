@@ -6,9 +6,11 @@ import WelcomePage from './WelcomePage'
 class Signup extends React.Component{
 
     state = {
-        username: '',
-        password: '',
-        currentUser: false
+            username: '',
+            password: '',
+            pro_pic: null,
+            currentUser: false
+            
     }
 
     handleChange = e => {
@@ -17,8 +19,20 @@ class Signup extends React.Component{
         })
     }
 
+
+    onImageChange = event => { 
+        this.setState({
+
+            pro_pic: event.target.files[0] }
+        );
+    };
+
     handleSubmit = e => {
         e.preventDefault()
+        const formData = new FormData()
+        formData.append('username', this.state.username);
+        formData.append('password', this.state.password);
+        formData.append('pro_pic', this.state.pro_pic);
         this.setState(previousState => {
             return {
                 currentUser: !previousState.currentUser
@@ -26,18 +40,26 @@ class Signup extends React.Component{
         })
         fetch('http://localhost:3000/users', {
             method: 'POST',
-            headers: {
-                'accepts': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: this.state.username,
-                password: this.state.password
+            body: ( formData)
             })
-        })
-        .then(response => response.json())
-        .then(resp => this.props.fetchUser(resp))
+            .then(response => response.json())
+            .then(console.log)
+            .catch(error=>console.log(error));
+        // fetch('http://localhost:3000/users', {
+        //     method: 'POST',
+        //     headers: {
+        //         'accepts': 'application/json',
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         username: this.state.username,
+        //         password: this.state.password
+        //     })
+        // })
+        // .then(response => response.json())
+        // .then(resp => this.props.fetchUser(resp))
     }
+
 
     render(){
         return(
@@ -48,6 +70,7 @@ class Signup extends React.Component{
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" name="username" placeholder="IGN or Username" value={this.state.username} onChange={this.handleChange}/>
                         <input type="password" name="password" placeholder="Create Password" value={this.state.password} onChange={this.handleChange}/>
+                        <input type="file" accept="image/*" multiple={false} onChange={this.onImageChange} />
                         <input type="submit" value="Create Account"/>
                     </form>
                 }
