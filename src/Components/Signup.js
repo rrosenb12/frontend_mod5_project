@@ -6,35 +6,33 @@ import WelcomePage from './WelcomePage'
 class Signup extends React.Component{
 
     state = {
-        user: {
             username: '',
             password: '',
             pro_pic: null,
             currentUser: false
-        }    
+            
     }
 
     handleChange = e => {
-        this.setState({user: {
-            ...this.state.user,
+        this.setState({
             [e.target.name]: e.target.value
-        }})
+        })
     }
 
 
     onImageChange = event => { 
-        this.setState({user: {
-            ...this.state.user,
+        this.setState({
+
             pro_pic: event.target.files[0] }
-        });
+        );
     };
 
     handleSubmit = e => {
         e.preventDefault()
         const formData = new FormData()
-        formData.append('username', this.state.user.username);
-        formData.append('password', this.state.user.password);
-        formData.append('pro_pic', this.state.user.pro_pic);
+        formData.append('username', this.state.username);
+        formData.append('password', this.state.password);
+        formData.append('pro_pic', this.state.pro_pic);
         this.setState(previousState => {
             return {
                 currentUser: !previousState.currentUser
@@ -42,7 +40,7 @@ class Signup extends React.Component{
         })
         fetch('http://localhost:3000/users', {
             method: 'POST',
-            body: ({user: formData})
+            body: ( formData)
             })
             .then(response => response.json())
             .then(console.log)
