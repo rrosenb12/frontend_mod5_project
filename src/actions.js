@@ -44,3 +44,16 @@ export const fetchFossils = () => {
           .then(fossils => dispatch({ type: 'FETCH_FOSSILS', fossils }));
       };
 }
+
+export const clickItem = (item) => {
+    return {
+        type: 'CLICK_ITEM',
+        payload: item
+    }
+}
+
+export const unClickItem = () => {
+    return {
+        type: 'UNCLICK_ITEM'
+    }
+}

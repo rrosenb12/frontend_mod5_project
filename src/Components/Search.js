@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils} from '../actions'
+import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem} from '../actions'
+import ItemCard from './ItemCard'
 import SearchResults from './SearchResults'
 
 class SearchVillagers extends React.Component{
@@ -15,6 +16,7 @@ class SearchVillagers extends React.Component{
 
     handleSearchForChange = (e) => {
         let array = this.state.searchArray !== 0 && []
+        this.props.unClickItem()
         this.setState({
             searchFor: e.target.value,
             paramsSet: false,
@@ -29,6 +31,7 @@ class SearchVillagers extends React.Component{
     }
 
     handleSearchByChange = (e) => {
+        this.props.unClickItem()
         this.setState({
             searchBy: e.target.value,
             paramsSet: true
@@ -85,6 +88,7 @@ class SearchVillagers extends React.Component{
     }
 
     handleSubmit = (e) => {
+        this.props.unClickItem()
         e.preventDefault()
         if (this.state.searchFor === 'Villagers') {
             if (this.state.searchBy === 'Name'){
@@ -135,10 +139,12 @@ class SearchVillagers extends React.Component{
                 this.setState({searchArray: fossilsArray})
             }
         }
+        this.setState({
+            searchValue: ''
+        })
     }
 
     render(){
-        console.log(this.state.searchArray)
         return(
             <>
                 <h1>Search for:</h1>
@@ -157,13 +163,21 @@ class SearchVillagers extends React.Component{
                     <input type="submit"/>
                 </form>}
                 {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
+                {this.props.item && <ItemCard />}
             </>
         )    
     }
 }
 
 const mapStateToProps = (state) => {
-    return {villagers: state.villagers.state, fish: state.fish.state, bugs: state.bugs.state, seacreatures: state.seacreatures.state, fossils: state.fossils.state}
+    return {
+        villagers: state.villagers.state, 
+        fish: state.fish.state, 
+        bugs: state.bugs.state, 
+        seacreatures: state.seacreatures.state, 
+        fossils: state.fossils.state,
+        item: state.items.clicked
+    }
 }
 
-export default connect(mapStateToProps, {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils})(SearchVillagers)
+export default connect(mapStateToProps, {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem})(SearchVillagers)
