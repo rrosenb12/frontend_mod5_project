@@ -20,15 +20,15 @@ h1 {
 
 .navbar .navbarbutton {
   width: 200px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 30px;
+  padding-right: 30px;
   padding-top: 15px;
   padding-bottom: 15px;
   background: rgba(255, 255, 255, 0.2);
   border: solid #01372d;
   border-radius: 10px 15px;
   outline: none;
-  margin-right: 60px;
+  margin-right: 30px;
   color: #01372d;
   font-family: 'nintendoP_Humming-E_002pr';
 

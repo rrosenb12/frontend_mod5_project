@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils} from '../actions'
-import SearchVillagersResults from './SearchVillagersResults'
+import SearchVillagersResults from './SearchResults'
 import SearchFishResults from './SearchFishResults'
 import SearchBugsResults from './SearchBugsResults'
 import SearchSeacreaturesResults from './SearchSeacreaturesResults'
@@ -99,52 +99,29 @@ class SearchVillagers extends React.Component{
                 this.setState({searchArray: villagersArray})
             }
         } 
-        else if (this.state.searchFor === 'Fish') {
-            if (this.state.searchBy === 'All') {
-                let fishArray = this.props.fish
-                this.setState({searchArray: fishArray})
-            } else if (this.state.searchBy === 'Name') {
-                let fishArray = this.props.fish.filter(fish => fish.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
-                this.setState({searchArray: fishArray})
-            } else if (this.state.searchBy === 'Availability') {
-                let fishArray = this.props.fish.filter(fish => fish.availability.includes(this.state.searchValue))
-                this.setState({searchArray: fishArray})
-            } else if (this.state.searchBy === 'Price') {
-                let fishArray = this.props.fish.filter(fish => fish.price > this.state.searchValue)
-                fishArray.sort((a,b) => a.price > b.price ? 1 : -1)
-                this.setState({searchArray: fishArray})
+        else if (this.state.searchFor === 'Fish' || this.state.searchFor === 'Bugs' || this.state.searchFor === 'Sea Creatures') {
+            let array = []
+            console.log(array)
+            if (this.state.searchFor === 'Fish' ) {
+                array = this.props.fish
+            } else if (this.state.searchFor === 'Bugs') {
+                array = this.props.bugs
+            } else if (this.state.searchFor === 'Sea Creatures') {
+                array = this.props.seacreatures
             }
-        }
-        else if (this.state.searchFor === 'Bugs') {
             if (this.state.searchBy === 'All') {
-                let bugsArray = this.props.bugs
-                this.setState({searchArray: bugsArray})
+                let items = array
+                this.setState({searchArray: items})
             } else if (this.state.searchBy === 'Name') {
-                let bugsArray = this.props.bugs.filter(bug => bug.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
-                this.setState({searchArray: bugsArray})
+                let items = array.filter(item => item.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
+                this.setState({searchArray: items})
             } else if (this.state.searchBy === 'Availability') {
-                let bugsArray = this.props.bugs.filter(bug => bug.availability.includes(this.state.searchValue))
-                this.setState({searchArray: bugsArray})
+                let items = array.filter(item => item.availability.includes(this.state.searchValue))
+                this.setState({searchArray: items})
             } else if (this.state.searchBy === 'Price') {
-                let bugsArray = this.props.bugs.filter(bug => bug.price > this.state.searchValue)
-                bugsArray.sort((a,b) => a.price > b.price ? 1 : -1)
-                this.setState({searchArray: bugsArray})
-            }
-        }
-        else if (this.state.searchFor === 'Sea Creatures') {
-            if (this.state.searchBy === 'All') {
-                let seaCreaturesArray = this.props.seaCreatures
-                this.setState({searchArray: seaCreaturesArray})
-            } else if (this.state.searchBy === 'Name') {
-                let seaCreaturesArray = this.props.seaCreatures.filter(seaCreature => seaCreature.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
-                this.setState({searchArray: seaCreaturesArray})
-            } else if (this.state.searchBy === 'Availability') {
-                let seaCreaturesArray = this.props.seaCreatures.filter(seaCreature => seaCreature.availability.includes(this.state.searchValue))
-                this.setState({searchArray: seaCreaturesArray})
-            } else if (this.state.searchBy === 'Price') {
-                let seaCreaturesArray = this.props.seaCreatures.filter(seaCreature => seaCreature.price > this.state.searchValue)
-                seaCreaturesArray.sort((a,b) => a.price > b.price ? 1 : -1)
-                this.setState({searchArray: seaCreaturesArray})
+                let items = array.filter(fish => fish.price > this.state.searchValue)
+                items.sort((a,b) => a.price > b.price ? 1 : -1)
+                this.setState({searchArray: items})
             }
         }
         else if (this.state.searchFor === 'Fossils') {
@@ -191,7 +168,7 @@ class SearchVillagers extends React.Component{
 }
 
 const mapStateToProps = (state) => {
-    return {villagers: state.villagers.state, fish: state.fish.state, bugs: state.bugs.state, seaCreatures: state.seacreatures.state, fossils: state.fossils.state}
+    return {villagers: state.villagers.state, fish: state.fish.state, bugs: state.bugs.state, seacreatures: state.seacreatures.state, fossils: state.fossils.state}
 }
 
 export default connect(mapStateToProps, {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils})(SearchVillagers)
