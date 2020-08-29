@@ -10,7 +10,6 @@ export default class SearchVillagersResults extends React.Component{
     return(
         <>
         {this.indi()}
-        <h1>hi</h1>
         </>
     )}
 }

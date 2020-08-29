@@ -1,5 +1,6 @@
 body {
   font-family: 'nintendoP_Humming-E_002pr';
+  text-decoration: none;
 }
 
 h1 {
@@ -30,10 +31,28 @@ h1 {
   margin-right: 60px;
   color: #01372d;
   font-family: 'nintendoP_Humming-E_002pr';
+
 }
 
 .navbar .navbarbutton:hover {
   background-color: #ECEFD5;
+}
+
+.dropdownmenu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+  background-color: #01372d;
+}
+
+.dropdownmenu .searchterms {
+  color: #ECEFD5;
+  text-decoration: overline;
+}
+
+a.searchterms {
+  text-decoration: none !important;
 }
 
 .homecontent {

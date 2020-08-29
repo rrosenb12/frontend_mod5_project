@@ -10,7 +10,6 @@ export default class RedditCard extends React.Component{
     }
 
     render(){
-        console.log(this.props.data)
     return(
         <div className="redditcard">
             <p className="reddittitle">{this.props.data.title}</p>

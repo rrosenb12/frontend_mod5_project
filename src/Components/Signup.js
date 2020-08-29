@@ -43,7 +43,7 @@ class Signup extends React.Component{
             body: (formData)
             })
             .then(response => response.json())
-            .then(console.log)
+            .then(response => this.props.fetchUser(response))
             .catch(error=>console.log(error));
     }
 

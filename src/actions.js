@@ -20,3 +20,27 @@ export const fetchFish = () => {
           .then(fish => dispatch({ type: 'FETCH_FISH', fish }));
       };
 }
+
+export const fetchBugs = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/bugs')
+          .then(response => response.json())
+          .then(bugs => dispatch({ type: 'FETCH_BUGS', bugs }));
+      };
+}
+
+export const fetchSeacreatures = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/sea_creatures')
+          .then(response => response.json())
+          .then(seacreatures => dispatch({ type: 'FETCH_SEACREATURES', seacreatures }));
+      };
+}
+
+export const fetchFossils = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/fossils')
+          .then(response => response.json())
+          .then(fossils => dispatch({ type: 'FETCH_FOSSILS', fossils }));
+      };
+}
