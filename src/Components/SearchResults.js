@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default class SearchVillagersResults extends React.Component{
+export default class SearchResults extends React.Component{
 
     indi = () => {
         return this.props.searchArray.map(result => <h1>{result.name}</h1>)

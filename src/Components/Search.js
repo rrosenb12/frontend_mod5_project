@@ -1,11 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils} from '../actions'
-import SearchVillagersResults from './SearchResults'
-import SearchFishResults from './SearchFishResults'
-import SearchBugsResults from './SearchBugsResults'
-import SearchSeacreaturesResults from './SearchSeacreaturesResults'
-import SearchFossilsResults from './SearchFossilsResults'
+import SearchResults from './SearchResults'
 
 class SearchVillagers extends React.Component{
 
@@ -101,7 +97,6 @@ class SearchVillagers extends React.Component{
         } 
         else if (this.state.searchFor === 'Fish' || this.state.searchFor === 'Bugs' || this.state.searchFor === 'Sea Creatures') {
             let array = []
-            console.log(array)
             if (this.state.searchFor === 'Fish' ) {
                 array = this.props.fish
             } else if (this.state.searchFor === 'Bugs') {
@@ -157,11 +152,7 @@ class SearchVillagers extends React.Component{
                     <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
                     <input type="submit"/>
                 </form>}
-                {this.state.searchFor === 'Villagers' && <SearchVillagersResults searchArray={this.state.searchArray}/>}
-                {this.state.searchFor === 'Fish' && <SearchFishResults searchArray={this.state.searchArray}/>}
-                {this.state.searchFor === 'Bugs' && <SearchBugsResults searchArray={this.state.searchArray}/>}
-                {this.state.searchFor === 'Sea Creatures' && <SearchSeacreaturesResults searchArray={this.state.searchArray}/>}
-                {this.state.searchFor === 'Fossils' && <SearchFossilsResults searchArray={this.state.searchArray}/>}
+                <SearchResults searchArray={this.state.searchArray}/>
             </>
         )    
     }
