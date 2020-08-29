@@ -14,8 +14,11 @@ class SearchVillagers extends React.Component{
     }
 
     handleSearchForChange = (e) => {
+        let array = this.state.searchArray !== 0 && []
         this.setState({
-            searchFor: e.target.value
+            searchFor: e.target.value,
+            paramsSet: false,
+            searchArray: array
         }, () => {
             this.state.searchFor === 'Villagers' && this.props.fetchVillagers()
             this.state.searchFor === 'Fish' && this.props.fetchFish()
@@ -135,6 +138,7 @@ class SearchVillagers extends React.Component{
     }
 
     render(){
+        console.log(this.state.searchArray)
         return(
             <>
                 <h1>Search for:</h1>
@@ -152,7 +156,7 @@ class SearchVillagers extends React.Component{
                     <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
                     <input type="submit"/>
                 </form>}
-                <SearchResults searchArray={this.state.searchArray}/>
+                {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
             </>
         )    
     }
