@@ -129,7 +129,7 @@ class SearchVillagers extends React.Component{
         else if (this.state.searchFor === 'Fossils') {
             if (this.state.searchBy === 'All') {
                 let fossilsArray = this.props.fossils
-                this.setState({searchArray: fossilsArray}, () => {console.log(this.state.searchArray)})
+                this.setState({searchArray: fossilsArray})
             } else if (this.state.searchBy === 'Name') {
                 let fossilsArray = this.props.fossils.filter(fossil => fossil.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
                 this.setState({searchArray: fossilsArray})

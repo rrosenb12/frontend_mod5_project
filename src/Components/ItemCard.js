@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
  class ItemCard extends React.Component {
 
     clickHandler = () => {
-
         if(this.props.item.kind === 'fish') {
             fetch(`http://localhost:3000/user_fish`, {
                 method: 'POST',
@@ -79,7 +78,6 @@ import { connect } from 'react-redux'
     }
 
     render(){
-        console.log(this.props.user)
         return(
             <div key={this.props.item.id}>
             <h1>{this.props.item.name}</h1>

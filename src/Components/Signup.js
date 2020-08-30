@@ -6,11 +6,11 @@ import WelcomePage from './WelcomePage'
 class Signup extends React.Component{
 
     state = {
-            username: '',
-            password: '',
-            pro_pic: null,
-            currentUser: false
-            
+        username: '',
+        password: '',
+        pro_pic: null,
+        currentUser: false,
+        users: []
     }
 
     handleChange = e => {
@@ -19,35 +19,40 @@ class Signup extends React.Component{
         })
     }
 
-
     onImageChange = event => { 
         this.setState({
-
             pro_pic: event.target.files[0] }
         );
     };
 
     handleSubmit = e => {
         e.preventDefault()
+        fetch('http://localhost:3000/users')
+        .then(response => response.json())
+        .then(users => this.setState({users: users}, () => {
+            let user = this.state.users.find(user => user.username === this.state.username)
+            user === undefined ? this.createUser() : window.alert('you already have an account')
+        }))
+    }
+    
+    createUser(){
         const formData = new FormData()
         formData.append('username', this.state.username);
         formData.append('password', this.state.password);
         formData.append('pro_pic', this.state.pro_pic);
-        this.setState(previousState => {
-            return {
-                currentUser: !previousState.currentUser
-            }
-        })
         fetch('http://localhost:3000/users', {
             method: 'POST',
             body: (formData)
             })
-            .then(response => response.json())
-            .then(response => this.props.fetchUser(response))
-            .catch(error=>console.log(error));
+        .then(response => response.json())
+        .then(response => this.props.fetchUser(response))
+        .then(this.setState(previousState => {
+            return {
+                currentUser: !previousState.currentUser
+            }
+        }))
+        .catch(error=>console.log(error));
     }
-
-
     render(){
         return(
             <div>

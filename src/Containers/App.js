@@ -7,6 +7,7 @@ import Login from '../Components/Login'
 import Search from '../Components/Search'
 import Profile from '../Components/Profile'
 import Signup from '../Components/Signup'
+import Logout from '../Components/Logout'
 
 
 class App extends React.Component {
@@ -20,6 +21,7 @@ class App extends React.Component {
           <Route exact path='/signup' component={Signup}/>
           <Route exact path='/search' component={Search}/>
           <Route exact path='/profile' component={Profile}/>
+          <Route exact path='/logout' component={Logout}/>
         </div>
       </BrowserRouter>
     )

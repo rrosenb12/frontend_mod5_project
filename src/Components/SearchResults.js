@@ -21,7 +21,7 @@ class SearchResults extends React.Component{
     render(){
     return(
         <>
-        {this.indi()}
+            {this.indi()}
         </>
     )}
 }
