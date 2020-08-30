@@ -1,7 +1,46 @@
 import React from 'react'
+import {connect} from 'react-redux'
 
-export default function Profile(){
+
+class Profile extends React.Component{
+
+    state = {
+        fetchedUser: {}
+    }
+
+    componentDidMount(){
+        this.props.user !== undefined &&
+        fetch(`http://localhost:3000/users/${this.props.user.id}`)
+        .then(response => response.json())
+        .then(user => this.setState({fetchedUser: user}))
+    }
+
+    render(){
+        this.props.user !== undefined && console.log(this.props.user.villagers)
+        this.state.fetchedUser.pro_pic !== undefined && console.log(this.state.fetchedUser.pro_pic.url)
     return(
-        <h1>this will be a profile</h1>
+        
+        <div>
+            {this.props.user !== undefined && this.state.fetchedUser.pro_pic !== undefined ? 
+                <div>
+                    <h1>{this.props.user.username}</h1>
+                    {this.props.user.villagers.map(villager => {
+                        return <p>{villager.name}</p>
+                    })} 
+                    {/* <p>{this.props.user.villagers}</p>
+                    <p>{this.props.user.fish}</p>
+                    <p>{this.props.user.bugs}</p> */}
+                    <img src={this.state.fetchedUser.pro_pic.url}/>
+                </div>
+            : 
+                <h1>Please log in or create an account</h1>}
+        </div>
     )
 }
+}
+
+const mapStateToProps = state => {
+    return {user: state.currentUser.state}
+}
+
+export default connect(mapStateToProps)(Profile)

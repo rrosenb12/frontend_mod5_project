@@ -27,7 +27,7 @@ class Login extends React.Component{
             if (user === undefined) {
                 window.alert('you need to sign up')
             } else {
-                return this.setState(previousState =>{return{currentUser: !previousState.currentUser}}),
+                this.setState(previousState =>{return{currentUser: !previousState.currentUser}})
                 this.props.fetchUser(user)
             }
         })})

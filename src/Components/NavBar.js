@@ -10,9 +10,10 @@ class NavBar extends React.Component{
     }
 
     render(){
+        this.props.user !== undefined && console.log(this.props.user)
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
-                {this.props.user.state === undefined || this.state.loggedOut ? 
+                {this.props.user === undefined || this.state.loggedOut ? 
                     <>
                         <NavLink to='/login'><button className='navbarbutton' >Login</button></NavLink> 
                         <NavLink to='/signup'><button className='navbarbutton'>Signup</button></NavLink>
@@ -37,7 +38,7 @@ class NavBar extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {user: state.currentUser}
+    return {user: state.currentUser.state}
 }
 
 export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
