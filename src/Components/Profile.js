@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 
 class Profile extends React.Component{
 
+    //use fetchedUser for displaying pro pic, this.props.user for everything else (rails is annoying)
     state = {
         fetchedUser: {}
     }
