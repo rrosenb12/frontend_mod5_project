@@ -28,9 +28,6 @@ class Profile extends React.Component{
                     {this.props.user.villagers.map(villager => {
                         return <p>{villager.name}</p>
                     })} 
-                    {/* <p>{this.props.user.villagers}</p>
-                    <p>{this.props.user.fish}</p>
-                    <p>{this.props.user.bugs}</p> */}
                     <img src={this.state.fetchedUser.pro_pic.url}/>
                 </div>
             : 

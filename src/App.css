@@ -1,6 +1,6 @@
 body {
   font-family: 'nintendoP_Humming-E_002pr';
-  text-decoration: none;
+  background-color: #EDF2F4;
 }
 
 h1 {
@@ -8,51 +8,35 @@ h1 {
 }
 
 .navbar {
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
   justify-content: center;
   align-items: center;
+  background-color: #2B2D42;
   height: 70px;
-  background-image: url('https://preview.redd.it/y5mzeig307b41.png?auto=webp&s=3fcdd59b348f091cd1ada9627a3f58aa993cf926');
-  background-size: cover;
-  text-decoration: none;
-  border-bottom: solid #01372d;
 }
 
-.navbar .navbarbutton {
-  width: 200px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  background: rgba(255, 255, 255, 0.2);
-  border: solid #01372d;
-  border-radius: 10px 15px;
-  outline: none;
-  margin-right: 30px;
-  color: #01372d;
+
+.navbar .buttons {
+  grid-area: 1 / 1 / 2 / 2; 
+}
+.navbar .silos {
+  grid-area: 1 / 2 / 2 / 3;
+  margin-left: auto;
+}
+
+.navbar .buttons .navbarbutton {
   font-family: 'nintendoP_Humming-E_002pr';
-
-}
-
-.navbar .navbarbutton:hover {
-  background-color: #ECEFD5;
-}
-
-.dropdownmenu {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 35px;
-  background-color: #01372d;
-}
-
-.dropdownmenu .searchterms {
-  color: #ECEFD5;
-  text-decoration: overline;
-}
-
-a.searchterms {
-  text-decoration: none !important;
+  color: #EDF2F4;
+  text-decoration: none;
+  text-align: center;
+  float: left;
+  border: none;
+  margin-right: 20px;
 }
 
 .homecontent {

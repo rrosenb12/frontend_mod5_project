@@ -41,8 +41,7 @@ class UploadImage extends React.Component{
                     <input type="text" name="description" placeholder="write a description" value={this.state.description} onChange={this.handleChange}/>
                     <input type="file" accept="image/*" multiple={false} onChange={this.onImageChange} />
                     <input type="submit" value="Upload"/>
-                    </form>
-                
+                </form>
             </div>
         )
     }

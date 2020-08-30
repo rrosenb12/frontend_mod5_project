@@ -17,7 +17,6 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
-            .then(console.log)
         } else if (this.props.item.kind === 'bugs') {
             fetch(`http://localhost:3000/user_bugs`, {
                 method: 'POST',
@@ -31,7 +30,6 @@ import { connect } from 'react-redux'
                 })
             }) 
             .then(response => response.json())
-            .then(console.log)
         } else if (this.props.item.kind === 'fossils') {
             fetch(`http://localhost:3000/user_fossils`, {
                 method: 'POST',
@@ -45,7 +43,6 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
-            .then(console.log)
         } else if (this.props.item.kind === 'villagers') {
             fetch(`http://localhost:3000/user_villagers`, {
                 method: 'POST',
@@ -59,7 +56,6 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
-            .then(console.log)
         } else if (this.props.item.kind === 'seacreatures') {
             fetch(`http://localhost:3000/user_seacreatures`, {
                 method: 'POST',
@@ -73,7 +69,6 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
-            .then(console.log)
         }
     }
 
@@ -85,6 +80,7 @@ import { connect } from 'react-redux'
             </div>
         )
     }
+    
 }
 
 const mapStateToProps = state => {
