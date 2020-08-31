@@ -28,7 +28,7 @@ class Profile extends React.Component{
                     {this.props.user.villagers.map(villager => {
                         return <p>{villager.name}</p>
                     })} 
-                    <img src={this.state.fetchedUser.pro_pic.url}/>
+                    <img src={this.state.fetchedUser.pro_pic.url} alt="pro pic"/>
                 </div>
             : 
                 <h1>Please log in or create an account</h1>}

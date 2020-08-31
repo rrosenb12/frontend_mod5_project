@@ -2,6 +2,9 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {fetchUser} from '../actions'
 import WelcomePage from './WelcomePage'
+import nooksticka from '../nooksticka.png'
+import wallpaper from '../wallpaper.png'
+import wallpaper2 from '../wallpaper2.png'
 
 class Login extends React.Component{
 
@@ -36,15 +39,30 @@ class Login extends React.Component{
 
     render(){
         return(
-            <div>
+            <div className="formparent">
                 {this.state.currentUser ? 
                     <WelcomePage />
                 :
+                <>
+                <div className="wc">
+                    <div className="welcomecontainer">
+                        <h1 className="welcometext">Yes, yes! Welcome back!</h1>
+                        <img className="sticker" src={nooksticka} height="300" alt="tom nook sticker"></img>
+                    </div>
+                    </div>
+                <div className="formcontainer">
+                    <h1>Please, login!</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <input type="text" name="username" placeholder="IGN or Username" value={this.state.username} onChange={this.handleChange}/>
-                    <input type="password" name="password" placeholder="Create Password" value={this.state.password} onChange={this.handleChange}/>
-                    <input type="submit" value="Login"/>
+                    <div className="inputfields">
+                        <input className="usernameform" type="text" name="username" placeholder="IGN or Username" value={this.state.username} onChange={this.handleChange}/>
+                        <input className="passwordform" type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange}/>
+                    </div>
+                    <div className="submitbutton">
+                        <input type="submit" value="Login" className="sb"></input>
+                    </div>
                 </form>
+                </div>
+                </>
                 }
             </div>
         )
