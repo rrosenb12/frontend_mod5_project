@@ -21,7 +21,8 @@ export default class Home extends React.Component{
         return(
             <div className="homecontent">
                 <div className="homeimage">
-                    <h1 >cute image</h1>
+                    <h1>Hello, hello! Welcome to Human Crossing</h1>
+                    <p>The platform for connecting with other Humans who like to cross animals!</p>
                 </div>
                 <div className="redditdata">
                     {this.itsCardTime()}

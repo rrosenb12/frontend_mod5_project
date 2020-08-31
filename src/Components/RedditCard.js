@@ -3,12 +3,10 @@ import React from 'react'
 export default class RedditCard extends React.Component{
 
     getUrl = (imgUrl) => {
-        if (imgUrl.includes('amp;')){
-            let encoded = imgUrl.replace('amp;', 's')
-            this.getUrl(encoded)
-        } else {
-            return imgUrl
-        }
+
+        let encoded = imgUrl.replace('amp;s', 's').replace('amp;', '').replace('amp;', '')
+        return encoded
+
     }
 
     render(){

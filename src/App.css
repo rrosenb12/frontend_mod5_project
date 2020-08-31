@@ -41,17 +41,16 @@ h1 {
 
 .homecontent {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
 
+
 .homecontent .redditdata {
-  grid-area: 1 / 4 / 5 / 7;
-  display: inline-block;
+  grid-area: 1 / 2 / 2 / 3;  display: inline-block;
   justify-content: center;
-  align-items: center;
   margin-top: 20px;
   margin-right: 20px;
 }
