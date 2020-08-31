@@ -18,13 +18,13 @@ class NavBar extends React.Component{
                 <div className='buttons'>
                     {this.props.user === undefined || this.state.loggedOut ? 
                         <>
-                            <NavLink to='/login' className='navbarbutton' >Login</NavLink> 
-                            <NavLink to='/signup'className='navbarbutton'>Signup</NavLink>
+                            <NavLink to='/login' className='navbarbutton' id="login">Login</NavLink> 
+                            <NavLink to='/signup'className='navbarbutton' id="signup">Signup</NavLink>
                         </> 
                     : 
                         <>
                             <NavLink to='/logout'>
-                                <button className='navbarbutton' onClick={() => 
+                                <button className='navbarbutton' id="logout" onClick={() => 
                                     {
                                         this.setState(previousState => {
                                             return{loggedOut: !previousState.loggedOut}})
@@ -32,12 +32,12 @@ class NavBar extends React.Component{
                                     }
                                 }>Logout</button>    
                             </NavLink>
-                            <NavLink to='/upload'className='navbarbutton'>Upload Image</NavLink>
+                            <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
                         </>
                     }
-                    <NavLink to='/search'className='navbarbutton'>Search</NavLink>
-                    <NavLink to='/profile'className='navbarbutton'>My Page</NavLink>
-                    <NavLink to='/'className='navbarbutton'>Home</NavLink>
+                    <NavLink to='/search'className='navbarbutton' id="search">Search</NavLink>
+                    <NavLink to='/profile'className='navbarbutton' id="page">My Page</NavLink>
+                    <NavLink to='/'className='navbarbutton' id="home">Home</NavLink>
                 </div>
                 <div className='silos'>
                     <img className='silo' src={nooksilo} height="70"/>

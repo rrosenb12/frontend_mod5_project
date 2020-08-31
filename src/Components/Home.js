@@ -1,7 +1,5 @@
 import React from 'react'
 import RedditCard from '../Components/RedditCard'
-import forwards from '../forwards.png'
-import backwards from '../backwards.png'
 
 export default class Home extends React.Component{
 
@@ -16,7 +14,7 @@ export default class Home extends React.Component{
     }
 
     itsCardTime = () => {
-        return this.state.redditData.slice(0,5).map(rd => <RedditCard key={rd.id} data={rd.data}/>)
+        return this.state.redditData.map(rd => <RedditCard key={rd.id} data={rd.data}/>)
     }
 
     render(){
@@ -27,9 +25,7 @@ export default class Home extends React.Component{
                 <h3>Currently on Reddit:</h3>
                 <div className="scrollingwrapper">
                     <div className="redditdata">
-                        <img src={backwards} height='100' className="backbutton"/>
                         {this.itsCardTime()}
-                        <img src={forwards} height='100' className="morebutton"/>
                     </div>
                 </div>
             </div>
