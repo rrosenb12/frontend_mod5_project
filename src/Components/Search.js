@@ -162,7 +162,7 @@ class SearchVillagers extends React.Component{
                 <div className="searchformcontainer">
                     <div className="searchfor">
                 <h1>Search for:</h1>
-                <select onChange={this.handleSearchForChange}>
+                <select onChange={this.handleSearchForChange} value={this.state.searchFor}>
                     <option value="Select">Select from Dropdown</option>
                     <option value="Villagers">Villagers</option>
                     <option value="Fish">Fish</option>
