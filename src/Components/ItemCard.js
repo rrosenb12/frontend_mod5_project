@@ -73,18 +73,17 @@ import { connect } from 'react-redux'
     }
 
     getMonths = (array) => {
-        console.log((this.props.item.availability.split(',')))
-        console.log((array.slice[0, -1]))
+        let actualArray = (array.replace('[','').replace(']','').split(', '))
+        let firstNum = actualArray[0]
+        let lastNum = actualArray[actualArray.length - 1]
         let months = {
             "1": "January", "2": "February", "3": "March", "4": "April", "5": "May", "6": "June", "7": "July", "8": "August", "9": "September", "10": "October", "11": "November", "12": "December"
         }
-        let monthnums = Object.keys(months)
-        console.log(monthnums)
-        let monthstrings = []
-        // array.forEach(num => {
-        //     let simi = monthnums.find(monthnum => monthnum === num)
-        //     monthstrings.push(simi)
-        // })
+        if (firstNum == 1 && lastNum == 12){
+            return <p>All year {this.props.item.hours === '' ? 'all day' : this.props.item.hours}</p>
+        } else {
+        return <p>{months[firstNum]} to {months[lastNum]}, {this.props.item.hours === '' ? 'all day' : this.props.item.hours}</p>
+        }
     }
     
     extraDetails = () => {

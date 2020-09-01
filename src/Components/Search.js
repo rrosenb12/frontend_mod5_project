@@ -125,7 +125,6 @@ class SearchVillagers extends React.Component{
                 timeArrays.map(time => time.includes(this.state.searchValue) ? indexes.push(timeArrays.indexOf(time)) : null)
                 let correct = []
                 indexes.map(index => correct.push(array[index]))
-                console.log(correct)
                 this.setState({searchArray: correct})
             } else if (this.state.searchBy === 'Price') {
                 let items = array.filter(fish => fish.price > this.state.searchValue)
