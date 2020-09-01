@@ -1,6 +1,6 @@
 import { combineReducers } from "redux"
 
-const defaultState = {currentUser: {}, villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: []}
+const defaultState = {currentUser: {}, villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
 
 function userReducer(state = defaultState.currentUser, action){
     //when your action has this type, return this
@@ -97,6 +97,17 @@ function tagsReducer (state = defaultState.tagsArray, action){
     }
 }
 
+function picsReducer (state = defaultState.picsArray, action){
+    switch(action.type){
+        case 'FETCH_PICTURES':
+            return {
+                state: action.pictures
+            }
+        default:
+            return state;   
+    }
+}
+
 const rootReducer = combineReducers({
     currentUser: userReducer,
     villagers: villagersReducer, 
@@ -105,7 +116,8 @@ const rootReducer = combineReducers({
     seacreatures: seacreaturesReducer,
     fossils: fossilsReducer,
     items: itemsReducer,
-    tags: tagsReducer
+    tags: tagsReducer,
+    pictures: picsReducer
     //will be return value of combine reducers function, which returns new state object
 })
 
