@@ -28,5 +28,4 @@ class SearchResults extends React.Component{
     )}
 }
 
-
 export default connect(null, {clickItem})(SearchResults)

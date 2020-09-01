@@ -32,6 +32,7 @@ class NavBar extends React.Component{
                                 }>Logout  
                             </NavLink>
                             <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
+                            <NavLink to='/feed' className='navbarbutton' id='feed'>The Feed</NavLink>
                         </>
                     }
                     <NavLink to='/search'className='navbarbutton' id="search">Search</NavLink>

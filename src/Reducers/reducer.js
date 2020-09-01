@@ -11,19 +11,18 @@ function userReducer(state = defaultState.currentUser, action){
             return {...state, state: {}}
         default:
             return state;
-        }
+    }
 }
 
 function villagersReducer(state = defaultState.villagersArray, action){
     switch (action.type) {
-        
         case 'FETCH_VILLAGERS':
             return {
                 state: action.villagers
             }
         default:
             return state;
-        }
+    }
 }
 
 function fishReducer(state = defaultState.fishArray, action){
@@ -32,8 +31,8 @@ function fishReducer(state = defaultState.fishArray, action){
             return {
                 state: action.fish 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
@@ -43,8 +42,8 @@ function bugsReducer(state = defaultState.bugsArray, action){
             return {
                 state: action.bugs 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
@@ -54,8 +53,8 @@ function seacreaturesReducer(state = defaultState.seacreaturesArray, action){
             return {
                 state: action.seacreatures 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
@@ -65,8 +64,8 @@ function fossilsReducer(state = defaultState.fossilsArray, action){
             return {
                 state: action.fossils 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
