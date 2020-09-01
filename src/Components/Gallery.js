@@ -1,7 +1,7 @@
 import React from 'react'
 import PhotoCard from './PhotoCard'
 import {connect} from 'react-redux'
-import {fetchTags, fetchPics} from '../actions'
+import {fetchTags} from '../actions'
 
 class Gallery extends React.Component{
 
@@ -16,23 +16,15 @@ class Gallery extends React.Component{
         fetch('http://localhost:3000/pictures')
         .then(response => response.json())
         .then(photoArray => {
-            let pics = this.props.fetchPics()
             this.setState({array: photoArray})
-            this.nextRound(pics)
         })
         return this.props.tags === undefined ? this.props.fetchTags() : null
-    }
-
-    nextRound = (pics) => {
-        console.log(this.props.pictures)
     }
 
     handleChange = (e) => {
         this.setState({
             searchFor: e.target.value
-        }
-        , () => {
-            console.log(this.props.pictures)
+        }, () => {
             let tag = this.props.tags.find(tag => tag.description === this.state.searchFor)
             let pictureIds = tag.pictures.map(photo => (photo.id))
             this.setIds(pictureIds)
@@ -64,16 +56,6 @@ class Gallery extends React.Component{
         }})
     }
 
-    // renderPic = () => {
-    //     if (this.props.pictures === undefined || this.state.filteredPics.length === 0){
-    //         return this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>)
-    //     } else if (this.props.pictures !== undefined && this.state.filteredPics.length === 0) {
-    //         return this.props.pictures.map(photo => <PhotoCard key={photo.id} photo={photo}/>)
-    //     } else if (this.state.filteredPics.length !== 0) {
-    //         return this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>)
-    //     }
-    // }
-
     render(){
     return(
         <div>
@@ -86,7 +68,6 @@ class Gallery extends React.Component{
             <input type="submit"></input>
             </form>
             <div>
-                {/* {this.renderPic()} */}
                 {this.state.filteredPics.length === 0 ? this.state.array.map(photo => <PhotoCard key={photo.id} photo={photo}/>) : this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>) }
             </div>
         </div>
@@ -94,7 +75,7 @@ class Gallery extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {tags: state.tags.state, pictures: state.pictures}
+    return {tags: state.tags.state}
 }
 
-export default connect(mapStateToProps, {fetchTags, fetchPics})(Gallery)
+export default connect(mapStateToProps, {fetchTags})(Gallery)
