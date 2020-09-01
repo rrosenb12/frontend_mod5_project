@@ -96,20 +96,31 @@ import { connect } from 'react-redux'
         </div>         
         } else if (this.props.item.kind === 'fish' || this.props.item.kind === 'bugs' || this.props.item.kind === 'seacreatures') {
             return <div>
-            <p>{this.props.item.catch_phrase}</p>
-            <p>{this.props.item.price}</p>
+            <p>"{this.props.item.catch_phrase}"</p>
+            <p>{this.props.item.price} Bells</p>
             {this.getMonths(this.props.item.availability)}
         </div>     
+        } else if (this.props.item.kind === 'fossils') {
+            return <div>
+                <p>{this.props.item.museum_phrase}</p>
+                <p>{this.props.item.price} Bells</p>
+            </div>
         }
     }
 
     render(){
         return(
             <div key={this.props.item.id} className="detailedinfo">
-            <h1 className="itemtitle"> {this.props.item.name}</h1>
-            <img alt="item"src={this.props.item.image_uri} className="itemimage"/>
-            {this.extraDetails(this.props.item)}
-            <p onClick={this.clickHandler}>Add to profile</p>
+                <div className="baseinfo">
+                    <h1 className="itemtitle"> {this.props.item.name}</h1>
+                    <p onClick={this.clickHandler}>Add to profile</p>
+                </div>
+                <div className="detailpic">
+                    <img alt="item"src={this.props.item.image_uri} className="itemimage"/>
+                </div>
+                <div className="extradetails">
+                    {this.extraDetails(this.props.item)}
+                </div>
             </div>
         )
     }

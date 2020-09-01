@@ -145,8 +145,14 @@ class SearchVillagers extends React.Component{
                 this.setState({searchArray: fossilsArray})
             }
         }
+    }
+
+    reset = () => {
         this.setState({
-            searchValue: ''
+            searchFor: '',
+            searchBy: '',
+            searchValue: '',
+            paramsSet: false
         })
     }
 
@@ -172,13 +178,14 @@ class SearchVillagers extends React.Component{
                         <input type="submit"/>
                     </form>
                 }
+                <button onClick={this.reset}>Reset Form</button>
                 </div>
                 <div className="searchresultscontainer">
                     {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
                 </div>
                 <div className="selecteditemcontainer">
                 {this.props.item && <ItemCard />}
-                </div>
+                </div>     
             </div>
         )    
     }
