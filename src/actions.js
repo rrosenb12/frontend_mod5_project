@@ -63,3 +63,11 @@ export const unClickItem = () => {
         type: 'UNCLICK_ITEM'
     }
 }
+
+export const fetchTags = () => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/tags')
+        .then(response => response.json())
+        .then(tags => dispatch({type: 'FETCH_TAGS', tags}))
+    }
+}

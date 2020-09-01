@@ -9,6 +9,7 @@ import Profile from '../Components/Profile'
 import Signup from '../Components/Signup'
 import Logout from '../Components/Logout'
 import UploadImage from '../Components/UploadImage'
+import Gallery from '../Components/Gallery'
 
 
 class App extends React.Component {
@@ -24,6 +25,7 @@ class App extends React.Component {
           <Route exact path='/profile' component={Profile}/>
           <Route exact path='/logout' component={Logout}/>
           <Route exact path='/upload' component={UploadImage}/>
+          <Route exact path='/gallery' component={Gallery}/>
         </div>
       </BrowserRouter>
     )

@@ -23,20 +23,20 @@ class NavBar extends React.Component{
                         </> 
                     : 
                         <>
-                            <NavLink to='/logout'>
-                                <button className='navbarbutton' id="logout" onClick={() => 
+                            <NavLink to='/logout' className='navbarbutton' id="logout" onClick={() => 
                                     {
                                         this.setState(previousState => {
                                             return{loggedOut: !previousState.loggedOut}})
                                             return this.props.logOutUser()
                                     }
-                                }>Logout</button>    
+                                }>Logout  
                             </NavLink>
                             <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
                         </>
                     }
                     <NavLink to='/search'className='navbarbutton' id="search">Search</NavLink>
                     <NavLink to='/profile'className='navbarbutton' id="page">My Page</NavLink>
+                    <NavLink to='/gallery'className='navbarbutton' id='gallery'>Gallery</NavLink>
                     <NavLink to='/'className='navbarbutton' id="home">Home</NavLink>
                 </div>
                 <div className='silos'>

@@ -49,7 +49,7 @@ class SearchVillagers extends React.Component{
             return null 
         } else if (this.state.searchFor === 'Villagers') {
             return (
-                <>
+                <div className="searchby">
                     <h1>Search by:</h1>
                     <select onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
@@ -57,11 +57,11 @@ class SearchVillagers extends React.Component{
                         <option value="Personality">Personality</option>
                         <option value="Species">Species</option>
                     </select>
-                </>
+                </div>
             )
         } else if (this.state.searchFor === 'Fish' || this.state.searchFor === 'Bugs' || this.state.searchFor === 'Sea Creatures') {
             return (
-                <>
+                <div className="searchby">
                     <h1>Search by:</h1>
                     <select onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
@@ -70,11 +70,11 @@ class SearchVillagers extends React.Component{
                         <option value="Availability">Availability</option>
                         <option value="Price">Price</option>
                     </select>
-                </>
+                </div>
             )
         } else if (this.state.searchFor === 'Fossils') {
             return (
-                <>
+                <div className="searchby">
                     <h1>Search by:</h1>
                     <select onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
@@ -82,7 +82,7 @@ class SearchVillagers extends React.Component{
                         <option value="Name">Name</option>
                         <option value="Price">Price</option>
                     </select>
-                </>
+                </div>
             )
         }
     }
@@ -118,6 +118,19 @@ class SearchVillagers extends React.Component{
                 let items = array.filter(item => item.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
                 this.setState({searchArray: items})
             } else if (this.state.searchBy === 'Availability') {
+                // let ar = []
+                // let goodar = []
+                // let items = (array.map(item => item.availability))
+                // items.map(item => ar.push(item))
+                // ar.map(item => goodar.push((item.replace('[', '').replace(']', '').split(', '))))
+                // console.log(typeof(goodar[1]), goodar[31], goodar[39])
+                //     for (let i = 0; i < array.length; i++) {
+                //         for (let k = 0; k < ar.length; k++){
+                //             goodar[k] = array[i].availability
+                //             console.log(typeof(goodar[k]))
+                //         }
+                //     }
+                // console.log((array[0].availability).split(''))
                 let items = array.filter(item => item.availability.includes(this.state.searchValue))
                 this.setState({searchArray: items})
             } else if (this.state.searchBy === 'Price') {
@@ -146,7 +159,9 @@ class SearchVillagers extends React.Component{
 
     render(){
         return(
-            <>
+            <div className="searchpage">
+                <div className="searchformcontainer">
+                    <div className="searchfor">
                 <h1>Search for:</h1>
                 <select onChange={this.handleSearchForChange}>
                     <option value="Select">Select from Dropdown</option>
@@ -156,15 +171,21 @@ class SearchVillagers extends React.Component{
                     <option value="Sea Creatures">Sea Creatures</option>
                     <option value="Fossils">Fossils</option>
                 </select>
+                </div>
                 {this.handleSearchBy()}
                 {this.state.paramsSet && 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} className="searchbar">
                     <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
                     <input type="submit"/>
                 </form>}
-                {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
+                </div>
+                <div className="searchresultscontainer">
+                    {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
+                </div>
+                <div className="selecteditemcontainer">
                 {this.props.item && <ItemCard />}
-            </>
+                </div>
+            </div>
         )    
     }
 }

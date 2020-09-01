@@ -1,7 +1,9 @@
 import React from 'react'
 import RedditCard from '../Components/RedditCard'
+import {connect} from 'react-redux'
+import {fetchTags} from '../actions'
 
-export default class Home extends React.Component{
+class Home extends React.Component{
 
     state = {
         redditData: []
@@ -11,6 +13,7 @@ export default class Home extends React.Component{
         fetch(`https://www.reddit.com/r/AnimalCrossing.json`)
         .then(response => response.json())
         .then(redditData => this.setState({redditData: redditData.data.children.slice(2)}))
+        this.props.fetchTags()
     }
 
     itsCardTime = () => {
@@ -32,3 +35,5 @@ export default class Home extends React.Component{
         )
     }
 }
+
+export default connect(null, {fetchTags})(Home)

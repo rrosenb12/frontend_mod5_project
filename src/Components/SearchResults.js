@@ -11,9 +11,12 @@ class SearchResults extends React.Component{
 
     indi = () => {
         return this.props.searchArray.map(result => 
-            <div key={result.id}>
-                <h1>{result.name}</h1>
-                <p onClick={this.handleClick} >Click for more...</p>
+            <div className="basicitemcard">
+                <div key={result.id}>
+                    <h1>{result.name}</h1>
+                    <img src={result.icon_uri}/>
+                    <p onClick={this.handleClick} className="moreinfo">Click for more...</p>
+                </div>
             </div>
         )
     }

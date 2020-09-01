@@ -3,8 +3,6 @@ import {connect} from 'react-redux'
 import {fetchUser} from '../actions'
 import WelcomePage from './WelcomePage'
 import nooksticka from '../nooksticka.png'
-import wallpaper from '../wallpaper.png'
-import wallpaper2 from '../wallpaper2.png'
 
 class Login extends React.Component{
 
