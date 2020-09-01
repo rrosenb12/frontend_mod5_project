@@ -23,14 +23,15 @@ class NavBar extends React.Component{
                         </> 
                     : 
                         <>
-                            <NavLink to='/logout' className='navbarbutton' id="logout" onClick={() => 
-                                    {
+                            <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
+                                    {   
+                                        localStorage.removeItem("token")
                                         this.setState(previousState => {
                                             return{loggedOut: !previousState.loggedOut}})
                                             return this.props.logOutUser()
                                     }
                                 }>Logout  
-                            </NavLink>
+                            </button>
                             <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
                             <NavLink to='/feed' className='navbarbutton' id='feed'>The Feed</NavLink>
                         </>
@@ -50,8 +51,8 @@ class NavBar extends React.Component{
     }
 }
 
-const mapStateToProps = state => {
-    return {user: state.currentUser.state}
-}
+// const mapStateToProps = state => {
+//     return {user: state.currentUser.state}
+// }
 
-export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
+export default connect(null, {unClickItem, logOutUser})(NavBar)

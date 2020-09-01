@@ -1,5 +1,7 @@
 import React from 'react';
 import {Switch, withRouter, Route} from 'react-router-dom'
+import {fetchTags} from '../actions'
+import {connect} from 'react-redux'
 import '../App.css';
 import Home from '../Components/Home'
 import NavBar from '../Components/NavBar'
@@ -19,6 +21,20 @@ class App extends React.Component {
     user: null
   }
 
+  componentDidMount(){
+    const token = localStorage.getItem("token")
+    if (token) {
+      fetch('http://localhost:3000/profile', {
+        method: "GET",
+        headers: {Authorization: `Bearer ${token}`},
+      })
+      .then(response => response.json())
+      .then(console.log)
+    } else {
+      this.props.history.push('/signup')
+    }
+  }
+
   loginHandler = (userObj) => {
     fetch('http://localhost:3000/login', {
       method: 'POST',
@@ -30,6 +46,7 @@ class App extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
+      localStorage.setItem("token", data.jwt)
       this.setState({user: data.user}, () => this.props.history.push('/profile'))
     })
   }
@@ -51,7 +68,7 @@ class App extends React.Component {
     return (
       <Switch>
         <div>
-          <NavBar />
+          <NavBar user={this.state.user}/>
           <Route exact path="/" component={Home}/>
           <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
           <Route exact path='/signup' render={() => <Signup submitHandler={this.submitHandler}/>}/>
@@ -67,4 +84,4 @@ class App extends React.Component {
   }
 }
 
-export default withRouter(App)
+export default connect(null, {fetchTags})(withRouter(App))

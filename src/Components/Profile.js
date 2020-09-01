@@ -41,7 +41,6 @@ export default class Profile extends React.Component{
 //     )
 // }
     render(){
-        console.log("Current user:", this.props.user)
     return(
         
         <div>

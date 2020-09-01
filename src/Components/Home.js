@@ -13,7 +13,6 @@ class Home extends React.Component{
         fetch(`https://www.reddit.com/r/AnimalCrossing.json`)
         .then(response => response.json())
         .then(redditData => this.setState({redditData: redditData.data.children.slice(2)}))
-        this.props.fetchTags()
     }
 
     itsCardTime = () => {

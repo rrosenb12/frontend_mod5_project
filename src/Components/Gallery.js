@@ -63,7 +63,7 @@ class Gallery extends React.Component{
             <form onSubmit={this.handleSubmit}>
                 <select onChange={this.handleChange}>
                     <option value="Select">Select a Category</option>
-                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                    {/* {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)} */}
                 </select>
                 <input type="submit"></input>
             </form>
