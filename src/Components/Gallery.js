@@ -59,13 +59,13 @@ class Gallery extends React.Component{
     render(){
     return(
         <div>
-        <h1>hello</h1>
-        <form onSubmit={this.handleSubmit}>
-            <select onChange={this.handleChange}>
-                <option value="Select">Select a Category</option>
-                {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
-            </select>
-            <input type="submit"></input>
+            <h1>hello</h1>
+            <form onSubmit={this.handleSubmit}>
+                <select onChange={this.handleChange}>
+                    <option value="Select">Select a Category</option>
+                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                </select>
+                <input type="submit"></input>
             </form>
             <div>
                 {this.state.filteredPics.length === 0 ? this.state.array.map(photo => <PhotoCard key={photo.id} photo={photo}/>) : this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>) }

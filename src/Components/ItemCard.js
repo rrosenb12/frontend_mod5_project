@@ -108,7 +108,7 @@ import { connect } from 'react-redux'
         return(
             <div key={this.props.item.id} className="detailedinfo">
             <h1 className="itemtitle"> {this.props.item.name}</h1>
-            <img src={this.props.item.image_uri} className="itemimage"/>
+            <img alt="item"src={this.props.item.image_uri} className="itemimage"/>
             {this.extraDetails(this.props.item)}
             <p onClick={this.clickHandler}>Add to profile</p>
             </div>

@@ -11,7 +11,7 @@ class SearchVillagers extends React.Component{
         searchBy: '',
         paramsSet: false,
         searchValue: '',
-        searchArray: []
+        searchArray: [],
     }
 
     handleSearchForChange = (e) => {
@@ -118,21 +118,15 @@ class SearchVillagers extends React.Component{
                 let items = array.filter(item => item.name.toLowerCase().includes(this.state.searchValue.toLowerCase()))
                 this.setState({searchArray: items})
             } else if (this.state.searchBy === 'Availability') {
-                // let ar = []
-                // let goodar = []
-                // let items = (array.map(item => item.availability))
-                // items.map(item => ar.push(item))
-                // ar.map(item => goodar.push((item.replace('[', '').replace(']', '').split(', '))))
-                // console.log(typeof(goodar[1]), goodar[31], goodar[39])
-                //     for (let i = 0; i < array.length; i++) {
-                //         for (let k = 0; k < ar.length; k++){
-                //             goodar[k] = array[i].availability
-                //             console.log(typeof(goodar[k]))
-                //         }
-                //     }
-                // console.log((array[0].availability).split(''))
-                let items = array.filter(item => item.availability.includes(this.state.searchValue))
-                this.setState({searchArray: items})
+                let timeArrays = array.map(item => 
+                    item.availability.replace('[', '').replace(']','').split(', ')
+                )
+                let indexes = []
+                timeArrays.map(time => time.includes(this.state.searchValue) ? indexes.push(timeArrays.indexOf(time)) : null)
+                let correct = []
+                indexes.map(index => correct.push(array[index]))
+                console.log(correct)
+                this.setState({searchArray: correct})
             } else if (this.state.searchBy === 'Price') {
                 let items = array.filter(fish => fish.price > this.state.searchValue)
                 items.sort((a,b) => a.price > b.price ? 1 : -1)
@@ -174,10 +168,11 @@ class SearchVillagers extends React.Component{
                 </div>
                 {this.handleSearchBy()}
                 {this.state.paramsSet && 
-                <form onSubmit={this.handleSubmit} className="searchbar">
-                    <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
-                    <input type="submit"/>
-                </form>}
+                    <form onSubmit={this.handleSubmit} className="searchbar">
+                        <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
+                        <input type="submit"/>
+                    </form>
+                }
                 </div>
                 <div className="searchresultscontainer">
                     {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}

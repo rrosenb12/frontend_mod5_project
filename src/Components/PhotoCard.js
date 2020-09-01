@@ -6,7 +6,7 @@ function PhotoCard(props){
         <div>
             {console.log(props.tags)}
             <h1>hi</h1>
-            <img src={props.photo.image.url}/>
+            <img alt="gallery" src={props.photo.image.url}/>
         </div>
     )
 }

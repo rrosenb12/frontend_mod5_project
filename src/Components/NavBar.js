@@ -40,9 +40,9 @@ class NavBar extends React.Component{
                     <NavLink to='/'className='navbarbutton' id="home">Home</NavLink>
                 </div>
                 <div className='silos'>
-                    <img className='silo' src={nooksilo} height="70"/>
-                    <img className='silo' src={isabellesilo} height="70"/>
-                    <img className='silo' src={kksilo} height="70"/>
+                    <img alt=" silo" className='silo' src={nooksilo} height="70"/>
+                    <img alt=" silo" className='silo' src={isabellesilo} height="70"/>
+                    <img alt=" silo" className='silo' src={kksilo} height="70"/>
                 </div>
             </div>
         )
