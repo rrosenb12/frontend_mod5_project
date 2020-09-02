@@ -60,7 +60,7 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
-            .then(userVillagerObj => this.setState( previousState => { return {userVillagers: [...!previousState.userVillagers, userVillagerObj]}}))
+            .then(userVillagerObj => this.setState( previousState => { return {userVillagers: [...previousState.userVillagers, userVillagerObj]}}))
         } else if (this.props.item.kind === 'seacreatures') {
             fetch(`http://localhost:3000/user_seacreatures`, {
                 method: 'POST',
