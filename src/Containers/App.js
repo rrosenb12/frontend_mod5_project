@@ -34,6 +34,7 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.props.currentUser)
     return (
       <Switch>
         <div>
@@ -54,7 +55,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return{currentUser: state.currentUser.currentUser}
+  console.log(state.currentUser)
+  return{currentUser: state.currentUser}
 }
 
 export default connect(mapStateToProps, {fetchTags, setUser})(withRouter(App))

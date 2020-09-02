@@ -10,8 +10,9 @@ export const loginUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt)
-            dispatch({type: 'LOGIN_USER', payload: data.user})
+            let token = localStorage.setItem("token", data.jwt)
+            localStorage.setItem("user", JSON.stringify(data.user))
+            dispatch({type: 'LOGIN_USER', payload: token, currentUser: data.user})
         })
     }
 }
@@ -28,8 +29,9 @@ export const createUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt)
-            dispatch({type: 'CREATE_USER', payload: data.user})
+            let token = localStorage.setItem("token", data.jwt)
+            localStorage.setItem("user", JSON.stringify(data.user))
+            dispatch({type: 'CREATE_USER', payload: token, currentUser: data.user})
         })
   }
 }
@@ -42,7 +44,9 @@ export const setUser = (token) => {
       })
       .then(response => response.json())
       .then(data => {
-          dispatch({type: 'SET_USER', payload: data.user})
+          let token = localStorage.setItem("token", data.jwt)
+          localStorage.setItem("user", JSON.stringify(data.user))
+          dispatch({type: 'SET_USER', payload: token, currentUser: data.user})
       })
     }
 }

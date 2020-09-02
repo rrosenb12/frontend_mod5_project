@@ -9,15 +9,13 @@ import kksilo from '../kksilo.png'
 
 class NavBar extends React.Component{
 
-    state={
-        loggedOut: false
-    }
-
     render(){
+        console.log(this.props.currentUser)
+        // console.log(Object.keys(this.props.user).length)
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
                 <div className='buttons'>
-                    {localStorage.length === 0 ? 
+                    {this.props.currentUser === undefined || localStorage.length === 0 ? 
                         <>
                             <NavLink to='/login' className='navbarbutton' id="login">Login</NavLink> 
                             <NavLink to='/signup'className='navbarbutton' id="signup">Signup</NavLink>
@@ -26,9 +24,6 @@ class NavBar extends React.Component{
                         <>
                             <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
                                     {   
-                                        this.setState({
-                                            loggedOut: true
-                                        })
                                         localStorage.removeItem("token")
                                         return this.props.logOutUser()
                                     }
@@ -53,8 +48,8 @@ class NavBar extends React.Component{
     }
 }
 
-// const mapStateToProps = state => {
-//     return {user: state.currentUser.state}
-// }
+const mapStateToProps = state => {
+    return {currentUser: state.currentUser.currentUser}
+}
 
-export default connect(null, {unClickItem, logOutUser})(NavBar)
+export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
