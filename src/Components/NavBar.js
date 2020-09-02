@@ -8,29 +8,20 @@ import kksilo from '../kksilo.png'
 
 class NavBar extends React.Component{
 
-    state={
-        loggedOut: false
-    }
-
     render(){
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
                 <div className='buttons'>
-                    {this.props.user === undefined || this.state.loggedOut ? 
+                    {this.props.currentUser === null ? 
                         <>
                             <NavLink to='/login' className='navbarbutton' id="login">Login</NavLink> 
                             <NavLink to='/signup'className='navbarbutton' id="signup">Signup</NavLink>
                         </> 
                     : 
                         <>
-                            <NavLink to='/logout' className='navbarbutton' id="logout" onClick={() => 
-                                    {
-                                        this.setState(previousState => {
-                                            return{loggedOut: !previousState.loggedOut}})
-                                            return this.props.logOutUser()
-                                    }
-                                }>Logout  
-                            </NavLink>
+                            <button 
+                                to='/logout' className='navbarbutton' id="logout" onClick={this.props.logOutUser}>Logout  
+                            </button>
                             <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
                             <NavLink to='/feed' className='navbarbutton' id='feed'>The Feed</NavLink>
                         </>
@@ -50,8 +41,9 @@ class NavBar extends React.Component{
     }
 }
 
-const mapStateToProps = state => {
-    return {user: state.currentUser.state}
-}
+// const mapStateToProps = state => {
+//     return {user: state.currentUser.state}
+// }
 
-export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
+// export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
+export default NavBar

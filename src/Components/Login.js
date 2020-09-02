@@ -9,7 +9,6 @@ class Login extends React.Component{
     state = {
         username: '',
         password: '',
-        currentUser: false,
         users: []
     }
 
@@ -24,12 +23,10 @@ class Login extends React.Component{
         fetch('http://localhost:3000/users')
         .then(response => response.json())
         .then(users => {this.setState({users: users}, () => {
-            console.log(this.state.users)
             let user = this.state.users.find(user => user.username === this.state.username)
-            console.log(user)
             if (user !== undefined){ 
-            this.setState(previousState =>{return{currentUser: !previousState.currentUser}})
-            this.props.fetchUser(user)} else {
+                this.props.loginHandler(user)
+            } else {
                 window.alert('you need to create an account')
             }
         })})
@@ -38,9 +35,6 @@ class Login extends React.Component{
     render(){
         return(
             <div className="formparent">
-                {this.state.currentUser ? 
-                    <WelcomePage />
-                :
                 <>
                 <div className="wc">
                     <div className="welcomecontainer">
@@ -61,7 +55,6 @@ class Login extends React.Component{
                 </form>
                 </div>
                 </>
-                }
             </div>
         )
     }

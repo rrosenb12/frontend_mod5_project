@@ -31,15 +31,16 @@ class Signup extends React.Component{
     createUser(){
         fetch('http://localhost:3000/users', {
             method: 'POST',
-            body: JSON.stringify({username: this.state.username, password: this.state.password})
+            headers: {
+                'accepts': 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: this.state.username, 
+                password: this.state.password})
             })
         .then(response => response.json())
-        .then(response => this.props.fetchUser(response))
-        .then(this.setState(previousState => {
-            return {
-                currentUser: !previousState.currentUser
-            }
-        }))
+        .then(response => this.props.signupHandler(response))
         .catch(error=>console.log(error));
     }
     
@@ -60,4 +61,5 @@ class Signup extends React.Component{
     }
 }
 
-export default connect(null, {fetchUser})(Signup)
+export default Signup
+// export default connect(null, {fetchUser})(Signup)

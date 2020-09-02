@@ -14,14 +14,31 @@ import Feed from '../Components/feed'
 
 
 class App extends React.Component {
+
+  state = {
+    user: null
+  }
+
+  loginHandler = (userObj) => {
+    this.setState({user: userObj})
+  }
+
+  signupHandler = (userObj) => {
+    this.setState({user: userObj})
+  }
+
+  logOutUser = () => {
+    this.setState({user: null}, () => {console.log(this.state.user)})
+  }
+
   render(){
     return (
       <BrowserRouter>
         <div>
-          <NavBar />
+          <NavBar currentUser={this.state.user} logOutUser={this.logOutUser}/>
           <Route exact path="/" component={Home}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/signup' component={Signup}/>
+          <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
+          <Route exact path='/signup' render={() => <Signup signupHandler={this.signupHandler}/>}/>
           <Route exact path='/search' component={Search}/>
           <Route exact path='/profile' component={Profile}/>
           <Route exact path='/logout' component={Logout}/>
