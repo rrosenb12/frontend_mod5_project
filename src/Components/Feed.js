@@ -21,7 +21,7 @@ function Feed(props) {
 
     return(
         <>
-            {props.currentUser ? <h1>hi</h1> : <Redirect to='/'/>}
+            {localStorage.length !== 0 ? <h1>hi</h1> : <Redirect to='/'/>}
         </>
         
     ) 

@@ -25,6 +25,9 @@ class App extends React.Component {
   componentDidMount(){
     if (localStorage.getItem("token") !== null) {
       this.props.setUser(localStorage.getItem("token"))
+      this.setState({
+        user: this.props.currentUser
+      })
     } else {
       this.props.history.push('/signup')
     }

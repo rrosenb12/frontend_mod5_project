@@ -44,7 +44,7 @@ class Profile extends React.Component{
     return(
         
         <div>
-            {this.props.currentUser ?
+            {localStorage.length !== 0 ?
                     <div>
                         <h1>hi</h1>
                     </div>
