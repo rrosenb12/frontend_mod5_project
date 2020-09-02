@@ -6,25 +6,53 @@ import {fetchTags} from '../actions'
 class Gallery extends React.Component{
 
     state = {
-        array: [],
+        photos: [],
         searchFor: '',
         pictureIds: [],
-        filteredPics: []
+        filteredPics: [],
+        tags: [],
+        pictureTags: []
+    }
+
+    componentWillMount(){
+        fetch('http://localhost:3000/tags')
+        .then(response => response.json())
+        .then(data => this.setState({tags: data}))
     }
 
     componentDidMount(){
         fetch('http://localhost:3000/pictures')
         .then(response => response.json())
         .then(photoArray => {
-            this.setState({array: photoArray})
+            this.setState({photos: photoArray})
         })
-        return this.props.tags === undefined ? this.props.fetchTags() : null
+
+        fetch('http://localhost:3000/picture_tags')
+        .then(response => response.json())
+        .then(pictureTags => this.setState({pictureTags: pictureTags}, () => console.log(this.state.pictureTags)))
     }
+
+    // componentWillUpdate(){
+    //     fetch('http://localhost:3000/picture_tags')
+    //     .then(response => response.json())
+    //     .then(pictureTags => this.setState({pictureTags: pictureTags}, () => console.log(this.state.pictureTags)))
+    // }
 
     handleChange = (e) => {
         this.setState({
             searchFor: e.target.value
+        }, () => {
+            console.log(this.state.pictureTags)
+            let pT = this.state.pictureTags.find(pT => pT.tag_id == this.state.searchFor)
+            this.filterPics(pT)
         })
+    }
+
+    filterPics = pT => {
+        console.log(pT)
+        console.log(this.state.photos)
+        let newPhotosArray = this.state.photos.filter(photo => photo.id !== pT.picture_id)
+        this.setState({photos: newPhotosArray})
     }
         // , () => {
         //     let tag = this.props.tags.find(tag => tag.description === this.state.searchFor)
@@ -64,10 +92,10 @@ class Gallery extends React.Component{
             <h1>hello</h1>
                 <select onChange={this.handleChange}>
                     <option value="Select">Select a Category</option>
-                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                    {this.state.tags === undefined ? null : this.state.tags.map(tag => <option value={tag.id}>{tag.description}</option>)}
                 </select>
                 <div>
-                    {this.state.array.length === 0 ? null : this.state.array.map(photo => <PhotoCard key={photo.id} photo={photo}/>)}
+                    {this.state.photos.map(photo => <PhotoCard key={photo.id} photo={photo}/>)}
                 </div>
             </div>
         )}
@@ -84,14 +112,15 @@ class Gallery extends React.Component{
     //             <input type="submit"></input>
     //         </form>
     //         <div>
-    //             {this.state.filteredPics.length === 0 ? this.state.array.map(photo => <PhotoCard key={photo.id} photo={photo}/>) : this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>) }
+    //             {this.state.filteredPics.length === 0 ? this.state.photos.map(photo => <PhotoCard key={photo.id} photo={photo}/>) : this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>) }
     //         </div>
     //     </div>
     // )}
     // }
 
-const mapStateToProps = state => {
-    return {tags: state.tags.state}
-}
+// const mapStateToProps = state => {
+//     return {tags: state.tags.state}
+// }
 
-export default connect(mapStateToProps, {fetchTags})(Gallery)
+export default Gallery
+// export default connect(mapStateToProps, {fetchTags})(Gallery)
