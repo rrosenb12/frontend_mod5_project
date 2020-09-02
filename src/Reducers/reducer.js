@@ -1,29 +1,19 @@
 import { combineReducers } from "redux"
+import {userReducer} from './userReducer'
 
-const defaultState = {currentUser: {}, villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
+const defaultState = {villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
 
-function userReducer(state = defaultState.currentUser, action){
-    //when your action has this type, return this
-    switch (action.type) {
-        case 'SET_USER':
-            return {...state, state: action.payload}
-        case 'LOGOUT_USER':
-            return {...state, state: {}}
-        default:
-            return state;
-        }
-}
+
 
 function villagersReducer(state = defaultState.villagersArray, action){
     switch (action.type) {
-        
         case 'FETCH_VILLAGERS':
             return {
                 state: action.villagers
             }
         default:
             return state;
-        }
+    }
 }
 
 function fishReducer(state = defaultState.fishArray, action){
@@ -32,8 +22,8 @@ function fishReducer(state = defaultState.fishArray, action){
             return {
                 state: action.fish 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
@@ -43,8 +33,8 @@ function bugsReducer(state = defaultState.bugsArray, action){
             return {
                 state: action.bugs 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
@@ -54,8 +44,8 @@ function seacreaturesReducer(state = defaultState.seacreaturesArray, action){
             return {
                 state: action.seacreatures 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 
@@ -65,8 +55,8 @@ function fossilsReducer(state = defaultState.fossilsArray, action){
             return {
                 state: action.fossils 
             }
-            default:
-                return state;
+        default:
+            return state;
     }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUser} from '../actions'
+import {loginUser} from '../Actions/userActions'
+// import {fetchUser} from '../actions'
 import WelcomePage from './WelcomePage'
 import nooksticka from '../nooksticka.png'
 
@@ -9,8 +10,6 @@ class Login extends React.Component{
     state = {
         username: '',
         password: '',
-        currentUser: false,
-        users: []
     }
 
     handleChange = e => {
@@ -21,18 +20,7 @@ class Login extends React.Component{
     
     handleSubmit = e => {
         e.preventDefault()
-        fetch('http://localhost:3000/users')
-        .then(response => response.json())
-        .then(users => {this.setState({users: users}, () => {
-            console.log(this.state.users)
-            let user = this.state.users.find(user => user.username === this.state.username)
-            console.log(user)
-            if (user !== undefined){ 
-            this.setState(previousState =>{return{currentUser: !previousState.currentUser}})
-            this.props.fetchUser(user)} else {
-                window.alert('you need to create an account')
-            }
-        })})
+        this.props.loginUser(this.state)
     }
 
     render(){
@@ -67,4 +55,4 @@ class Login extends React.Component{
     }
 }
 
-export default connect(null, {fetchUser})(Login)
+export default connect(null, {loginUser})(Login)

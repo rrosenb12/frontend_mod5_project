@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {clickItem} from '../actions'
+import {clickItem} from '../Actions/actions'
 
 class SearchResults extends React.Component{
 
@@ -27,6 +27,5 @@ class SearchResults extends React.Component{
         </>
     )}
 }
-
 
 export default connect(null, {clickItem})(SearchResults)

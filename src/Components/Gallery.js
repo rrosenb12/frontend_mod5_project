@@ -1,7 +1,7 @@
 import React from 'react'
 import PhotoCard from './PhotoCard'
 import {connect} from 'react-redux'
-import {fetchTags} from '../actions'
+import {fetchTags} from '../Actions/actions'
 
 class Gallery extends React.Component{
 
@@ -64,7 +64,7 @@ class Gallery extends React.Component{
             <h1>hello</h1>
                 <select onChange={this.handleChange}>
                     <option value="Select">Select a Category</option>
-                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                    {/* {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)} */}
                 </select>
                 <div>
                     {this.state.array.length === 0 ? null : this.state.array.map(photo => <PhotoCard key={photo.id} photo={photo}/>)}

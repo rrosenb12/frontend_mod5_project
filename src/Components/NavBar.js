@@ -1,36 +1,34 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import {connect} from 'react-redux'
-import {unClickItem, logOutUser} from '../actions'
+import {unClickItem} from '../Actions/actions'
+import {logOutUser} from '../Actions/userActions'
 import nooksilo from '../nooksilo.png'
 import isabellesilo from '../isabellesilo.png'
 import kksilo from '../kksilo.png'
 
 class NavBar extends React.Component{
 
-    state={
-        loggedOut: false
-    }
-
     render(){
+        console.log(this.props.currentUser)
+        // console.log(Object.keys(this.props.user).length)
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
                 <div className='buttons'>
-                    {this.props.user === undefined || this.state.loggedOut ? 
+                    {this.props.currentUser === undefined || localStorage.length === 0 ? 
                         <>
                             <NavLink to='/login' className='navbarbutton' id="login">Login</NavLink> 
                             <NavLink to='/signup'className='navbarbutton' id="signup">Signup</NavLink>
                         </> 
                     : 
                         <>
-                            <NavLink to='/logout' className='navbarbutton' id="logout" onClick={() => 
-                                    {
-                                        this.setState(previousState => {
-                                            return{loggedOut: !previousState.loggedOut}})
-                                            return this.props.logOutUser()
+                            <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
+                                    {   
+                                        localStorage.removeItem("token")
+                                        return this.props.logOutUser()
                                     }
                                 }>Logout  
-                            </NavLink>
+                            </button>
                             <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
                             <NavLink to='/feed' className='navbarbutton' id='feed'>The Feed</NavLink>
                         </>
@@ -51,7 +49,7 @@ class NavBar extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {user: state.currentUser.state}
+    return {currentUser: state.currentUser.currentUser}
 }
 
 export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
