@@ -1,11 +1,9 @@
 import React from 'react'
-
 import {Redirect} from 'react-router-dom'
-
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 // import {fetchTags} from '../actions'
 
-export default function Feed(props) {
+function Feed(props) {
 
     // componentDidMount(){
     //     return this.props.tags === undefined ? this.props.fetchTags() : null
@@ -23,16 +21,16 @@ export default function Feed(props) {
 
     return(
         <>
-            {props.user ? <h1>hi</h1> : <Redirect to='/'/>}
+            {props.currentUser ? <h1>hi</h1> : <Redirect to='/'/>}
         </>
         
     ) 
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         user: state.currentUser.state, 
-//         tags: state.tags.state}
-// }
+const mapStateToProps = (state) => {
+    return {
+        currentUser: state.currentUser.currentUser
+    }
+}
 
-// export default connect(mapStateToProps, {fetchTags})(Feed)
+export default connect(mapStateToProps)(Feed)

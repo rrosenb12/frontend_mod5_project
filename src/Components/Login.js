@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {loginUser} from '../actions'
+import {loginUser} from '../Actions/userActions'
 // import {fetchUser} from '../actions'
 import WelcomePage from './WelcomePage'
 import nooksticka from '../nooksticka.png'

@@ -7,13 +7,17 @@ export function userReducer(state = defaultState, action){
             return {
                 ...state, currentUser: action.payload
             }
+        case 'CREATE_USER':
+            return {
+                ...state, currentUser: action.payload
+            }
         case 'SET_USER':
             return {
-                ...state, state: action.payload
+                ...state, currentUser: action.payload
             }
         case 'LOGOUT_USER':
             return {
-                ...state, state: {}
+                ...state, currentUser: {}
             }
         default:
             return state;

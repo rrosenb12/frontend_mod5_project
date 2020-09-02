@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem} from '../actions'
+import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem} from '../Actions/actions'
 import ItemCard from './ItemCard'
 import SearchResults from './SearchResults'
 

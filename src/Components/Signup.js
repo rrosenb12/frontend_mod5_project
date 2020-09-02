@@ -1,7 +1,9 @@
 import React from 'react'
 import WelcomePage from './WelcomePage'
+import {connect} from 'react-redux'
+import {createUser} from '../Actions/userActions'
 
-export default class Signup extends React.Component{
+class Signup extends React.Component{
 
     state = {
         username: '',
@@ -16,7 +18,7 @@ export default class Signup extends React.Component{
 
     handleSubmit = e => {
         e.preventDefault()
-        this.props.submitHandler(this.state)
+        this.props.createUser(this.state)
     }
     
     render(){
@@ -35,3 +37,5 @@ export default class Signup extends React.Component{
         )
     }
 }
+
+export default connect(null, {createUser})(Signup)
