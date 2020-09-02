@@ -9,6 +9,10 @@ import kksilo from '../kksilo.png'
 
 class NavBar extends React.Component{
 
+    state={
+        loggedOut: false
+    }
+
     render(){
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
@@ -22,6 +26,9 @@ class NavBar extends React.Component{
                         <>
                             <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
                                     {   
+                                        this.setState({
+                                            loggedOut: true
+                                        })
                                         localStorage.removeItem("token")
                                         return this.props.logOutUser()
                                     }
