@@ -41,14 +41,14 @@ class App extends React.Component {
         <div>
           <NavBar user={this.state.user}/>
           <Route exact path="/" component={Home}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/signup' component={Signup}/>
-          <Route exact path='/search' component={Search}/>
-          <Route exact path='/profile' component={Profile}/>
+          <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
+          <Route exact path='/signup' render={() => <Signup signupHandler={this.signupHandler}/>}/>
+          <Route exact path='/search' render={() => <Search currentUser={this.state.user}/>}/>
+          <Route exact path='/profile' render={() => <Profile currentUser={this.state.user}/>}/>
           <Route exact path='/logout' component={Logout}/>
-          <Route exact path='/upload' component={UploadImage}/>
+          <Route exact path='/upload' render={() => <UploadImage currentUser={this.state.user}/>}/>
           <Route exact path='/gallery' component={Gallery}/>
-          <Route exact path='/feed' component={Feed}/>
+          <Route exact path='/feed' render={() => <Feed currentUser={this.state.user}/>}/>
         </div>
       </Switch>
     )

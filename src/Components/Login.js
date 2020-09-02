@@ -26,9 +26,6 @@ class Login extends React.Component{
     render(){
         return(
             <div className="formparent">
-                {this.state.currentUser ? 
-                    <WelcomePage />
-                :
                 <>
                 <div className="wc">
                     <div className="welcomecontainer">
@@ -49,7 +46,6 @@ class Login extends React.Component{
                 </form>
                 </div>
                 </>
-                }
             </div>
         )
     }

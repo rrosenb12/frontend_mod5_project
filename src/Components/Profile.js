@@ -11,6 +11,7 @@ class Profile extends React.Component{
     // }
 
     // componentDidMount(){
+
         // this.props.user !== undefined &&
         // fetch(`http://localhost:3000/users/${this.props.user.id}`)
         // .then(response => response.json())
@@ -41,22 +42,27 @@ class Profile extends React.Component{
 //     )
 // }
     render(){
+        console.log(this.props.currentUser)
     return(
         
         <div>
-            {localStorage.length !== 0 ?
-                    <div>
-                        <h1>hi</h1>
-                    </div>
-            : <Redirect to='/'/>
-            }
+            {this.props.currentUser !== null ? 
+                <div>
+                    <h1>{this.props.currentUser.username}</h1>
+                    {this.props.currentUser.villagers.map(villager => {
+                        return <p>{villager.name}</p>
+                    })} 
+                </div>
+            : 
+                <h1>Please log in or create an account</h1>}
         </div>
     )
 }
 }
 
+
 const mapStateToProps = state => {
     return {currentUser: state.currentUser.currentUser}
 }
-
-export default connect(mapStateToProps)(Profile)
+export default Profile
+// export default connect(mapStateToProps)(Profile)
