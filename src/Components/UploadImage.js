@@ -7,7 +7,14 @@ class UploadImage extends React.Component{
         description: '',
         image: null,
         tag: '',
-        tagToFetch: {}
+        tagToFetch: {},
+        tags: []
+    }
+
+    componentWillMount(){
+        fetch('http://localhost:3000/tags')
+        .then(response => response.json())
+        .then(data => this.setState({tags: data}))
     }
 
     handleChange = e => {
@@ -17,11 +24,11 @@ class UploadImage extends React.Component{
     }
 
     handleTagChange = e => {
-        let tag = this.props.tags.find(tag => tag.description === e.target.value)
+        let tag = this.state.tags.find(tag => tag.description === e.target.value)
         this.setState({
             tag: e.target.value,
             tagToFetch: tag
-        }, () => {this.setTag(tag)})
+        })
     }
 
     setTag = tag => {
@@ -41,7 +48,7 @@ class UploadImage extends React.Component{
         e.preventDefault()
         const formData = new FormData()
         formData.append('description', this.state.description);
-        formData.append('user_id', this.props.user.id)
+        formData.append('user_id', this.props.currentUser.id)
         formData.append('image', this.state.image);
         fetch('http://localhost:3000/pictures', {
             method: 'POST',
@@ -75,7 +82,7 @@ class UploadImage extends React.Component{
                 <form onSubmit={this.handleSubmit}>
                 <select onChange={this.handleTagChange}>
                     <option name="tag" value="Select">Select a Category</option>
-                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                    {this.state.tags.length === 0 ? null : this.state.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
                 </select>
                     <input type="text" name="description" placeholder="write a description" value={this.state.description} onChange={this.handleChange}/>
                     <input type="file" accept="image/*" multiple={false} onChange={this.onImageChange} />
@@ -87,8 +94,9 @@ class UploadImage extends React.Component{
 
 }
 
-const mapStateToProps = state => {
-    return {user: state.currentUser.state, tags: state.tags.state}
-}
+// const mapStateToProps = state => {
+//     return {user: state.currentUser.state, tags: state.tags.state}
+// }
 
-export default connect(mapStateToProps)(UploadImage)
+export default UploadImage
+// export default connect(mapStateToProps)(UploadImage)

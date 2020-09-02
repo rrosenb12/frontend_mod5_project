@@ -3,6 +3,10 @@ import { connect } from 'react-redux'
 
  class ItemCard extends React.Component {
 
+    state={
+        userVillagers: []
+    }
+
     clickHandler = () => {
         if(this.props.item.kind === 'fish') {
             fetch(`http://localhost:3000/user_fish`, {
@@ -56,6 +60,7 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
+            .then(userVillagerObj => this.setState( previousState => { return {userVillagers: [...!previousState.userVillagers, userVillagerObj]}}))
         } else if (this.props.item.kind === 'seacreatures') {
             fetch(`http://localhost:3000/user_seacreatures`, {
                 method: 'POST',

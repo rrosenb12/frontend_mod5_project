@@ -43,7 +43,7 @@ class App extends React.Component {
           <Route exact path='/search' render={() => <Search currentUser={this.state.user}/>}/>
           <Route exact path='/profile' render={() => <Profile currentUser={this.state.user}/>}/>
           <Route exact path='/logout' component={Logout}/>
-          <Route exact path='/upload' component={UploadImage}/>
+          <Route exact path='/upload' render={() => <UploadImage currentUser={this.state.user}/>}/>
           <Route exact path='/gallery' component={Gallery}/>
           <Route exact path='/feed' component={Feed}/>
         </div>
