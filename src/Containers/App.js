@@ -23,9 +23,8 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    const token = localStorage.getItem("token")
-    if (token) {
-      this.props.setUser(token)
+    if (localStorage.getItem("token") !== null) {
+      this.props.setUser(localStorage.getItem("token"))
     } else {
       this.props.history.push('/signup')
     }

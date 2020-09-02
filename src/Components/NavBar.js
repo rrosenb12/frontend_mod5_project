@@ -9,15 +9,11 @@ import kksilo from '../kksilo.png'
 
 class NavBar extends React.Component{
 
-    state={
-        loggedOut: false
-    }
-
     render(){
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
                 <div className='buttons'>
-                    {this.props.user === undefined || this.state.loggedOut ? 
+                    {localStorage.length === 0 ? 
                         <>
                             <NavLink to='/login' className='navbarbutton' id="login">Login</NavLink> 
                             <NavLink to='/signup'className='navbarbutton' id="signup">Signup</NavLink>
@@ -27,9 +23,7 @@ class NavBar extends React.Component{
                             <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
                                     {   
                                         localStorage.removeItem("token")
-                                        this.setState(previousState => {
-                                            return{loggedOut: !previousState.loggedOut}})
-                                            return this.props.logOutUser()
+                                        return this.props.logOutUser()
                                     }
                                 }>Logout  
                             </button>
