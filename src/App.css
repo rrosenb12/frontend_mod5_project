@@ -14,7 +14,7 @@ h1 {
 
 .navbar {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
   grid-column-gap: 0px;
   grid-row-gap: 0px;
@@ -25,15 +25,16 @@ h1 {
 }
 
 .navbar .buttons {
-  grid-area: 1 / 1 / 2 / 2; 
+  grid-area: 1 / 1 / 2 / 3; 
 }
 .navbar .silos {
-  grid-area: 1 / 2 / 2 / 3;
+  grid-area: 1 / 3 / 2 / 4;
   margin-left: auto;
 }
 
 .navbar .buttons .navbarbutton {
   font-family: 'nintendoP_Humming-E_002pr';
+  font-size: 16px;
   color: #EDF2F4;
   text-decoration: none;
   text-align: center;
@@ -43,7 +44,7 @@ h1 {
   margin-left: 25px;
 }
 
-.navbar .buttons .navbarbutton .logout {
+button#logout{
   background-color: #2B2D42;
 }
 
@@ -127,7 +128,9 @@ h1 {
 }
 
 .redditimgcontainer {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 190px;
   width: 345px;
 }
@@ -150,8 +153,8 @@ h1 {
 
 img.redditimg {
   display: block;
-  max-width:460px;
-  max-height:190px;
+  max-width:100%;
+  max-height:100%;
   width: auto;
   height: auto;
   margin-right: auto;
