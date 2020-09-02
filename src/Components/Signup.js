@@ -1,15 +1,13 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {fetchUser} from '../actions'
 import WelcomePage from './WelcomePage'
+import {connect} from 'react-redux'
+import {createUser} from '../Actions/userActions'
 
 class Signup extends React.Component{
 
     state = {
         username: '',
         password: '',
-        currentUser: false,
-        users: []
     }
 
     handleChange = e => {
@@ -20,28 +18,7 @@ class Signup extends React.Component{
 
     handleSubmit = e => {
         e.preventDefault()
-        fetch('http://localhost:3000/users')
-        .then(response => response.json())
-        .then(users => this.setState({users: users}, () => {
-            let user = this.state.users.find(user => user.username === this.state.username)
-            user === undefined ? this.createUser() : window.alert('you already have an account')
-        }))
-    }
-    
-    createUser(){
-        fetch('http://localhost:3000/users', {
-            method: 'POST',
-            headers: {
-                'accepts': 'application/json',
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: this.state.username, 
-                password: this.state.password})
-            })
-        .then(response => response.json())
-        .then(response => this.props.signupHandler(response))
-        .catch(error=>console.log(error));
+        this.props.createUser(this.state)
     }
     
     render(){
@@ -61,5 +38,5 @@ class Signup extends React.Component{
     }
 }
 
-export default Signup
-// export default connect(null, {fetchUser})(Signup)
+
+export default connect(null, {createUser})(Signup)

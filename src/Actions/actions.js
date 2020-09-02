@@ -1,16 +1,3 @@
-export const fetchUser = (user) => {
-    return{
-        type: 'SET_USER',
-        payload: user
-    }
-}
-
-export const logOutUser = () => {
-    return{
-        type: 'LOGOUT_USER'
-    }
-}
-
 export const fetchVillagers = () => {
     return (dispatch) => {
         fetch('http://localhost:3000/villagers')

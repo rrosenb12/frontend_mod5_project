@@ -79,6 +79,9 @@ button#logout{
 #gallery:hover{
   color: #92DCE5;
 }
+#feed:hover{
+  color: #DB6C79;
+}
 
 /* HOME PAGE STYLING */
 

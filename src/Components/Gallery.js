@@ -58,7 +58,10 @@ class Gallery extends React.Component{
             <h1>hello</h1>
                 <select onChange={this.handleChange}>
                     <option value="Select">Select a Category</option>
-                    {this.state.tags === undefined ? null : this.state.tags.map(tag => <option value={tag.id}>{tag.description}</option>)}
+
+
+                    {/* {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)} */}
+
                 </select>
                 <div>
                     {this.state.filteredPics.length === 0 ? this.state.photos.map(photo => <PhotoCard key={photo.id} photo={photo}/>) : this.state.filteredPics.map(photo=> <PhotoCard key={photo.id} photo={photo}/>)}

@@ -135,6 +135,7 @@ import { connect } from 'react-redux'
 const mapStateToProps = state => {
     return {
         item: state.items.state.item,
+        currentUser: state.currentUser.currentUser
     }
 }
 

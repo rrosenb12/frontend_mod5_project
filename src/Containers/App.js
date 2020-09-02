@@ -1,5 +1,8 @@
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Switch, withRouter, Route} from 'react-router-dom'
+import {setUser} from '../Actions/userActions'
+import {fetchTags} from '../Actions/actions'
+import {connect} from 'react-redux'
 import '../App.css';
 import Home from '../Components/Home'
 import NavBar from '../Components/NavBar'
@@ -13,29 +16,30 @@ import Gallery from '../Components/Gallery'
 import Feed from '../Components/feed'
 
 
+
 class App extends React.Component {
 
   state = {
     user: null
   }
 
-  loginHandler = (userObj) => {
-    this.setState({user: userObj})
-  }
-
-  signupHandler = (userObj) => {
-    this.setState({user: userObj})
-  }
-
-  logOutUser = () => {
-    this.setState({user: null}, () => {console.log(this.state.user)})
+  componentDidMount(){
+    if (localStorage.getItem("token") !== null) {
+      this.props.setUser(localStorage.getItem("token"))
+      this.setState({
+        user: this.props.currentUser
+      })
+    } else {
+      this.props.history.push('/signup')
+    }
   }
 
   render(){
+    console.log(this.props.currentUser)
     return (
-      <BrowserRouter>
+      <Switch>
         <div>
-          <NavBar currentUser={this.state.user} logOutUser={this.logOutUser}/>
+          <NavBar user={this.state.user}/>
           <Route exact path="/" component={Home}/>
           <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
           <Route exact path='/signup' render={() => <Signup signupHandler={this.signupHandler}/>}/>
@@ -46,9 +50,14 @@ class App extends React.Component {
           <Route exact path='/gallery' component={Gallery}/>
           <Route exact path='/feed' render={() => <Feed currentUser={this.state.user}/>}/>
         </div>
-      </BrowserRouter>
+      </Switch>
     )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log(state.currentUser)
+  return{currentUser: state.currentUser}
+}
+
+export default connect(mapStateToProps, {fetchTags, setUser})(withRouter(App))
