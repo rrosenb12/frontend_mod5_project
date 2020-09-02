@@ -184,7 +184,7 @@ class SearchVillagers extends React.Component{
                     {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
                 </div>
                 <div className="selecteditemcontainer">
-                {this.props.item && <ItemCard />}
+                {this.props.item && <ItemCard currentUser={this.props.currentUser}/>}
                 </div>     
             </div>
         )    

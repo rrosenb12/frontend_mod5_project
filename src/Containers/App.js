@@ -32,6 +32,7 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(this.state.user)
     return (
       <BrowserRouter>
         <div>
@@ -39,8 +40,8 @@ class App extends React.Component {
           <Route exact path="/" component={Home}/>
           <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
           <Route exact path='/signup' render={() => <Signup signupHandler={this.signupHandler}/>}/>
-          <Route exact path='/search' component={Search}/>
-          <Route exact path='/profile' component={Profile}/>
+          <Route exact path='/search' render={() => <Search currentUser={this.state.user}/>}/>
+          <Route exact path='/profile' render={() => <Profile currentUser={this.state.user}/>}/>
           <Route exact path='/logout' component={Logout}/>
           <Route exact path='/upload' component={UploadImage}/>
           <Route exact path='/gallery' component={Gallery}/>

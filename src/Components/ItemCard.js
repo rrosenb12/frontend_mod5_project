@@ -12,7 +12,7 @@ import { connect } from 'react-redux'
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user_id: this.props.user.id,
+                    user_id: this.props.currentUser.id,
                     fish_id: this.props.item.id
                 })
             })
@@ -25,7 +25,7 @@ import { connect } from 'react-redux'
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user_id: this.props.user.id,
+                    user_id: this.props.currentUser.id,
                     bug_id: this.props.item.id
                 })
             }) 
@@ -38,7 +38,7 @@ import { connect } from 'react-redux'
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user_id: this.props.user.id,
+                    user_id: this.props.currentUser.id,
                     fossil_id: this.props.item.id
                 })
             })
@@ -51,7 +51,7 @@ import { connect } from 'react-redux'
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user_id: this.props.user.id,
+                    user_id: this.props.currentUser.id,
                     villager_id: this.props.item.id
                 })
             })
@@ -64,7 +64,7 @@ import { connect } from 'react-redux'
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    user_id: this.props.user.id,
+                    user_id: this.props.currentUser.id,
                     sea_creature_id: this.props.item.id
                 })
             })
@@ -130,7 +130,6 @@ import { connect } from 'react-redux'
 const mapStateToProps = state => {
     return {
         item: state.items.state.item,
-        user: state.currentUser.state
     }
 }
 
