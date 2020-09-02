@@ -13,7 +13,8 @@ import Signup from '../Components/Signup'
 import Logout from '../Components/Logout'
 import UploadImage from '../Components/UploadImage'
 import Gallery from '../Components/Gallery'
-import Feed from '../Components/Feed'
+import Feed from '../Components/feed'
+
 
 
 class App extends React.Component {
