@@ -35,21 +35,21 @@ class App extends React.Component {
     }
   }
 
-  loginHandler = (userObj) => {
-    fetch('http://localhost:3000/login', {
-      method: 'POST',
-      headers: {
-        'accepts': 'application/json',
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({user: userObj})
-    })
-    .then(response => response.json())
-    .then(data => {
-      localStorage.setItem("token", data.jwt)
-      this.setState({user: data.user}, () => this.props.history.push('/profile'))
-    })
-  }
+  // loginHandler = (userObj) => {
+  //   fetch('http://localhost:3000/login', {
+  //     method: 'POST',
+  //     headers: {
+  //       'accepts': 'application/json',
+  //       'content-type': 'application/json'
+  //     },
+  //     body: JSON.stringify({user: userObj})
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     localStorage.setItem("token", data.jwt)
+  //     this.setState({user: data.user}, () => this.props.history.push('/profile'))
+  //   })
+  // }
 
   submitHandler = (userObject) => {
     fetch('http://localhost:3000/users', {
@@ -70,18 +70,24 @@ class App extends React.Component {
         <div>
           <NavBar user={this.state.user}/>
           <Route exact path="/" component={Home}/>
-          <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
+          {/* <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/> */}
+          <Route exact path='/login' component={Login}/>
           <Route exact path='/signup' render={() => <Signup submitHandler={this.submitHandler}/>}/>
           <Route exact path='/search' component={Search}/>
-          <Route exact path='/profile' render={() => <Profile user={this.state.user} />}/>
+          <Route exact path='/profile' component={Profile}/>
+          {/* <Route exact path='/profile' render={() => <Profile user={this.props.currentUser} />}/> */}
           <Route exact path='/logout' component={Logout}/>
           <Route exact path='/upload' component={UploadImage}/>
           <Route exact path='/gallery' component={Gallery}/>
-          <Route exact path='/feed' render={() => <Feed user={this.state.user}/>}/>
+          <Route exact path='/feed' render={() => <Feed user={this.props.currentUser}/>}/>
         </div>
       </Switch>
     )
   }
 }
 
-export default connect(null, {fetchTags})(withRouter(App))
+const mapStateToProps = (state) => {
+  return{currentUser: state.currentUser.currentUser}
+}
+
+export default connect(mapStateToProps, {fetchTags})(withRouter(App))

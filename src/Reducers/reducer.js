@@ -1,18 +1,9 @@
 import { combineReducers } from "redux"
+import {userReducer} from './userReducer'
 
-const defaultState = {currentUser: {}, villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
+const defaultState = {villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
 
-function userReducer(state = defaultState.currentUser, action){
-    //when your action has this type, return this
-    switch (action.type) {
-        case 'SET_USER':
-            return {...state, state: action.payload}
-        case 'LOGOUT_USER':
-            return {...state, state: {}}
-        default:
-            return state;
-    }
-}
+
 
 function villagersReducer(state = defaultState.villagersArray, action){
     switch (action.type) {

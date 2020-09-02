@@ -1,4 +1,22 @@
-export const fetchUser = (user) => {
+export const loginUser = (userObj) => {
+    return (dispatch) => {
+        fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: {
+            'accepts': 'application/json',
+            'content-type': 'application/json'
+            },
+            body: JSON.stringify({user: userObj})
+        })
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem("token", data.jwt)
+            dispatch({type: 'LOGIN_USER', payload: data.user})
+        })
+    }
+}
+
+export const setUser = (user) => {
     return{
         type: 'SET_USER',
         payload: user

@@ -157,6 +157,7 @@ class SearchVillagers extends React.Component{
     }
 
     render(){
+        console.log(this.props.currentUser)
         return(
             <div className="searchpage">
                 <div className="searchformcontainer">
@@ -193,6 +194,7 @@ class SearchVillagers extends React.Component{
 
 const mapStateToProps = (state) => {
     return {
+        currentUser: state.currentUser.currentUser,
         villagers: state.villagers.state, 
         fish: state.fish.state, 
         bugs: state.bugs.state, 

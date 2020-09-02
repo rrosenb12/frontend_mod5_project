@@ -1,9 +1,9 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
-// import {connect} from 'react-redux'
+import {connect} from 'react-redux'
 
 
-export default class Profile extends React.Component{
+class Profile extends React.Component{
 
     //use fetchedUser for displaying pro pic, this.props.user for everything else (rails is annoying)
     // state = {
@@ -44,7 +44,7 @@ export default class Profile extends React.Component{
     return(
         
         <div>
-            {this.props.user ?
+            {this.props.currentUser ?
                     <div>
                         <h1>hi</h1>
                     </div>
@@ -55,8 +55,8 @@ export default class Profile extends React.Component{
 }
 }
 
-// const mapStateToProps = state => {
-//     return {user: state.currentUser.state}
-// }
+const mapStateToProps = state => {
+    return {currentUser: state.currentUser.currentUser}
+}
 
-// export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps)(Profile)
