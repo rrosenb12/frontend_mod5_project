@@ -32,7 +32,6 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(this.state.user)
     return (
       <BrowserRouter>
         <div>
@@ -45,7 +44,7 @@ class App extends React.Component {
           <Route exact path='/logout' component={Logout}/>
           <Route exact path='/upload' render={() => <UploadImage currentUser={this.state.user}/>}/>
           <Route exact path='/gallery' component={Gallery}/>
-          <Route exact path='/feed' component={Feed}/>
+          <Route exact path='/feed' render={() => <Feed currentUser={this.state.user}/>}/>
         </div>
       </BrowserRouter>
     )
