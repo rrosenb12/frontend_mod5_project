@@ -6,10 +6,10 @@ import {connect} from 'react-redux'
 import '../App.css';
 import Home from '../Components/Home'
 import NavBar from '../Components/NavBar'
-import Login from '../Components/Login'
+import LoginContainer from './LoginContainer'
 import Search from '../Components/Search'
 import Profile from '../Components/Profile'
-import Signup from '../Components/Signup'
+import SignupContainer from './SignupContainer'
 import Logout from '../Components/Logout'
 import UploadImage from '../Components/UploadImage'
 import Gallery from '../Components/Gallery'
@@ -41,8 +41,8 @@ class App extends React.Component {
         <div>
           <NavBar user={this.state.user}/>
           <Route exact path='/' component={Home}/>
-          <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
-          <Route exact path='/signup' render={() => <Signup signupHandler={this.signupHandler}/>}/>
+          <Route exact path='/login' component={LoginContainer}/>
+          <Route exact path='/signup' component={SignupContainer}/>
           <Route exact path='/search' render={() => <Search currentUser={this.state.user}/>}/>
           <Route exact path='/profile' render={() => <Profile currentUser={this.state.user}/>}/>
           <Route exact path='/logout' component={Logout}/>

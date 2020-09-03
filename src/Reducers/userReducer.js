@@ -9,7 +9,7 @@ export function userReducer(state = defaultState, action){
             }
         case 'CREATE_USER':
             return {
-                ...state, currentUser: action.payload
+                ...state, currentUser: action.currentUser, token: action.payload
             }
         case 'SET_USER':
             console.log("in user reducer:", action.currentUser)

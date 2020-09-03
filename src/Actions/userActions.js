@@ -50,7 +50,8 @@ export const setUser = (token) => {
       .then(response => response.json())
       .then(data => {
           console.log("in end of fetch:", data)
-          let token = localStorage.setItem("token", data.jwt)
+          let token = localStorage.getItem("token")
+          console.log("token after fetch:", token)
           localStorage.setItem("user", JSON.stringify(data.user))
           dispatch({type: 'SET_USER', payload: token, currentUser: data.user})
       })

@@ -1,10 +1,7 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {loginUser} from '../Actions/userActions'
-import WelcomePage from './WelcomePage'
 import nooksticka from '../nooksticka.png'
 
-class Login extends React.Component{
+export default class UserForm extends React.Component{
 
     state = {
         username: '',
@@ -18,9 +15,9 @@ class Login extends React.Component{
     }
     
     handleSubmit = e => {
-        console.log("in login submit handler:", this.state)
+        console.log("in submit handler:", this.state)
         e.preventDefault()
-        this.props.loginUser(this.state)
+        this.props.manageUser(this.state)
     }
 
     render(){
@@ -29,12 +26,12 @@ class Login extends React.Component{
                 <>
                 <div className="wc">
                     <div className="welcomecontainer">
-                        <h1 className="welcometext">Yes, yes! Welcome back!</h1>
+                        {this.props.comingFrom === 'login' ? <h1 className="welcometext">Yes, yes! Welcome back!</h1> : <h1 className="welcometext">Let's get you signed up, hm?</h1>}
                         <img className="sticker" src={nooksticka} height="300" alt="tom nook sticker"></img>
                     </div>
                     </div>
                 <div className="formcontainer">
-                    <h1>Please, login!</h1>
+                    {this.props.comingFrom === 'login' ? <h1>Please, login!</h1> : <h1>Create your account here!</h1>}
                 <form onSubmit={this.handleSubmit}>
                     <div className="inputfields">
                         <input className="usernameform" type="text" name="username" placeholder="IGN or Username" value={this.state.username} onChange={this.handleChange}/>
@@ -50,5 +47,3 @@ class Login extends React.Component{
         )
     }
 }
-
-export default connect(null, {loginUser})(Login)
