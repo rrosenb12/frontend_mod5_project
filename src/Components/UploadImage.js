@@ -32,7 +32,7 @@ class UploadImage extends React.Component{
     }
 
     setTag = tag => {
-        console.log(tag)
+        // console.log(tag)
         this.setState({
             tagToFetch: tag
         })

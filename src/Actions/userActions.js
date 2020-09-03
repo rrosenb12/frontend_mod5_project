@@ -1,5 +1,4 @@
 import {fetchVillagersForUser} from './villagerActions'
-let user;
 
 export const loginUser = (userObj) => {
     return (dispatch) => {
@@ -14,11 +13,11 @@ export const loginUser = (userObj) => {
         .then(response => response.json())
         .then(data => {
             fetchVillagersForUser(data.user, dispatch)
-            user = data.user
             let token = localStorage.setItem("token", data.jwt)
             localStorage.setItem("user", JSON.stringify(data.user))
             dispatch({type: 'LOGIN_USER', payload: token, currentUser: data.user})
         })
+        .catch(error => console.log("error logging in:", error))
     }
 }
 
@@ -42,7 +41,7 @@ export const createUser = (userObj) => {
 }
 
 export const setUser = (token) => {
-    console.log(token)
+    console.log("beginning of set user:", token)
     return (dispatch) => {
         fetch('http://localhost:3000/profile', {
         method: "GET",
@@ -50,11 +49,12 @@ export const setUser = (token) => {
       })
       .then(response => response.json())
       .then(data => {
-          console.log(data)
+          console.log("in end of fetch:", data)
           let token = localStorage.setItem("token", data.jwt)
           localStorage.setItem("user", JSON.stringify(data.user))
           dispatch({type: 'SET_USER', payload: token, currentUser: data.user})
       })
+      .catch(error => console.log("error setting user:", error))
     }
 }
 

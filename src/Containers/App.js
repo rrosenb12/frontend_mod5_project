@@ -24,6 +24,7 @@ class App extends React.Component {
   componentDidMount(){
     const token = localStorage.getItem("token")
     if (token) {
+      console.log("in CDM:", token)
       this.props.setUser(token)
       this.setState({
         user: this.props.currentUser
@@ -34,6 +35,7 @@ class App extends React.Component {
   }
 
   render(){
+    console.log("in app:", this.props.currentUser)
     return (
       <Switch>
         <div>

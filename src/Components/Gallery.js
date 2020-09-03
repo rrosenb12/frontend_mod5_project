@@ -41,11 +41,11 @@ class Gallery extends React.Component{
     }
 
     filterPics = pT => {
-        console.log(pT)
-        console.log(this.state.photos)
+        // console.log(pT)
+        // console.log(this.state.photos)
         let newPhotosArray = this.state.photos.filter(photo => pT.map(pt => {
             if (photo.id === pt.picture_id){
-                console.log("help")
+                // console.log("help")
                 this.setState(previousState => {return {filteredPics: [...previousState.filteredPics, photo]}})
             }
             }))

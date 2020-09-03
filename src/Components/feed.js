@@ -39,7 +39,7 @@ class Feed extends React.Component {
     }
 
     render(){
-        console.log(this.state.tagFollows)
+        // console.log(this.state.tagFollows)
     return(
         <>
             <h1>hi</h1>

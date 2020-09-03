@@ -16,7 +16,6 @@ export const fetchVillagersForUser = (user, dispatch) => {
 }
 
 export const fetchUserVillagers = (user, data, dispatch) => {
-    console.log("in fetch user villagers:", dispatch)
         fetch('http://localhost:3000/user_villagers')
         .then(response => response.json())
         .then(userVillagers => {

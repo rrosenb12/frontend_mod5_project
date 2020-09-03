@@ -12,6 +12,7 @@ export function userReducer(state = defaultState, action){
                 ...state, currentUser: action.payload
             }
         case 'SET_USER':
+            console.log("in user reducer:", action.currentUser)
             return state
         case 'LOGOUT_USER':
             localStorage.clear()
