@@ -1,11 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import {userVillagersState} from '../Actions/villagerActions' 
 
  class ItemCard extends React.Component {
-
-    state={
-        userVillagers: []
-    }
 
     clickHandler = () => {
         if(this.props.item.kind === 'fish') {
@@ -60,7 +57,7 @@ import { connect } from 'react-redux'
                 })
             })
             .then(response => response.json())
-            .then(userVillagerObj => this.setState( previousState => { return {userVillagers: [...previousState.userVillagers, userVillagerObj]}}))
+            .then(this.props.userVillagersState(this.props.item))
         } else if (this.props.item.kind === 'seacreatures') {
             fetch(`http://localhost:3000/user_seacreatures`, {
                 method: 'POST',
@@ -139,4 +136,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(ItemCard)
+export default connect(mapStateToProps, {userVillagersState})(ItemCard)

@@ -52,5 +52,5 @@ const mapStateToProps = state => {
     return {currentUser: state.currentUser.currentUser}
 }
 
-// export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
-export default NavBar
+export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
+// export default NavBar

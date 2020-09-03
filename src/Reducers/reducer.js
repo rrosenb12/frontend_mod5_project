@@ -1,22 +1,10 @@
 import { combineReducers } from "redux"
 import {userReducer} from './userReducer'
+import {villagersReducer} from './villagersReducer'
 
-const defaultState = {villagersArray: [], fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
+const defaultState = {fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
 
-
-
-function villagersReducer(state = defaultState.villagersArray, action){
-    switch (action.type) {
-        case 'FETCH_VILLAGERS':
-            return {
-                state: action.villagers
-            }
-        default:
-            return state;
-    }
-}
-
-function fishReducer(state = defaultState.fishArray, action){
+    function fishReducer(state = defaultState.fishArray, action){
     switch (action.type) {
         case 'FETCH_FISH':
             return {

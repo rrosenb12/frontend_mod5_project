@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchVillagers, fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem} from '../Actions/actions'
+import {fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem} from '../Actions/actions'
+import {fetchVillagers} from '../Actions/villagerActions'
 import ItemCard from './ItemCard'
 import SearchResults from './SearchResults'
 
@@ -157,7 +158,7 @@ class SearchVillagers extends React.Component{
     }
 
     render(){
-        console.log(this.props.currentUser)
+        console.log(this.props)
         return(
             <div className="searchpage">
                 <div className="searchformcontainer">
@@ -195,7 +196,7 @@ class SearchVillagers extends React.Component{
 const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser.currentUser,
-        villagers: state.villagers.state, 
+        villagers: state.villagers.villagersArray, 
         fish: state.fish.state, 
         bugs: state.bugs.state, 
         seacreatures: state.seacreatures.state, 
