@@ -35,7 +35,6 @@ class App extends React.Component {
   }
 
   render(){
-    console.log("in app:", this.props.currentUser)
     return (
       <Switch>
         <div>

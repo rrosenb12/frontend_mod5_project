@@ -1,20 +1,3 @@
-
-export const fetchFish = () => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/fish')
-          .then(response => response.json())
-          .then(fish => dispatch({ type: 'FETCH_FISH', fish }));
-      };
-}
-
-export const fetchBugs = () => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/bugs')
-          .then(response => response.json())
-          .then(bugs => dispatch({ type: 'FETCH_BUGS', bugs }));
-      };
-}
-
 export const fetchSeacreatures = () => {
     return (dispatch) => {
         fetch('http://localhost:3000/sea_creatures')

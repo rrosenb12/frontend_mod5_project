@@ -1,64 +1,24 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import {createUserVillagers} from '../Actions/villagerActions' 
+import {createUserFish} from '../Actions/fishActions'
+import {createUserBugs} from '../Actions/bugActions'
+import {createUserFossils} from '../Actions/fossilActions'
+import {createUserSeacreatures} from '../Actions/seacreatureActions'
 
  class ItemCard extends React.Component {
 
     clickHandler = () => {
         if(this.props.item.kind === 'fish') {
-            fetch(`http://localhost:3000/user_fish`, {
-                method: 'POST',
-                headers: {
-                    'accepts': 'application/json',
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.props.currentUser.id,
-                    fish_id: this.props.item.id
-                })
-            })
-            .then(response => response.json())
+            this.props.createUserFish(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'bugs') {
-            fetch(`http://localhost:3000/user_bugs`, {
-                method: 'POST',
-                headers: {
-                    'accepts': 'application/json',
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.props.currentUser.id,
-                    bug_id: this.props.item.id
-                })
-            }) 
-            .then(response => response.json())
+            this.props.createUserBugs(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'fossils') {
-            fetch(`http://localhost:3000/user_fossils`, {
-                method: 'POST',
-                headers: {
-                    'accepts': 'application/json',
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.props.currentUser.id,
-                    fossil_id: this.props.item.id
-                })
-            })
-            .then(response => response.json())
+            this.props.createUserFossils(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'villagers') {
             this.props.createUserVillagers(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'seacreatures') {
-            fetch(`http://localhost:3000/user_seacreatures`, {
-                method: 'POST',
-                headers: {
-                    'accepts': 'application/json',
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.props.currentUser.id,
-                    sea_creature_id: this.props.item.id
-                })
-            })
-            .then(response => response.json())
+            this.props.createUserSeacreatures(this.props.item, this.props.currentUser)
         }
     }
 
@@ -92,7 +52,7 @@ import {createUserVillagers} from '../Actions/villagerActions'
         </div>     
         } else if (this.props.item.kind === 'fossils') {
             return <div>
-                <p>{this.props.item.museum_phrase}</p>
+                <p>"{this.props.item.museum_phrase}"</p>
                 <p>{this.props.item.price} Bells</p>
             </div>
         }
@@ -113,8 +73,7 @@ import {createUserVillagers} from '../Actions/villagerActions'
                 </div>
             </div>
         )
-    }
-    
+    } 
 }
 
 const mapStateToProps = state => {
@@ -124,4 +83,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {createUserVillagers})(ItemCard)
+export default connect(mapStateToProps, {createUserVillagers, createUserFish, createUserBugs, createUserFossils, createUserSeacreatures})(ItemCard)

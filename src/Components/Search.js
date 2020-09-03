@@ -1,7 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchFish, fetchBugs, fetchSeacreatures, fetchFossils, unClickItem} from '../Actions/actions'
+import {unClickItem} from '../Actions/actions'
 import {fetchVillagers} from '../Actions/villagerActions'
+import {fetchFish} from '../Actions/fishActions'
+import {fetchBugs} from '../Actions/bugActions'
+import {fetchFossils} from '../Actions/fossilActions'
+import {fetchSeacreatures} from '../Actions/seacreatureActions'
 import ItemCard from './ItemCard'
 import SearchResults from './SearchResults'
 
@@ -102,8 +106,7 @@ class SearchVillagers extends React.Component{
                 let villagersArray = this.props.villagers.filter(villager => villager.species.toLowerCase() === this.state.searchValue.toLowerCase())
                 this.setState({searchArray: villagersArray})
             }
-        } 
-        else if (this.state.searchFor === 'Fish' || this.state.searchFor === 'Bugs' || this.state.searchFor === 'Sea Creatures') {
+        } else if (this.state.searchFor === 'Fish' || this.state.searchFor === 'Bugs' || this.state.searchFor === 'Sea Creatures') {
             let array = []
             if (this.state.searchFor === 'Fish' ) {
                 array = this.props.fish
@@ -132,8 +135,7 @@ class SearchVillagers extends React.Component{
                 items.sort((a,b) => a.price > b.price ? 1 : -1)
                 this.setState({searchArray: items})
             }
-        }
-        else if (this.state.searchFor === 'Fossils') {
+        } else if (this.state.searchFor === 'Fossils') {
             if (this.state.searchBy === 'All') {
                 let fossilsArray = this.props.fossils
                 this.setState({searchArray: fossilsArray})
@@ -158,7 +160,7 @@ class SearchVillagers extends React.Component{
     }
 
     render(){
-        // console.log(this.props)
+        console.log(this.props)
         return(
             <div className="searchpage">
                 <div className="searchformcontainer">
@@ -197,10 +199,10 @@ const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser.currentUser,
         villagers: state.villagers.villagersArray, 
-        fish: state.fish.state, 
-        bugs: state.bugs.state, 
-        seacreatures: state.seacreatures.state, 
-        fossils: state.fossils.state,
+        fish: state.fish.fishArray, 
+        bugs: state.bugs.bugsArray, 
+        seacreatures: state.seacreatures.seacreaturesArray, 
+        fossils: state.fossils.fossilsArray,
         item: state.items.clicked
     }
 }

@@ -3,7 +3,6 @@ let defaultState = {currentUser: (localStorage.getItem("user")=== undefined ? nu
 export function userReducer(state = defaultState, action){
     switch (action.type) {
         case 'LOGIN_USER':
-            console.log(action.currentUser)
             return {
                 ...state, currentUser: action.currentUser, token: action.payload
             }
@@ -12,10 +11,8 @@ export function userReducer(state = defaultState, action){
                 ...state, currentUser: action.currentUser, token: action.payload
             }
         case 'SET_USER':
-            console.log("in user reducer:", action.currentUser)
             return state
         case 'LOGOUT_USER':
-            localStorage.clear()
             return {
                 ...state, currentUser: {}, token: null
             }

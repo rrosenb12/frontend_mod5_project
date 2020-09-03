@@ -1,52 +1,12 @@
 import { combineReducers } from "redux"
 import {userReducer} from './userReducer'
 import {villagersReducer} from './villagersReducer'
+import {fishReducer} from './fishReducer'
+import {bugsReducer} from './bugsReducer'
+import {seacreaturesReducer} from './seacreaturesReducer'
+import {fossilsReducer} from './fossilsReducer'
 
-const defaultState = {fishArray: [], bugsArray: [], seacreaturesArray: [], fossilsArray: [], item: {}, itemClicked: false, tagsArray: [], picsArray: []}
-
-    function fishReducer(state = defaultState.fishArray, action){
-    switch (action.type) {
-        case 'FETCH_FISH':
-            return {
-                state: action.fish 
-            }
-        default:
-            return state;
-    }
-}
-
-function bugsReducer(state = defaultState.bugsArray, action){
-    switch (action.type) {
-        case 'FETCH_BUGS':
-            return {
-                state: action.bugs 
-            }
-        default:
-            return state;
-    }
-}
-
-function seacreaturesReducer(state = defaultState.seacreaturesArray, action){
-    switch (action.type) {
-        case 'FETCH_SEACREATURES':
-            return {
-                state: action.seacreatures 
-            }
-        default:
-            return state;
-    }
-}
-
-function fossilsReducer(state = defaultState.fossilsArray, action){
-    switch (action.type) {
-        case 'FETCH_FOSSILS':
-            return {
-                state: action.fossils 
-            }
-        default:
-            return state;
-    }
-}
+const defaultState = {item: {}, itemClicked: false, tagsArray: [], picsArray: []}
 
 function itemsReducer (state = defaultState.item, action){
     switch(action.type) {
@@ -96,7 +56,6 @@ const rootReducer = combineReducers({
     items: itemsReducer,
     tags: tagsReducer,
     pictures: picsReducer
-    //will be return value of combine reducers function, which returns new state object
 })
 
 export default rootReducer
