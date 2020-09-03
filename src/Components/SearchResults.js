@@ -14,7 +14,8 @@ class SearchResults extends React.Component{
             <div className="basicitemcard">
                 <div key={result.id}>
                     <h1>{result.name}</h1>
-                    {result.kind === 'fossils' ? <img alt="item" src={result.image_uri}/> : <img src={result.icon_uri} alt="item icon"/>}                    <p onClick={this.handleClick} className="moreinfo">Click for more...</p>
+                    {result.kind === 'fossils' ? <img alt="item" src={result.image_uri}/> : <img src={result.icon_uri} alt="item icon"/>}                    
+                    <p onClick={this.handleClick} className="moreinfo">Click for more...</p>
                 </div>
             </div>
         )

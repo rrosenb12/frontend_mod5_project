@@ -16,34 +16,46 @@ export const fetchVillagersForUser = (user, dispatch) => {
 }
 
 export const fetchUserVillagers = (user, data, dispatch) => {
-        fetch('http://localhost:3000/user_villagers')
-        .then(response => response.json())
-        .then(userVillagers => {
-            fetchVillagers()
-            let currentUserVillagers = userVillagers.filter(uV => uV.user_id === user.id)
-            matchVillagers(currentUserVillagers, data, dispatch)
+    fetch('http://localhost:3000/user_villagers')
+    .then(response => response.json())
+    .then(userVillagers => {
+        let currentUserVillagers = userVillagers.filter(uV => uV.user_id === user.id)
+        matchVillagers(currentUserVillagers, data, dispatch)
         }
     )
 }
 
 export const matchVillagers = (uV, data, dispatch) => {
     let villagerIds = uV.map(villager => villager.villager_id)
-    data.filter(villager => villagerIds.map(id => 
-        {      
+    data.filter(villager => villagerIds.map(id => {      
         if (villager.id === id) {
             toTheReducer(villager, dispatch)
         }
-    }
-    ))
+    }))
 }
 
 export const toTheReducer = (villager, dispatch) => {
     dispatch({type: 'ADD_VILLAGER', payload: villager})
 }
 
-export const userVillagersState = (villagerObj) => {
-    return {
-        type: 'ADD_VILLAGER',
-        payload: villagerObj
+export const createUserVillagers = (villager, currentUser) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_villagers`, {
+            method: 'POST',
+            headers: {
+                'accepts': 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: currentUser.id,
+                villager_id: villager.id
+            })
+        })
+        .then(response => response.json())
+        .then(userVillagersState(villager, dispatch))
     }
+}
+
+export const userVillagersState = (villager, dispatch) => {
+    dispatch({type: 'ADD_VILLAGER', payload: villager})
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {userVillagersState} from '../Actions/villagerActions' 
+import {createUserVillagers} from '../Actions/villagerActions' 
 
  class ItemCard extends React.Component {
 
@@ -45,19 +45,7 @@ import {userVillagersState} from '../Actions/villagerActions'
             })
             .then(response => response.json())
         } else if (this.props.item.kind === 'villagers') {
-            fetch(`http://localhost:3000/user_villagers`, {
-                method: 'POST',
-                headers: {
-                    'accepts': 'application/json',
-                    'content-type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user_id: this.props.currentUser.id,
-                    villager_id: this.props.item.id
-                })
-            })
-            .then(response => response.json())
-            .then(this.props.userVillagersState(this.props.item))
+            this.props.createUserVillagers(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'seacreatures') {
             fetch(`http://localhost:3000/user_seacreatures`, {
                 method: 'POST',
@@ -93,7 +81,7 @@ import {userVillagersState} from '../Actions/villagerActions'
         return <div>
             <p>{this.props.item.species}</p> 
             <p>{this.props.item.personality}</p>
-            <p>{this.props.item.catch_phrase}</p>
+            <p>"{this.props.item.catch_phrase}"</p>
             <p>{this.props.item.birthday}</p>
         </div>         
         } else if (this.props.item.kind === 'fish' || this.props.item.kind === 'bugs' || this.props.item.kind === 'seacreatures') {
@@ -136,4 +124,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {userVillagersState})(ItemCard)
+export default connect(mapStateToProps, {createUserVillagers})(ItemCard)

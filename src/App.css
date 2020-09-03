@@ -353,11 +353,13 @@ a.reddithref:hover{
 
 .searchpage .searchresultscontainer .basicitemcard {
   width: 45%;
-  display: flex;
+  height: 45%;
   border: 2px solid #01372d;
   margin-right: 10px;
   margin-top: 10px;
+  display: inline-block;
   justify-content: center;
+  align-items: center;
   text-align: center;
   border-radius: 15px;
 }
@@ -368,7 +370,7 @@ a.reddithref:hover{
   margin-right: auto;
   text-align: center;
   height: 13%;
-  width: 100%;
+  width: 75%;
   border-radius: 10px;
 }
 
