@@ -13,7 +13,7 @@ export const loginUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
-            fetchVillagersForUser(data.user)
+            fetchVillagersForUser(data.user, dispatch)
             user = data.user
             let token = localStorage.setItem("token", data.jwt)
             localStorage.setItem("user", JSON.stringify(data.user))
@@ -42,6 +42,7 @@ export const createUser = (userObj) => {
 }
 
 export const setUser = (token) => {
+    console.log(token)
     return (dispatch) => {
         fetch('http://localhost:3000/profile', {
         method: "GET",
@@ -49,6 +50,7 @@ export const setUser = (token) => {
       })
       .then(response => response.json())
       .then(data => {
+          console.log(data)
           let token = localStorage.setItem("token", data.jwt)
           localStorage.setItem("user", JSON.stringify(data.user))
           dispatch({type: 'SET_USER', payload: token, currentUser: data.user})

@@ -15,8 +15,6 @@ import UploadImage from '../Components/UploadImage'
 import Gallery from '../Components/Gallery'
 import Feed from '../Components/feed'
 
-
-
 class App extends React.Component {
 
   state = {
@@ -24,8 +22,9 @@ class App extends React.Component {
   }
 
   componentDidMount(){
-    if (localStorage.getItem("token") !== null) {
-      this.props.setUser(localStorage.getItem("token"))
+    const token = localStorage.getItem("token")
+    if (token) {
+      this.props.setUser(token)
       this.setState({
         user: this.props.currentUser
       })
