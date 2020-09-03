@@ -1,11 +1,8 @@
-let defaultState = {currentUser: localStorage.getItem("user")!== undefined && JSON.parse(localStorage.getItem("user")), token: localStorage.getItem("token")}
+let defaultState = {currentUser: localStorage.getItem("user")!== undefined ? JSON.parse(localStorage.getItem("user")) : null, token: localStorage.getItem("token")}
 
 export function userReducer(state = defaultState, action){
-    //when your action has this type, return this
-    console.log(localStorage.getItem("user"))
     switch (action.type) {
         case 'LOGIN_USER':
-            console.log(state.currentUser)
             return {
                 ...state, currentUser: action.currentUser, token: action.payload
             }

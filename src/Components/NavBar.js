@@ -10,8 +10,6 @@ import kksilo from '../kksilo.png'
 class NavBar extends React.Component{
 
     render(){
-        console.log(this.props.currentUser)
-        // console.log(Object.keys(this.props.user).length)
         return(
             <div className='navbar' onClick={this.props.unClickItem} >
                 <div className='buttons'>
@@ -53,4 +51,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
-// export default NavBar

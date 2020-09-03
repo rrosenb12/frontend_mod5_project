@@ -13,7 +13,7 @@ class Profile extends React.Component{
             {this.props.currentUser !== null ? 
                 <div>
                     <h1>{this.props.currentUser.username}</h1>
-                    {/* {this.props.currentUser.villagers.map(villager => {
+                    {/* {this.props.usersVillagers.map(villager => {
                         return <p>{villager.name}</p>
                     })}  */}
                 </div>
@@ -25,7 +25,9 @@ class Profile extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {currentUser: state.currentUser.currentUser, userVillagers: state.villagers}
+    return {currentUser: state.currentUser.currentUser
+        // , userVillagers: state.villagers.usersVillagers
+    }
 }
 
 export default connect(mapStateToProps)(Profile)

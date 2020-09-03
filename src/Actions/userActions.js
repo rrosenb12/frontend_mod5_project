@@ -1,3 +1,6 @@
+import {fetchVillagersForUser} from './villagerActions'
+let user;
+
 export const loginUser = (userObj) => {
     return (dispatch) => {
         fetch('http://localhost:3000/login', {
@@ -10,6 +13,8 @@ export const loginUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
+            fetchVillagersForUser(data.user)
+            user = data.user
             let token = localStorage.setItem("token", data.jwt)
             localStorage.setItem("user", JSON.stringify(data.user))
             dispatch({type: 'LOGIN_USER', payload: token, currentUser: data.user})

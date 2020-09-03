@@ -7,6 +7,7 @@ export function villagersReducer(state = defaultState, action){
                 ...state, villagersArray: action.payload
             }
         case 'ADD_VILLAGER':
+            console.log("in reducer:", action.payload)
             return {
                 ...state, usersVillagers: [...state.usersVillagers, action.payload]
             }

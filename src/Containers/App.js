@@ -30,17 +30,16 @@ class App extends React.Component {
         user: this.props.currentUser
       })
     } else {
-      this.props.history.push('/signup')
+      this.props.history.push('/')
     }
   }
 
   render(){
-    console.log(this.props.currentUser)
     return (
       <Switch>
         <div>
           <NavBar user={this.state.user}/>
-          <Route exact path="/" component={Home}/>
+          <Route exact path='/' component={Home}/>
           <Route exact path='/login' render={() => <Login loginHandler={this.loginHandler}/>}/>
           <Route exact path='/signup' render={() => <Signup signupHandler={this.signupHandler}/>}/>
           <Route exact path='/search' render={() => <Search currentUser={this.state.user}/>}/>
@@ -56,7 +55,6 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.currentUser)
   return{currentUser: state.currentUser}
 }
 
