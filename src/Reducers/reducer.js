@@ -5,6 +5,7 @@ import {fishReducer} from './fishReducer'
 import {bugsReducer} from './bugsReducer'
 import {seacreaturesReducer} from './seacreaturesReducer'
 import {fossilsReducer} from './fossilsReducer'
+import {picsReducer} from './picturesReducer'
 
 const defaultState = {item: {}, itemClicked: false, tagsArray: [], picsArray: []}
 
@@ -27,20 +28,8 @@ function itemsReducer (state = defaultState.item, action){
 function tagsReducer (state = defaultState.tagsArray, action){
     switch(action.type){
         case 'FETCH_TAGS':
-            console.log("in fetch tags reducer:", action.payload)
             return {
                 state: action.payload
-            }
-        default:
-            return state;   
-    }
-}
-
-function picsReducer (state = defaultState.picsArray, action){
-    switch(action.type){
-        case 'FETCH_PICTURES':
-            return {
-                state: action.pictures
             }
         default:
             return state;   

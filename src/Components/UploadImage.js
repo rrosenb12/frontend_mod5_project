@@ -7,9 +7,7 @@ class UploadImage extends React.Component{
     state = {
         description: '',
         image: null,
-        tag: '',
         tagToFetch: {},
-        tags: []
     }
 
     componentWillMount(){
@@ -70,12 +68,10 @@ class UploadImage extends React.Component{
             })
         })
         .then(response => response.json())
-        .then(console.log)
         .catch(error=>console.log(error));
     }
 
     render(){
-        console.log(this.props)
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
