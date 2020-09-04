@@ -2,6 +2,7 @@ import {fetchVillagersForUser} from './villagerActions'
 import {fetchFishForUser} from './fishActions'
 import {fetchBugsForUser} from './bugActions'
 import {fetchSeacreaturesForUser} from './seacreatureActions'
+import {fetchFossilsForUser} from './fossilActions'
 
 export const loginUser = (userObj) => {
     return (dispatch) => {
@@ -19,6 +20,7 @@ export const loginUser = (userObj) => {
             fetchFishForUser(data.user, dispatch)
             fetchBugsForUser(data.user, dispatch)
             fetchSeacreaturesForUser(data.user, dispatch)
+            fetchFossilsForUser(data.user, dispatch)
             let token = localStorage.setItem("token", data.jwt)
             localStorage.setItem("user", JSON.stringify(data.user))
             dispatch({type: 'LOGIN_USER', payload: token, currentUser: data.user})
@@ -56,6 +58,11 @@ export const setUser = (token) => {
       .then(data => {
           let token = localStorage.getItem("token")
           localStorage.setItem("user", JSON.stringify(data.user))
+          fetchVillagersForUser(data.user, dispatch)
+          fetchFishForUser(data.user, dispatch)
+          fetchBugsForUser(data.user, dispatch)
+          fetchSeacreaturesForUser(data.user, dispatch)
+          fetchFossilsForUser(data.user, dispatch)
           dispatch({type: 'SET_USER', payload: token, currentUser: data.user})
       })
       .catch(error => console.log("error setting user:", error))

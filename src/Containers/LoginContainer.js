@@ -8,7 +8,6 @@ import UserForm from '../Components/UserForm'
 class Login extends React.Component{
     
     handleLogin = userObj => {
-        console.log("in login submit handler:", userObj)
         this.props.loginUser(userObj)
     }
 

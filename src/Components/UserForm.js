@@ -15,7 +15,6 @@ export default class UserForm extends React.Component{
     }
     
     handleSubmit = e => {
-        console.log("in submit handler:", this.state)
         e.preventDefault()
         this.props.manageUser(this.state)
     }
