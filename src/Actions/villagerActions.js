@@ -69,13 +69,8 @@ export const deleteUserVillager = (villager, currentUser) => {
 }
 
 export const findUVToDelete = (userVillagers, villager, currentUser, dispatch) => {
-    console.log("user villagers:", userVillagers)
-    console.log("villager:", villager)
-    console.log("current user:", currentUser)
-    console.log("dispatch:", dispatch)
     userVillagers.find(uV => {
         if (uV.user_id === currentUser.id && uV.villager_id === villager.id) {
-            console.log("to delete:", uV.id)
             fetchToDelete(uV.id, villager, dispatch)
         }
     })

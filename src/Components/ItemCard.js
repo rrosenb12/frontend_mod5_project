@@ -46,7 +46,7 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
         if (firstNum == 1 && lastNum == 12){
             return <p>All year {this.props.item.hours === '' ? 'all day' : this.props.item.hours}</p>
         } else {
-        return <p>{months[firstNum]} to {months[lastNum]}, {this.props.item.hours === '' ? 'all day' : this.props.item.hours}</p>
+            return <p>{months[firstNum]} to {months[lastNum]}, {this.props.item.hours === '' ? 'all day' : this.props.item.hours}</p>
         }
     }
     
@@ -79,7 +79,7 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
                 <div className="baseinfo">
                     <h1 className="itemtitle"> {this.props.item.name}</h1>
                     {this.props.usersVillagers.find(villager => villager.id === this.props.item.id) ? <p onClick={this.deleteHandler}>Remove from Profile</p> : <p onClick={this.clickHandler}>Add to profile</p>}
-                    
+                    {/* {this.props.usersVillagers.length >= 0 ? <p classname="toomany">You already have 10 villagers</p>} */}
                 </div>
                 <div className="detailpic">
                     <img alt="item"src={this.props.item.image_uri} className="itemimage"/>
