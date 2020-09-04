@@ -48,14 +48,16 @@ class UploadImage extends React.Component{
         e.preventDefault()
         const formData = new FormData()
         formData.append('description', this.state.description);
-        formData.append('user_id', this.props.currentUser.id)
+        formData.append('user_id', this.props.user.currentUser.id)
         formData.append('image', this.state.image);
         fetch('http://localhost:3000/pictures', {
             method: 'POST',
             body: (formData)
             })
         .then(response => response.json())
-        .then(picture => this.postPictureTag(picture))
+        .then(picture => {
+            console.log(picture)
+            this.postPictureTag(picture)})
         .catch(error=>console.log(error));
     }
 
@@ -77,6 +79,8 @@ class UploadImage extends React.Component{
     }
 
     render(){
+        console.log(this.props.user.currentUser)
+        console.log(this.state.image)
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
@@ -94,9 +98,11 @@ class UploadImage extends React.Component{
 
 }
 
-// const mapStateToProps = state => {
-//     return {user: state.currentUser.state, tags: state.tags.state}
-// }
+const mapStateToProps = state => {
+    return {user: state.currentUser
+        // , tags: state.tags.state
+    }
+}
 
-export default UploadImage
-// export default connect(mapStateToProps)(UploadImage)
+// export default UploadImage
+export default connect(mapStateToProps)(UploadImage)
