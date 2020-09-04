@@ -22,8 +22,7 @@ class NavBar extends React.Component{
                         <>
                             <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
                                     {   
-                                        localStorage.removeItem("token")
-                                        return this.props.logOutUser()
+                                        this.props.logOutUser()
                                     }
                                 }>Logout  
                             </button>

@@ -63,6 +63,7 @@ export const setUser = (token) => {
 }
 
 export const logOutUser = () => {
+    localStorage.clear()
     return{
         type: 'LOGOUT_USER'
     }
