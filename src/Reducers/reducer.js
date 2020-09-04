@@ -27,8 +27,9 @@ function itemsReducer (state = defaultState.item, action){
 function tagsReducer (state = defaultState.tagsArray, action){
     switch(action.type){
         case 'FETCH_TAGS':
+            console.log("in fetch tags reducer:", action.payload)
             return {
-                state: action.tags
+                state: action.payload
             }
         default:
             return state;   

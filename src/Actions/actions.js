@@ -1,19 +1,3 @@
-export const fetchSeacreatures = () => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/sea_creatures')
-          .then(response => response.json())
-          .then(seacreatures => dispatch({ type: 'FETCH_SEACREATURES', seacreatures }));
-      };
-}
-
-export const fetchFossils = () => {
-    return (dispatch) => {
-        fetch('http://localhost:3000/fossils')
-          .then(response => response.json())
-          .then(fossils => dispatch({ type: 'FETCH_FOSSILS', fossils }));
-      };
-}
-
 export const clickItem = (item) => {
     return {
         type: 'CLICK_ITEM',
@@ -28,10 +12,13 @@ export const unClickItem = () => {
 }
 
 export const fetchTags = () => {
+    console.log("in fetch tags")
     return (dispatch) => {
         fetch('http://localhost:3000/tags')
         .then(response => response.json())
-        .then(tags => dispatch({type: 'FETCH_TAGS', tags}))
+        .then(tags => {
+            console.log("in fetch tags fetch:", tags)
+            dispatch({type: 'FETCH_TAGS', payload: tags})})
     }
 }
 

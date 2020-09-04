@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {fetchTags} from '../Actions/actions'
 
 class UploadImage extends React.Component{
 
@@ -12,9 +13,7 @@ class UploadImage extends React.Component{
     }
 
     componentWillMount(){
-        fetch('http://localhost:3000/tags')
-        .then(response => response.json())
-        .then(data => this.setState({tags: data}))
+        this.props.fetchTags()
     }
 
     handleChange = e => {
@@ -24,7 +23,7 @@ class UploadImage extends React.Component{
     }
 
     handleTagChange = e => {
-        let tag = this.state.tags.find(tag => tag.description === e.target.value)
+        let tag = this.props.tags.find(tag => tag.description === e.target.value)
         this.setState({
             tag: e.target.value,
             tagToFetch: tag
@@ -32,7 +31,6 @@ class UploadImage extends React.Component{
     }
 
     setTag = tag => {
-        // console.log(tag)
         this.setState({
             tagToFetch: tag
         })
@@ -55,9 +53,7 @@ class UploadImage extends React.Component{
             body: (formData)
             })
         .then(response => response.json())
-        .then(picture => {
-            console.log(picture)
-            this.postPictureTag(picture)})
+        .then(picture => {this.postPictureTag(picture)})
         .catch(error=>console.log(error));
     }
 
@@ -79,14 +75,13 @@ class UploadImage extends React.Component{
     }
 
     render(){
-        console.log(this.props.user.currentUser)
-        console.log(this.state.image)
+        console.log(this.props)
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
                 <select onChange={this.handleTagChange}>
                     <option name="tag" value="Select">Select a Category</option>
-                    {this.state.tags.length === 0 ? null : this.state.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
                 </select>
                     <input type="text" name="description" placeholder="write a description" value={this.state.description} onChange={this.handleChange}/>
                     <input type="file" accept="image/*" multiple={false} onChange={this.onImageChange} />
@@ -95,14 +90,11 @@ class UploadImage extends React.Component{
             </div>
         )
     }
-
 }
 
 const mapStateToProps = state => {
-    return {user: state.currentUser
-        // , tags: state.tags.state
+    return {user: state.currentUser, tags: state.tags.state
     }
 }
 
-// export default UploadImage
-export default connect(mapStateToProps)(UploadImage)
+export default connect(mapStateToProps, {fetchTags})(UploadImage)
