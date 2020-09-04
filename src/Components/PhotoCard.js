@@ -4,8 +4,7 @@ import {connect} from 'react-redux'
 function PhotoCard(props){
     return(
         <div>
-            {/* {console.log(props.tags)} */}
-            <h1>hi</h1>
+            <h1>{props.photo.description}</h1>
             <img alt="gallery" src={props.photo.image.url}/>
         </div>
     )
