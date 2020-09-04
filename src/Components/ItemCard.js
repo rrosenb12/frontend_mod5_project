@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {createUserVillagers} from '../Actions/villagerActions' 
+import {createUserVillagers, deleteUserVillager} from '../Actions/villagerActions' 
 import {createUserFish} from '../Actions/fishActions'
 import {createUserBugs} from '../Actions/bugActions'
 import {createUserFossils} from '../Actions/fossilActions'
@@ -17,6 +17,20 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
             this.props.createUserFossils(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'villagers') {
             this.props.createUserVillagers(this.props.item, this.props.currentUser)
+        } else if (this.props.item.kind === 'seacreatures') {
+            this.props.createUserSeacreatures(this.props.item, this.props.currentUser)
+        }
+    }
+
+    deleteHandler = () => {
+        if(this.props.item.kind === 'fish') {
+            this.props.createUserFish(this.props.item, this.props.currentUser)
+        } else if (this.props.item.kind === 'bugs') {
+            this.props.createUserBugs(this.props.item, this.props.currentUser)
+        } else if (this.props.item.kind === 'fossils') {
+            this.props.createUserFossils(this.props.item, this.props.currentUser)
+        } else if (this.props.item.kind === 'villagers') {
+            this.props.deleteUserVillager(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'seacreatures') {
             this.props.createUserSeacreatures(this.props.item, this.props.currentUser)
         }
@@ -59,11 +73,13 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
     }
 
     render(){
+        console.log(this.props.usersVillagers)
         return(
             <div key={this.props.item.id} className="detailedinfo">
                 <div className="baseinfo">
                     <h1 className="itemtitle"> {this.props.item.name}</h1>
-                    <p onClick={this.clickHandler}>Add to profile</p>
+                    {this.props.usersVillagers.find(villager => villager.id === this.props.item.id) ? <p onClick={this.deleteHandler}>Remove from Profile</p> : <p onClick={this.clickHandler}>Add to profile</p>}
+                    
                 </div>
                 <div className="detailpic">
                     <img alt="item"src={this.props.item.image_uri} className="itemimage"/>
@@ -79,8 +95,9 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
 const mapStateToProps = state => {
     return {
         item: state.items.state.item,
-        currentUser: state.currentUser.currentUser
+        currentUser: state.currentUser.currentUser,
+        usersVillagers: state.villagers.usersVillagers
     }
 }
 
-export default connect(mapStateToProps, {createUserVillagers, createUserFish, createUserBugs, createUserFossils, createUserSeacreatures})(ItemCard)
+export default connect(mapStateToProps, {createUserVillagers, deleteUserVillager, createUserFish, createUserBugs, createUserFossils, createUserSeacreatures})(ItemCard)

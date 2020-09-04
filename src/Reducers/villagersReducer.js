@@ -10,6 +10,10 @@ export function villagersReducer(state = defaultState, action){
             return {
                 ...state, usersVillagers: [...state.usersVillagers, action.payload]
             }
+        case 'DELETE_VILLAGER':
+            return {
+                ...state, usersVillagers: [...state.usersVillagers.filter(villager => villager.id !== action.payload.id)]
+            }
         default:
             return state;
     }

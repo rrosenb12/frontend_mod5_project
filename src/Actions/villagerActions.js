@@ -59,3 +59,31 @@ export const createUserVillagers = (villager, currentUser) => {
 export const userVillagersState = (villager, dispatch) => {
     dispatch({type: 'ADD_VILLAGER', payload: villager})
 }
+
+export const deleteUserVillager = (villager, currentUser) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_villagers`)
+        .then(response => response.json())
+        .then(userVillagers => findUVToDelete(userVillagers, villager, currentUser, dispatch))
+    }
+}
+
+export const findUVToDelete = (userVillagers, villager, currentUser, dispatch) => {
+    console.log("user villagers:", userVillagers)
+    console.log("villager:", villager)
+    console.log("current user:", currentUser)
+    console.log("dispatch:", dispatch)
+    userVillagers.find(uV => {
+        if (uV.user_id === currentUser.id && uV.villager_id === villager.id) {
+            console.log("to delete:", uV.id)
+            fetchToDelete(uV.id, villager, dispatch)
+        }
+    })
+}
+
+export const fetchToDelete = (id, villager, dispatch) => {
+    fetch(`http://localhost:3000/user_villagers/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch({type: 'DELETE_VILLAGER', payload: villager})
+}
