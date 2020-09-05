@@ -84,10 +84,13 @@ button#logout{
 }
 
 /* HOME PAGE STYLING */
-
+/* 
 .homecontent {
   display: inline-block;
-  margin-bottom: 10px;
+} */
+
+.homecontent .hometext {
+  margin-left: 1%;
 }
 
 .homecontent .scrollingwrapper {
@@ -96,7 +99,8 @@ button#logout{
   transform: rotate(270deg) translateX(-100%);
   transform-origin: top left;
   width:100vh;
-  height: 99vw;
+  height: 98vw;
+  margin-left: 1%;
 }
 
 .homecontent .scrollingwrapper .redditdata {

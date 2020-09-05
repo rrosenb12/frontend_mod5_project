@@ -3,7 +3,6 @@ import {connect} from 'react-redux'
 import {fetchTags} from '../Actions/actions'
 
 class UploadImage extends React.Component{
-
     state = {
         description: '',
         image: null,

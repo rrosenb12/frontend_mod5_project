@@ -151,6 +151,7 @@ class SearchVillagers extends React.Component{
     }
 
     reset = () => {
+        this.props.unClickItem()
         this.setState({
             searchFor: '',
             searchBy: '',

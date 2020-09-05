@@ -5,7 +5,6 @@ import {fetchTags} from '../Actions/actions'
 import {fetchPics} from '../Actions/pictureActions'
 
 class Gallery extends React.Component{
-
     state = {
         searchFor: '',
         pictureTags: [],

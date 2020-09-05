@@ -22,9 +22,11 @@ class Home extends React.Component{
     render(){
         return(
             <div className="homecontent">
-                <h1>Hello, hello! Welcome to Human Crossing</h1>
-                <p>The platform for connecting with other Humans who like to cross animals!</p>
-                <h3>Currently on Reddit:</h3>
+                <div className="hometext">
+                    <h1>Hello, hello! Welcome to Human Crossing</h1>
+                    <p>The platform for connecting with other Humans who like to cross animals!</p>
+                    <h3>Currently on Reddit:</h3>
+                </div>
                 <div className="scrollingwrapper">
                     <div className="redditdata">
                         {this.itsCardTime()}

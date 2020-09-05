@@ -5,7 +5,6 @@ import {fetchPictureTags, fetchPics} from '../Actions/pictureActions'
 import PhotoCard from './PhotoCard'
 
 class Feed extends React.Component {
-
     photos = []
 
     state={
@@ -47,10 +46,9 @@ class Feed extends React.Component {
     }
 
     getRelevantPictureTags = () => {
-        let photo
         this.props.pictureTags.filter(pT => this.state.tagIds.map(tag => {
             if (pT.tag_id === tag) {
-                photo = this.props.pictures.find(picture => picture.id === pT.picture_id)
+                let photo = this.props.pictures.find(picture => picture.id === pT.picture_id)
                 this.photos.push(photo)
             }
         }))
@@ -78,8 +76,7 @@ const mapStateToProps = (state) => {
         currentUser: state.currentUser.currentUser,
         tags: state.tags.state,
         pictureTags: state.pictures.pictureTagsArray[0],
-        pictures: state.pictures.picsArray[0],
-        picturesToDisplay: state.pictures.usersFollowedPics
+        pictures: state.pictures.picsArray[0]
     }
 }
 
