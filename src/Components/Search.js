@@ -56,7 +56,7 @@ class SearchVillagers extends React.Component{
             return (
                 <div className="searchby">
                     <h1>Search by:</h1>
-                    <select onChange={this.handleSearchByChange}>
+                    <select className="searchpageforms" onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
                         <option value="Name">Name</option>
                         <option value="Personality">Personality</option>
@@ -68,7 +68,7 @@ class SearchVillagers extends React.Component{
             return (
                 <div className="searchby">
                     <h1>Search by:</h1>
-                    <select onChange={this.handleSearchByChange}>
+                    <select className="searchpageforms" onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
                         <option value="All">All</option>
                         <option value="Name">Name</option>
@@ -81,7 +81,7 @@ class SearchVillagers extends React.Component{
             return (
                 <div className="searchby">
                     <h1>Search by:</h1>
-                    <select onChange={this.handleSearchByChange}>
+                    <select className="searchpageforms" onChange={this.handleSearchByChange}>
                         <option value="Select">Select from Dropdown</option>
                         <option value="All">All</option>
                         <option value="Name">Name</option>
@@ -164,31 +164,31 @@ class SearchVillagers extends React.Component{
         return(
             <div className="searchpage">
                 <div className="searchformcontainer">
-                    <div className="searchfor">
-                <h1>Search for:</h1>
-                <select onChange={this.handleSearchForChange} value={this.state.searchFor}>
-                    <option value="Select">Select from Dropdown</option>
-                    <option value="Villagers">Villagers</option>
-                    <option value="Fish">Fish</option>
-                    <option value="Bugs">Bugs</option>
-                    <option value="Sea Creatures">Sea Creatures</option>
-                    <option value="Fossils">Fossils</option>
-                </select>
-                </div>
-                {this.handleSearchBy()}
-                {this.state.paramsSet && 
-                    <form onSubmit={this.handleSubmit} className="searchbar">
-                        <input type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
-                        <input type="submit"/>
-                    </form>
-                }
-                <button onClick={this.reset}>Reset Form</button>
+                    <h1>Search for:</h1>
+                    <select className="searchpageforms" onChange={this.handleSearchForChange} value={this.state.searchFor}>
+                        <option value="Select">Select from Dropdown</option>
+                        <option value="Villagers">Villagers</option>
+                        <option value="Fish">Fish</option>
+                        <option value="Bugs">Bugs</option>
+                        <option value="Sea Creatures">Sea Creatures</option>
+                        <option value="Fossils">Fossils</option>
+                    </select>
+                    {this.handleSearchBy()}
+                    {this.state.paramsSet && 
+                        <form onSubmit={this.handleSubmit} className="searchbar">
+                            <input className="searchtextbox" type="text" value={this.state.searchValue} onChange={this.handleSearchChange}/>
+                            <div className="submitbutton">
+                                <input className="searchpagesubmit" type="submit"/>
+                            </div>
+                        </form>
+                    }
+                    <button className="searchpagereset" onClick={this.reset}>Reset Form</button>
                 </div>
                 <div className="searchresultscontainer">
                     {this.state.paramsSet && <SearchResults searchArray={this.state.searchArray}/>}
                 </div>
                 <div className="selecteditemcontainer">
-                {this.props.item && <ItemCard currentUser={this.props.currentUser}/>}
+                    {this.props.item && <ItemCard currentUser={this.props.currentUser}/>}
                 </div>     
             </div>
         )    

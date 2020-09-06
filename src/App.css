@@ -84,10 +84,6 @@ button#logout{
 }
 
 /* HOME PAGE STYLING */
-/* 
-.homecontent {
-  display: inline-block;
-} */
 
 .homecontent .hometext {
   margin-left: 1%;
@@ -340,6 +336,56 @@ a.reddithref:hover{
   display: inline-block;
   margin-left: 15%;
   margin-right: 15%;
+}
+
+.searchpage .searchformcontainer .searchpageforms {
+  box-sizing: border-box;
+  border-radius: .4em;
+  height: 30px;
+  font-size: 12px;
+  width: 70%;
+  font-family: 'nintendoP_Humming-E_002pr';
+  outline: none;
+}
+
+.searchpage .searchformcontainer .searchpageforms:focus {
+  border-color: #D90429;
+}
+
+.searchpage .searchformcontainer .searchpagereset {
+  font-family: 'nintendoP_Humming-E_002pr';
+  font-size: 10px;
+  height: 25px;
+  width: 33%;
+  border-radius: .4em;
+  background-color: #2B2D42;
+  color: #EDF2F4;
+  outline: none;
+}
+
+.searchpage .searchformcontainer .searchbar .searchtextbox {
+  margin-top: 10%;
+  height: 25px; 
+  width: 67%;
+  border-radius: .4em #aaa;
+  outline: none;
+  font-family: 'nintendoP_Humming-E_002pr';
+}
+
+.searchpage .searchformcontainer .searchbar .searchtextbox:focus {
+  border-color: #D90429;
+}
+
+.searchpage .searchformcontainer .searchbar .submitbutton .searchpagesubmit {
+  margin-top: 5%;
+  height: 25px;
+  width: 33%;
+  font-family: 'nintendoP_Humming-E_002pr';
+  font-size: 10px;
+  border-radius: .4em;
+  background-color: #2B2D42;
+  color: #EDF2F4;
+  outline: none;
 }
 
 .searchpage .searchresultscontainer {
