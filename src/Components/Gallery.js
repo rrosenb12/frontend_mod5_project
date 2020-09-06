@@ -48,19 +48,22 @@ class Gallery extends React.Component{
 
     render(){
         return(
-            <div>
-            <h1>hello</h1>
-                <select onChange={this.handleChange}>
-                    <option value="Select">Select a Category</option>
-                    <option value="All">All</option>
-                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.id}>{tag.description}</option>)}
-                </select>
-                <div>
+            <div className="gallerycontainer" >
+                <div className="galleryfilter">
+                    <select className="galleryfilterform" onChange={this.handleChange}>
+                        <option value="Select">Select a Category</option>
+                        <option value="All">All</option>
+                        {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.id}>{tag.description}</option>)}
+                    </select>
+                </div>
+                <div className="galleryphotos">
+                    <div className="galleryphotos2">
                     {this.state.filteredPics.length === 0 ?
                         this.props.pictures !== undefined && this.props.pictures.map(photo => <PhotoCard key={photo.id} photo={photo}/>)
                     :
                         this.state.filteredPics.map(photo => <PhotoCard key={photo.id} photo={photo}/>)
                     }
+                    </div>
                 </div>
             </div>
         )
