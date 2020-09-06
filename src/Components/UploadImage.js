@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchTags} from '../Actions/actions'
+import cameraicon from '../cameraicon.png'
 
 class UploadImage extends React.Component{
     state = {
@@ -72,16 +73,26 @@ class UploadImage extends React.Component{
 
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                <select onChange={this.handleTagChange}>
-                    <option name="tag" value="Select">Select a Category</option>
-                    {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
-                </select>
-                    <input type="text" name="description" placeholder="write a description" value={this.state.description} onChange={this.handleChange}/>
-                    <input type="file" accept="image/*" multiple={false} onChange={this.onImageChange} />
-                    <input type="submit" value="Upload"/>
-                </form>
+            <div className="uploadimage">
+                <div className="uploadimagecamera">
+                    <img className="cameraicon" src={cameraicon} alt="camera icon"/>
+                </div>
+                <div className="uploadimageform">
+                    <form onSubmit={this.handleSubmit}>
+                    <select className="uploadimageformtag" onChange={this.handleTagChange}>
+                        <option name="tag" value="Select">Select a Category</option>
+                        {this.props.tags === undefined ? null : this.props.tags.map(tag => <option value={tag.description}>{tag.description}</option>)}
+                    </select>
+                    <input className="uploadimageformdescription" type="text" name="description" placeholder="write a description" value={this.state.description} onChange={this.handleChange}/>
+                    <div className="fileuploadcontainer" >
+                        <label className="fileupload">
+                            <input className="uploadimageformfile" type="file" accept="image/*" multiple={false} onChange={this.onImageChange} />
+                            Choose a File
+                        </label>
+                    </div>
+                        <input className="uploadimageformsubmit" type="submit" value="Upload"/>
+                    </form>
+                </div>
             </div>
         )
     }

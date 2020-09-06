@@ -14,14 +14,12 @@ class Profile extends React.Component{
                         <h1>{this.props.currentUser.username}</h1>
                     </div>
                     <div className="uservillagers">
-                        <div className="uservillagerscardcontainer">
                         {this.props.userVillagers.length === 0 ? null :this.props.userVillagers.map(villager => {
                             return <div className="villagercard">
                                 <img className="villagericon" src={villager.icon_uri} alt={villager.name}></img>
                                 <p className="villagername">{villager.name}</p>
                             </div>
                         })} 
-                        </div>
                     </div>
                     <div className="userpics">
 
