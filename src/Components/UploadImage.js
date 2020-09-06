@@ -51,7 +51,9 @@ class UploadImage extends React.Component{
             body: (formData)
             })
         .then(response => response.json())
-        .then(picture => {this.postPictureTag(picture)})
+        .then(picture => {
+            this.postPictureTag(picture)
+        })
         .catch(error=>console.log(error));
     }
 
