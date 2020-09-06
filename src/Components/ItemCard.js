@@ -59,7 +59,7 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
             <p>{this.props.item.birthday}</p>
         </div>         
         } else if (this.props.item.kind === 'fish' || this.props.item.kind === 'bugs' || this.props.item.kind === 'seacreatures') {
-            return <div>
+            return <div className="additionalinfo">
             <p>"{this.props.item.catch_phrase}"</p>
             <p>{this.props.item.price} Bells</p>
             {this.getMonths(this.props.item.availability)}
@@ -78,7 +78,7 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
             <div key={this.props.item.id} className="detailedinfo">
                 <div className="baseinfo">
                     <h1 className="itemtitle"> {this.props.item.name}</h1>
-                    {this.props.usersVillagers.find(villager => villager.id === this.props.item.id) ? <p onClick={this.deleteHandler}>Remove from Profile</p> : <p onClick={this.clickHandler}>Add to profile</p>}
+                    {this.props.usersVillagers.find(villager => villager.id === this.props.item.id) ? <p className="addorremove" onClick={this.deleteHandler}>Remove from Profile</p> : <p className="addorremove" onClick={this.clickHandler}>Add to profile</p>}
                     {/* {this.props.usersVillagers.length >= 0 ? <p classname="toomany">You already have 10 villagers</p>} */}
                 </div>
                 <div className="detailpic">

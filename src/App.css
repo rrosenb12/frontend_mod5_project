@@ -363,6 +363,10 @@ a.reddithref:hover{
   outline: none;
 }
 
+.searchpage .searchformcontainer .searchpagereset:hover{
+  cursor: pointer;
+}
+
 .searchpage .searchformcontainer .searchbar .searchtextbox {
   margin-top: 10%;
   height: 25px; 
@@ -386,6 +390,10 @@ a.reddithref:hover{
   background-color: #2B2D42;
   color: #EDF2F4;
   outline: none;
+}
+
+.searchpage .searchformcontainer .searchbar .submitbutton .searchpagesubmit:hover {
+  cursor: pointer;
 }
 
 .searchpage .searchresultscontainer {
@@ -429,6 +437,7 @@ a.reddithref:hover{
   color: #EDF2F4;
   text-decoration: underline wavy #EDF2F4;
   text-underline-position: under;
+  cursor: pointer;
 }
 
 .searchpage .selecteditemcontainer {
@@ -460,6 +469,12 @@ a.reddithref:hover{
   align-items: center;
 }
 
+
+.searchpage .selecteditemcontainer .detailedinfo .baseinfo .addorremove:hover {
+  color: #D90429;
+  cursor: pointer;
+}
+
 .searchpage .selecteditemcontainer .detailedinfo .detailpic {
   grid-area: 1 / 2 / 2 / 4;
   display: flex;
@@ -485,7 +500,12 @@ a.reddithref:hover{
   height: 100%;
   width: 100%;
   align-items: center;
-  margin-left: 5%;
+  margin-left: 2%;
+}
+
+.searchpage .selecteditemcontainer .detailedinfo .extradetails {
+  display: inline-block;
+  width: 99%;
 }
 
 /* PROFILE STYLING */
