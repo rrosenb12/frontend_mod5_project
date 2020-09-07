@@ -724,19 +724,70 @@ input[type="file"] {
   display: flex;
 }
 
-.gallerycontainer .galleryphotos .galleryphotos2 .photocard {
+/* FEED STYLING */
+
+.feeddiv {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.feeddiv .feedname {
+  grid-area: 1 / 1 / 2 / 2;
+  text-align: center;
+}
+
+.feeddiv .feedoptions {
+  grid-area: 2 / 1 / 4 / 2;
+  margin-top: -10%;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.feeddiv .feedoptions .fedbuttons {
+  display: inline-block;
+}
+
+.feeddiv .feedoptions .feedbuttons .feedbutton {
+  font-family: 'nintendoP_Humming-E_002pr';
+  font-size: 12px;
+  background-color: #EDF2F4;
+  width: 20%;
+  border: 3px solid #2B2D42;
+  border-radius: .4em;
+  padding: 10px;
+  color: #2B2D42;
+  margin-left: 1%;
+  margin-bottom: 1%;
+}
+
+.feeddiv .feedoptions .feedbutton:hover{
+  background-color: #DB6C79;
+  color: #EDF2F4;
+  border: 3px solid #EDF2F4;
+}
+
+.feeddiv .photoscontainer {
+  grid-area: 1 / 2 / 4 / 3;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  margin-top: 2%;
+}
+
+/* PHOTO CARD STYLING */
+
+.photocard {
   margin-top: 1%;
   margin-right: 1%;
   display: inline-block;
   font-size: 10px;
 }
 
-.gallerycontainer .galleryphotos .galleryphotos2 .photocard .photocardtitle {
-  /* float: left; */
-}
-
-.gallerycontainer .galleryphotos .galleryphotos2 .photocard .photocardimg {
-  display: flex;
+.photocard .photocardimg {
+  display: inline-block;
   justify-content: center;
   align-items: center;
   height: 190px;

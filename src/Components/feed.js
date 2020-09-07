@@ -55,19 +55,27 @@ class Feed extends React.Component {
     }
 
     render(){
-        return <div>
-            {this.props.tags === undefined ? null : 
-                <div>
-                    <h1>{this.props.currentUser.username}'s feed</h1>
-                    <p>What would you like to see in your feed?</p>
-                    {this.props.tags.map(tag => {
-                        return <button key={tag.id} value={tag.id} onClick={this.handleClick}>{tag.description}</button>
-                    })}
-                    {this.props.pictureTags !== undefined && this.getRelevantPictureTags()}
-                    {this.photos.map(photo => <PhotoCard key={photo.id} photo={photo}/>)}
-                </div>
-            }
-        </div>
+        return (
+            <div className="feeddiv">
+                {this.props.tags === undefined ? null : 
+                    <>
+                        <h1 className="feedname">{this.props.currentUser.username}'s feed</h1>
+                        <div className="feedoptions">
+                            <p className="feedquestion">What would you like to see in your feed?</p>
+                            <div className="feedbuttons">
+                                {this.props.tags.map(tag => {
+                                    return <button className="feedbutton"key={tag.id} value={tag.id} onClick={this.handleClick}>{tag.description}</button>
+                                })}
+                            </div>
+                        </div>
+                        {this.props.pictureTags !== undefined && this.getRelevantPictureTags()}
+                        <div className="photoscontainer">
+                            {this.photos.map(photo => <PhotoCard key={photo.id} photo={photo}/>)}
+                        </div>
+                    </>
+                }
+            </div>
+        )
     }
 }
 
