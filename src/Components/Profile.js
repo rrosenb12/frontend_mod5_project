@@ -1,13 +1,27 @@
 import React from 'react'
-import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
+import {fetchPics} from '../Actions/pictureActions'
 import fishsprite from '../fishsprite.png'
 import bugsprite from '../bugsprite.png'
 import fossilsprite from '../fossilsprite.png'
 import seasprite from '../seasprite.png'
+import PhotoCard from './PhotoCard'
 
 
 class Profile extends React.Component{
+
+    componentDidMount(){
+        this.props.fetchPics()
+    }
+
+    userPics = () => {
+        if (this.props.userPictures === undefined) {
+            return null
+        } else {
+            let pictures = this.props.userPictures.filter(picture => picture.user_id === this.props.currentUser.id)
+            return pictures.map(picture => <PhotoCard from='profile' key={picture.id} photo={picture}/> )
+        }
+    }
 
     render(){
         return(    
@@ -18,14 +32,16 @@ class Profile extends React.Component{
                         <h1>{this.props.currentUser.username}</h1>
                     </div>
                     <div className="uservillagers">
-                        {this.props.userVillagers.length === 0 ? null :this.props.userVillagers.map(villager => {
+                        {this.props.userVillagers.length === 0 ? null : this.props.userVillagers.map(villager => {
                             return <div className="villagercard">
                                 <img className="villagericon" src={villager.icon_uri} alt={villager.name}></img>
                                 <p className="villagername">{villager.name}</p>
                             </div>
                         })} 
                     </div>
-                    <div className="userpics"></div>
+                    <div className="userpics">
+                        {this.userPics()}
+                    </div>
                     <div className="useritems">
                         <div className="userfish">
                             {this.props.userFish.length === 0 ? 
@@ -97,8 +113,9 @@ const mapStateToProps = state => {
         userFish: state.fish.usersFish,
         userBug: state.bugs.usersBugs,
         userFossil: state.fossils.usersFossils,
-        userSeacreature: state.seacreatures.usersSeacreatures
+        userSeacreature: state.seacreatures.usersSeacreatures,
+        userPictures: state.pictures.picsArray[0]
     }
 }
 
-export default connect(mapStateToProps)(Profile)
+export default connect(mapStateToProps, {fetchPics})(Profile)

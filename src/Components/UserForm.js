@@ -37,7 +37,7 @@ export default class UserForm extends React.Component{
                         <input className="passwordform" type="password" name="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange}/>
                     </div>
                     <div className="submitbutton">
-                        <input type="submit" value="Login" className="sb"></input>
+                        {this.props.comingFrom === 'login' ? <input type="submit" value="Login" className="sb"></input> : <input type="submit" value="Signup" className="sb"></input>}
                     </div>
                 </form>
                 </div>

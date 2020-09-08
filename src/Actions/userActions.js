@@ -16,14 +16,20 @@ export const loginUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
-            fetchVillagersForUser(data.user, dispatch)
-            fetchFishForUser(data.user, dispatch)
-            fetchBugsForUser(data.user, dispatch)
-            fetchSeacreaturesForUser(data.user, dispatch)
-            fetchFossilsForUser(data.user, dispatch)
-            let token = localStorage.setItem("token", data.jwt)
-            localStorage.setItem("user", JSON.stringify(data.user))
-            dispatch({type: 'LOGIN_USER', payload: token, currentUser: data.user})
+            console.log(data)
+            if (!data.user) {
+                dispatch({type: 'SHOW_ERRORS', payload: 'Invalid Username or Password'})
+            } else {
+                fetchVillagersForUser(data.user, dispatch)
+                fetchFishForUser(data.user, dispatch)
+                fetchBugsForUser(data.user, dispatch)
+                fetchSeacreaturesForUser(data.user, dispatch)
+                fetchFossilsForUser(data.user, dispatch)
+                let token = localStorage.setItem("token", data.jwt)
+                localStorage.setItem("user", JSON.stringify(data.user))
+                dispatch({type: 'LOGIN_USER', payload: token, currentUser: data.user})
+                dispatch({type: 'CLEAR_ERRORS', payload: ''})
+            }
         })
         .catch(error => console.log("error logging in:", error))
     }
