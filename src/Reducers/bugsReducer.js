@@ -10,6 +10,10 @@ export function bugsReducer(state = defaultState, action){
             return {
                 ...state, usersBugs: [...state.usersBugs, action.payload]
             }
+        case 'DELETE_BUG':
+            return {
+                ...state, usersBugs: [...state.usersBugs.filter(bug => bug.id !== action.payload.id)]
+            }
         default:
             return state;
     }

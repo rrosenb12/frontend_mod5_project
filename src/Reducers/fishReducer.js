@@ -10,6 +10,10 @@ export function fishReducer(state = defaultState, action){
             return {
                 ...state, usersFish: [...state.usersFish, action.payload]
             }
+        case 'DELETE_FISH':
+            return {
+                ...state, usersFish: [...state.usersFish.filter(fish => fish.id !== action.payload.id)]
+            }
         default:
             return state;
     }

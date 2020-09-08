@@ -58,3 +58,26 @@ export const createUserFossils = (fossil, currentUser) => {
 export const userFossilsState = (fossil, dispatch) => {
     dispatch({type: 'ADD_FOSSIL', payload: fossil})
 }
+
+export const deleteUserFossil = (fossil, currentUser) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_fossils`)
+        .then(response => response.json())
+        .then(userFossils => findUFToDelete(userFossils, fossil, currentUser, dispatch))
+    }
+}
+
+export const findUFToDelete = (userFossils, fossil, currentUser, dispatch) => {
+    userFossils.find(uF => {
+        if (uF.user_id === currentUser.id && uF.fossil_id === fossil.id) {
+            fetchToDelete(uF.id, fossil, dispatch)
+        }
+    })
+}
+
+export const fetchToDelete = (id, fossil, dispatch) => {
+    fetch(`http://localhost:3000/user_fossils/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch({type: 'DELETE_FOSSIL', payload: fossil})
+}

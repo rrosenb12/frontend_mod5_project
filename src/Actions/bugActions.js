@@ -58,3 +58,26 @@ export const createUserBugs = (bug, currentUser) => {
 export const userBugsState = (bug, dispatch) => {
     dispatch({type: 'ADD_BUG', payload: bug})
 }
+
+export const deleteUserBug = (bug, currentUser) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_bugs`)
+        .then(response => response.json())
+        .then(userBugs => findUBToDelete(userBugs, bug, currentUser, dispatch))
+    }
+}
+
+export const findUBToDelete = (userBugs, bug, currentUser, dispatch) => {
+    userBugs.find(uB => {
+        if (uB.user_id === currentUser.id && uB.bug_id === bug.id) {
+            fetchToDelete(uB.id, bug, dispatch)
+        }
+    })
+}
+
+export const fetchToDelete = (id, bug, dispatch) => {
+    fetch(`http://localhost:3000/user_bugs/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch({type: 'DELETE_BUG', payload: bug})
+}

@@ -58,3 +58,26 @@ export const createUserFish = (fish, currentUser) => {
 export const userFishState = (fish, dispatch) => {
     dispatch({type: 'ADD_FISH', payload: fish})
 }
+
+export const deleteUserFish = (fish, currentUser) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_fish`)
+        .then(response => response.json())
+        .then(userFish => findUFToDelete(userFish, fish, currentUser, dispatch))
+    }
+}
+
+export const findUFToDelete = (userFish, fish, currentUser, dispatch) => {
+    userFish.find(uF => {
+        if (uF.user_id === currentUser.id && uF.fish_id === fish.id) {
+            fetchToDelete(uF.id, fish, dispatch)
+        }
+    })
+}
+
+export const fetchToDelete = (id, fish, dispatch) => {
+    fetch(`http://localhost:3000/user_fish/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch({type: 'DELETE_FISH', payload: fish})
+}

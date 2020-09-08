@@ -58,3 +58,26 @@ export const createUserSeacreatures = (seaCreature, currentUser) => {
 export const userSeacreaturesState = (seaCreature, dispatch) => {
     dispatch({type: 'ADD_SEACREATURE', payload: seaCreature})
 }
+
+export const deleteUserSeacreature = (seacreature, currentUser) => {
+    return (dispatch) => {
+        fetch(`http://localhost:3000/user_seacreatures`)
+        .then(response => response.json())
+        .then(userSeacreatures => findUSToDelete(userSeacreatures, seacreature, currentUser, dispatch))
+    }
+}
+
+export const findUSToDelete = (userSeacreatures, seacreature, currentUser, dispatch) => {
+    userSeacreatures.find(uS => {
+        if (uS.user_id === currentUser.id && uS.sea_creature_id === seacreature.id) {
+            fetchToDelete(uS.id, seacreature, dispatch)
+        }
+    })
+}
+
+export const fetchToDelete = (id, seacreature, dispatch) => {
+    fetch(`http://localhost:3000/user_seacreatures/${id}`, {
+        method: 'DELETE'
+    })
+    dispatch({type: 'DELETE_SEACERATURE', payload: seacreature})
+}

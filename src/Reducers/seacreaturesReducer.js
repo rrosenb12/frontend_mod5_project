@@ -10,6 +10,10 @@ export function seacreaturesReducer(state = defaultState, action){
             return {
                 ...state, usersSeacreatures: [...state.usersSeacreatures, action.payload]
             }
+        case 'DELETE_SEACREATURE':
+            return {
+               ...state, usersSeacreatures: [...state.usersSeacreatures.filter(seacreature => seacreature.id !== action.payload.id)]
+            }
         default:
             return state;
     }
