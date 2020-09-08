@@ -539,7 +539,7 @@ a.reddithref:hover{
 }
 
 .profilepage .uservillagers .villagercard {
-  display: inline-block;
+  display: inline-flex;
   text-align: center;
   height: 40%;
   width: 17%;
@@ -550,22 +550,58 @@ a.reddithref:hover{
   border-radius: 15px;
 }
 
-.profilepage .uservillagers .villagercard .villagericon {
-  width: auto;
-  height: auto;
-  max-width: 40%;
-  margin-top: 5%;
+.profilepage .uservillagers .villagercard .villager {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }
 
-.profilepage .uservillagers .villagercard .villagername {
-  margin: 0%;
+.profilepage .uservillagers .villagercard .villager .villagertop {
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+
+.profilepage .uservillagers .villagercard .villager .villagericon {
+  width: auto;
+  height: auto;
+  max-width: 60%;
+  max-height: 40%;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.profilepage .uservillagers .villagercard .villager .villagerbottom {
+  grid-area: 2 / 1 / 3 / 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.profilepage .uservillagers .villagercard .villager .villagerbottom .villagername {
+  grid-area: 1 / 1 / 2 / 2;
+  font-size: 12px;
+}
+.profilepage .uservillagers .villagercard .villager .villagerbottom .villagerbutton {
+  grid-area: 1 / 2 / 2 / 3;
+  height: 40%;
+  width: 40%;
+  margin-left: 60%;
 }
 
 .profilepage .userpics {
   grid-area: 3 / 2 / 5 / 4;
   display: flex;
   flex-wrap: wrap;
-  margin-top: -6%;
+  margin-top: -6.9%;
   margin-left: .5%;
   padding-left: 1%;
   background-color: #B59DA4;
