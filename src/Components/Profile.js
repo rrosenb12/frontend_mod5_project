@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchPics} from '../Actions/pictureActions'
+import {deleteUserVillager} from '../Actions/villagerActions'
 import fishsprite from '../fishsprite.png'
 import bugsprite from '../bugsprite.png'
 import fossilsprite from '../fossilsprite.png'
@@ -23,6 +24,10 @@ class Profile extends React.Component{
         }
     }
 
+    deleteHandler = villager => {
+        this.props.deleteUserVillager(villager, this.props.currentUser)
+    }
+
     render(){
         return(    
             <div className="profilepage">
@@ -40,7 +45,7 @@ class Profile extends React.Component{
                                     </div>
                                     <div className="villagerbottom">
                                         <p className="villagername">{villager.name}</p>
-                                        <button className="villagerbutton">x</button>
+                                        <button className="villagerbutton" onClick={() => this.deleteHandler(villager)}>x</button>
                                     </div>
                                 </div>
                             </div>
@@ -125,4 +130,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {fetchPics})(Profile)
+export default connect(mapStateToProps, {fetchPics, deleteUserVillager})(Profile)
