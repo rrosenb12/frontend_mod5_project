@@ -820,3 +820,10 @@ input[type="file"] {
   height: 190px;
   width: 345px;
 }
+
+/* ERROR STYLING */
+
+.error {
+  background-color: red;
+  text-align: center;
+}

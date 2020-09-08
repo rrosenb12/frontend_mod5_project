@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {loginUser} from '../Actions/userActions'
 import WelcomePage from '../Components/WelcomePage'
 import UserForm from '../Components/UserForm'
+import {Redirect} from 'react-router-dom'
 
 class Login extends React.Component{
     
@@ -15,26 +16,17 @@ class Login extends React.Component{
             return <UserForm manageUser={this.handleLogin} comingFrom="login"/> 
         } else if (this.props.error === 'Invalid Username or Password') {
             return <>
-            <p>{this.props.error}</p> 
+            <p className="error">{this.props.error}</p> 
             <UserForm manageUser={this.handleLogin} comingFrom="login"/> 
             </>
         } else {
-            return <WelcomePage />
+            return <Redirect to="/profile"/>
         }
     }
 
     render(){
-        console.log(this.props.error)
         return(
             this.toRender()
-            // <div className="loginform">
-            //     {this.props.error ? 
-            //     <>
-            //     <p>{this.props.error}</p> 
-            //     <UserForm manageUser={this.handleLogin} comingFrom="login"/> 
-            //     </>
-            //     : <WelcomePage />}
-            // </div>
         )
     }
 }
