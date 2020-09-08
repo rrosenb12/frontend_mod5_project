@@ -1,6 +1,10 @@
 import React from 'react'
 import {Redirect} from 'react-router-dom'
 import {connect} from 'react-redux'
+import fishsprite from '../fishsprite.png'
+import bugsprite from '../bugsprite.png'
+import fossilsprite from '../fossilsprite.png'
+import seasprite from '../seasprite.png'
 
 
 class Profile extends React.Component{
@@ -21,28 +25,60 @@ class Profile extends React.Component{
                             </div>
                         })} 
                     </div>
-                    <div className="userpics">
-
-                    </div>
-                    <div className="userfish">
-                        {this.props.userFish.length === 0 ? null :this.props.userFish.map(fish => {
-                            return <p>{fish.name}</p>
-                        })}
-                    </div>
-                    <div className="userbugs">
-                        {this.props.userBug.length === 0 ? null : this.props.userBug.map(bug => {
-                            return <p>{bug.name}</p>
-                        })}
-                    </div>
-                    <div className="userfossils">
-                        {this.props.userFossil.length === 0 ? null :this.props.userFossil.map(fossil => {
-                            return <p>{fossil.name}</p>
-                        })}
-                    </div>
-                    <div className="userseacreatures">
-                        {this.props.userSeacreature.length === 0 ? null : this.props.userSeacreature.map(seacreature => {
-                            return <p>{seacreature.name}</p>
-                        })}
+                    <div className="userpics"></div>
+                    <div className="useritems">
+                        <div className="userfish">
+                            {this.props.userFish.length === 0 ? 
+                                <div>
+                                    <p>0 / 80</p>
+                                    <img className="itemicon" src={fishsprite} alt="fish plaque"/>
+                                </div>
+                            :
+                                <div>
+                                    <p>{this.props.userFish.length} / 80</p>
+                                    <img className="itemicon" src={fishsprite} alt="fish plaque"/>
+                                </div>
+                            }
+                        </div>
+                        <div className="userbugs">
+                            {this.props.userBug.length === 0 ?                                 
+                                <div>
+                                    <p>0 / 80</p>
+                                    <img className="itemicon" src={bugsprite} alt="bug plaque"/>
+                                </div> 
+                            : 
+                                <div>
+                                    <p>{this.props.userBug.length} / 80</p>
+                                    <img className="itemicon" src={bugsprite} alt="bug plaque"/>
+                                </div>
+                            }
+                        </div>
+                        <div className="userfossils">
+                            {this.props.userFossil.length === 0 ?                             
+                                <div>
+                                        <p>0 / 73</p>
+                                        <img className="itemicon" src={fossilsprite} alt="fossil plaque"/>
+                                </div> 
+                            :
+                                <div>
+                                    <p>{this.props.userFossil.length} / 73</p>
+                                    <img className="itemicon" src={fossilsprite} alt="fossil plaque"/>
+                                </div>
+                            }
+                        </div>
+                        <div className="userseacreatures">
+                            {this.props.userSeacreature.length === 0 ?                
+                                <div>
+                                        <p>0 / 40</p>
+                                        <img className="itemicon" src={seasprite} alt="sea plaque"/>
+                                </div>  
+                            : 
+                            <div>
+                                <p>{this.props.userSeacreature.length} / 40</p>
+                                <img className="itemicon" src={seasprite} alt="sea plaque"/>
+                            </div> 
+                            }
+                        </div>
                     </div>
                 </>
             : 
