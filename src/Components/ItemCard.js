@@ -16,7 +16,11 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
         } else if (this.props.item.kind === 'fossils') {
             this.props.createUserFossils(this.props.item, this.props.currentUser)
         } else if (this.props.item.kind === 'villagers') {
-            this.props.createUserVillagers(this.props.item, this.props.currentUser)
+            if (this.props.usersVillagers.length >= 10) {
+                window.alert("You already have 10 villagers on your profile.")
+            } else {
+                this.props.createUserVillagers(this.props.item, this.props.currentUser)
+            }
         } else if (this.props.item.kind === 'seacreatures') {
             this.props.createUserSeacreatures(this.props.item, this.props.currentUser)
         }
@@ -79,7 +83,6 @@ import {createUserSeacreatures} from '../Actions/seacreatureActions'
                 <div className="baseinfo">
                     <h1 className="itemtitle"> {this.props.item.name}</h1>
                     {this.props.usersVillagers.find(villager => villager.id === this.props.item.id) ? <p className="addorremove" onClick={this.deleteHandler}>Remove from Profile</p> : <p className="addorremove" onClick={this.clickHandler}>Add to profile</p>}
-                    {/* {this.props.usersVillagers.length >= 0 ? <p classname="toomany">You already have 10 villagers</p>} */}
                 </div>
                 <div className="detailpic">
                     <img alt="item"src={this.props.item.image_uri} className="itemimage"/>
