@@ -13,11 +13,8 @@ export default class FeedContent extends React.Component {
         fetch('http://localhost:3000/picture_tags')
         .then(response => response.json())
         .then(data => {
-            // console.log("data:", data)
-            // console.log("props:", this.props.tagFollows)
             this.props.tagFollows.filter(tf => data.map(data => {
                 if (tf.tag_id === data.tag_id){
-                    // console.log("help")
                     this.fetchPics(data.picture_id)
                 }
             }))
@@ -34,8 +31,7 @@ export default class FeedContent extends React.Component {
     }
 
     render(){
-        // console.log("state pics:", this.state.coolPhotos)
-        return(
+=        return(
             <>
             {this.state.coolPhotos.map(photo => photo)}
             <h1>hi</h1>

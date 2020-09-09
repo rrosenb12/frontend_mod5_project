@@ -91,7 +91,6 @@ import {createUserSeacreatures, deleteUserSeacreature} from '../Actions/seacreat
     }
 
     render(){
-        console.log(this.props.usersVillagers)
         return(
             <div key={this.props.item.id} className="detailedinfo">
                 <div className="baseinfo">

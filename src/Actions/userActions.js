@@ -48,7 +48,6 @@ export const createUser = (userObj) => {
             if (!data.user) {
                 dispatch({type: 'SHOW_ERRORS', payload: 'That username is already taken.'})
             } else {
-            console.log(data.error)
             let token = localStorage.setItem("token", data.jwt)
             localStorage.setItem("user", JSON.stringify(data.user))
             dispatch({type: 'CREATE_USER', payload: token, currentUser: data.user})
@@ -75,7 +74,6 @@ export const setUser = (token) => {
           fetchFossilsForUser(data.user, dispatch)
           dispatch({type: 'SET_USER', payload: token, currentUser: data.user})
       })
-      .catch(error => console.log("error setting user:", error))
     }
 }
 

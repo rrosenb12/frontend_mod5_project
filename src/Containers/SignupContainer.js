@@ -1,5 +1,4 @@
 import React from 'react'
-import WelcomePage from '../Components/WelcomePage'
 import {connect} from 'react-redux'
 import {createUser} from '../Actions/userActions'
 import {Redirect} from 'react-router-dom'
@@ -9,7 +8,6 @@ import UserForm from '../Components/UserForm'
 class Signup extends React.Component{
 
     signupHandler = userObj => {
-        console.log("in sign up handler:", userObj)
         this.props.createUser(userObj)
     }
 
