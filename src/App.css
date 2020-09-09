@@ -522,6 +522,11 @@ a.reddithref:hover{
   width: 100%;
 }
 
+.profilepage .uservillagers .emptyvillagers {
+  text-align: center;
+  margin-top: 10%;
+}
+
 .profilepage .uservillagers .villagercard {
   display: inline-flex;
   height: 40%;

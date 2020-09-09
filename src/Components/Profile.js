@@ -37,7 +37,11 @@ class Profile extends React.Component{
                         <h1>{this.props.currentUser.username}</h1>
                     </div>
                     <div className="uservillagers">
-                        {this.props.userVillagers.length === 0 ? <h1>Add some Villagers!</h1> : this.props.userVillagers.map(villager => {
+                        {this.props.userVillagers.length === 0 ? 
+                            <div className="emptyvillagers">
+                                <h1>Add some Villagers!</h1>
+                            </div> 
+                        : this.props.userVillagers.map(villager => {
                             return <div className="villagercard">
                                 <div className="villager">
                                     <div>

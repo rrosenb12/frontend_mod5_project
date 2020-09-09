@@ -1,9 +1,9 @@
 export const fetchSeacreatures = () => {
     return (dispatch) => {
         fetch('http://localhost:3000/sea_creatures')
-          .then(response => response.json())
-          .then(seacreatures => dispatch({ type: 'FETCH_SEACREATURES', payload: seacreatures }));
-      };
+        .then(response => response.json())
+        .then(seacreatures => dispatch({ type: 'FETCH_SEACREATURES', payload: seacreatures }));
+    };
 }
 
 export const fetchSeacreaturesForUser = (user, dispatch) => {
@@ -20,8 +20,7 @@ export const fetchUserSeacreatures = (user, data, dispatch) => {
     .then(userSeacreatures => {
         let currentUserSeacreatures = userSeacreatures.filter(uS => uS.user_id === user.id)
         matchSeacreatures(currentUserSeacreatures, data, dispatch)
-        }
-    )
+    })
 }
 
 export const matchSeacreatures = (uS, data, dispatch) => {

@@ -16,7 +16,6 @@ export const loginUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             if (!data.user) {
                 dispatch({type: 'SHOW_ERRORS', payload: 'Invalid Username or Password'})
             } else {
@@ -31,7 +30,6 @@ export const loginUser = (userObj) => {
                 dispatch({type: 'CLEAR_ERRORS', payload: ''})
             }
         })
-        .catch(error => console.log("error logging in:", error))
     }
 }
 
@@ -47,9 +45,15 @@ export const createUser = (userObj) => {
         })
         .then(response => response.json())
         .then(data => {
+            if (!data.user) {
+                dispatch({type: 'SHOW_ERRORS', payload: 'That username is already taken.'})
+            } else {
+            console.log(data.error)
             let token = localStorage.setItem("token", data.jwt)
             localStorage.setItem("user", JSON.stringify(data.user))
             dispatch({type: 'CREATE_USER', payload: token, currentUser: data.user})
+            dispatch({type: 'CLEAR_ERRORS', payload: ''})
+            }
         })
   }
 }

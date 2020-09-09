@@ -1,9 +1,9 @@
 export const fetchFossils = () => {
     return (dispatch) => {
         fetch('http://localhost:3000/fossils')
-          .then(response => response.json())
-          .then(fossils => dispatch({ type: 'FETCH_FOSSILS', payload: fossils }));
-      };
+        .then(response => response.json())
+        .then(fossils => dispatch({ type: 'FETCH_FOSSILS', payload: fossils }));
+    };
 }
 
 export const fetchFossilsForUser = (user, dispatch) => {
@@ -20,8 +20,7 @@ export const fetchUserFossils = (user, data, dispatch) => {
     .then(userFossils => {
         let currentUserFossils = userFossils.filter(uF => uF.user_id === user.id)
         matchFossils(currentUserFossils, data, dispatch)
-        }
-    )
+    })
 }
 
 export const matchFossils = (uF, data, dispatch) => {

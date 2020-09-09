@@ -1,9 +1,9 @@
 export const fetchFish = () => {
     return (dispatch) => {
         fetch('http://localhost:3000/fish')
-          .then(response => response.json())
-          .then(fish => dispatch({ type: 'FETCH_FISH', payload: fish }));
-      };
+        .then(response => response.json())
+        .then(fish => dispatch({ type: 'FETCH_FISH', payload: fish }));
+    };
 }
 
 export const fetchFishForUser = (user, dispatch) => {
@@ -20,8 +20,7 @@ export const fetchUserFish = (user, data, dispatch) => {
     .then(userFish => {
         let currentUserFish = userFish.filter(uF => uF.user_id === user.id)
         matchfish(currentUserFish, data, dispatch)
-        }
-    )
+    })
 }
 
 export const matchfish = (uF, data, dispatch) => {

@@ -48,14 +48,18 @@ class Feed extends React.Component {
     getRelevantPictureTags = () => {
         this.props.pictureTags.filter(pT => this.state.tagIds.map(tag => {
             if (pT.tag_id === tag) {
+                console.log("pT:", pT)
                 let photo = this.props.pictures.find(picture => picture.id === pT.picture_id)
+                console.log("photo:", photo)
+                // return <PhotoCard key={photo.id} photo={photo}/>
                 this.photos.push(photo)
+                console.log("photos:", this.photos)
             }
         }))
     }
 
     render(){
-        console.log(this.photos, this.props.pictures)
+        console.log("photos:", this.photos, "props:", this.props.pictures)
         return (
             <div className="feeddiv">
                 {this.props.tags === undefined ? null : 

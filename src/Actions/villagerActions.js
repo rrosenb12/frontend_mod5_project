@@ -21,8 +21,7 @@ export const fetchUserVillagers = (user, data, dispatch) => {
     .then(userVillagers => {
         let currentUserVillagers = userVillagers.filter(uV => uV.user_id === user.id)
         matchVillagers(currentUserVillagers, data, dispatch)
-        }
-    )
+    })
 }
 
 export const matchVillagers = (uV, data, dispatch) => {

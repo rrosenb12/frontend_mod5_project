@@ -1,9 +1,9 @@
 export const fetchBugs = () => {
     return (dispatch) => {
         fetch('http://localhost:3000/bugs')
-          .then(response => response.json())
-          .then(bugs => dispatch({ type: 'FETCH_BUGS', payload: bugs }));
-      };
+        .then(response => response.json())
+        .then(bugs => dispatch({ type: 'FETCH_BUGS', payload: bugs }));
+    };
 }
 
 export const fetchBugsForUser = (user, dispatch) => {
@@ -20,8 +20,7 @@ export const fetchUserBugs = (user, data, dispatch) => {
     .then(userBugs => {
         let currentUserBugs = userBugs.filter(uB => uB.user_id === user.id)
         matchBugs(currentUserBugs, data, dispatch)
-        }
-    )
+    })
 }
 
 export const matchBugs = (uB, data, dispatch) => {
