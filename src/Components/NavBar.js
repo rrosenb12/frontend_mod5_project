@@ -27,10 +27,10 @@ function NavBar(props) {
                             }>Logout  
                         </button>
                         <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
+                        <NavLink to='/profile'className='navbarbutton' id="page">My Page</NavLink>
                     </>
                 }
                 <NavLink to='/search'className='navbarbutton' id="search">Search</NavLink>
-                <NavLink to='/profile'className='navbarbutton' id="page">My Page</NavLink>
                 <NavLink to='/gallery'className='navbarbutton' id='gallery'>Gallery</NavLink>
                 <NavLink to='/'className='navbarbutton' id="home">Home</NavLink>
             </div>
