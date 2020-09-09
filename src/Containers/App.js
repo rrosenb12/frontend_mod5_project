@@ -13,7 +13,6 @@ import SignupContainer from './SignupContainer'
 import Logout from '../Components/Logout'
 import UploadImage from '../Components/UploadImage'
 import Gallery from '../Components/Gallery'
-import Feed from '../Components/Feed'
 
 class App extends React.Component {
 
@@ -46,7 +45,6 @@ class App extends React.Component {
           <Route exact path='/logout' component={Logout}/>
           <Route exact path='/upload' render={() => <UploadImage currentUser={this.state.user}/>}/>
           <Route exact path='/gallery' component={Gallery}/>
-          <Route exact path='/feed' render={() => <Feed currentUser={this.state.user}/>}/>
         </div>
       </Switch>
     )
