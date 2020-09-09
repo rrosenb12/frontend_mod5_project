@@ -47,6 +47,7 @@ class Gallery extends React.Component{
     }
 
     render(){
+        console.log(this.props.tags)
         return(
             <div className="gallerycontainer" >
                 <div className="galleryfilter">
@@ -71,7 +72,7 @@ class Gallery extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {tags: state.tags.state, pictures: state.pictures.picsArray}
+    return {tags: state.tags.tagsArray[0], pictures: state.pictures.picsArray}
 }
 
 export default connect(mapStateToProps, {fetchTags, fetchPics})(Gallery)
