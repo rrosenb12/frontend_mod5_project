@@ -78,5 +78,5 @@ export const fetchToDelete = (id, seacreature, dispatch) => {
     fetch(`http://localhost:3000/user_seacreatures/${id}`, {
         method: 'DELETE'
     })
-    dispatch({type: 'DELETE_SEACERATURE', payload: seacreature})
+    .then(dispatch({type: 'DELETE_SEACREATURE', payload: seacreature}))
 }
