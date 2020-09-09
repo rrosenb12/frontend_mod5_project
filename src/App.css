@@ -774,27 +774,32 @@ input[type="file"] {
 .feeddiv .feedname {
   grid-area: 1 / 1 / 2 / 2;
   text-align: center;
+  height: 50%;
 }
 
 .feeddiv .feedoptions {
   grid-area: 2 / 1 / 4 / 2;
-  margin-top: -10%;
   margin-left: 1%;
   margin-right: 1%;
+  text-align: center;
 }
 
 .feeddiv .feedoptions .fedbuttons {
-  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
 }
 
 .feeddiv .feedoptions .feedbuttons .feedbutton {
   font-family: 'nintendoP_Humming-E_002pr';
-  font-size: 12px;
+  font-size: 75%;
   background-color: #EDF2F4;
-  width: 20%;
+  width: fit-content;
   border: 3px solid #2B2D42;
   border-radius: .4em;
-  padding: 10px;
+  padding-top: 1%;
+  padding-bottom: 1%;
   color: #2B2D42;
   margin-left: 1%;
   margin-bottom: 1%;

@@ -55,6 +55,7 @@ class Feed extends React.Component {
     }
 
     render(){
+        console.log(this.photos, this.props.pictures)
         return (
             <div className="feeddiv">
                 {this.props.tags === undefined ? null : 
