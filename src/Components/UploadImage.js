@@ -101,7 +101,7 @@ class UploadImage extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {user: state.currentUser, tags: state.tags.state
+    return {user: state.currentUser, tags: state.tags.tagsArray[0]
     }
 }
 
