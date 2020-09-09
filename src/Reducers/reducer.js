@@ -6,8 +6,9 @@ import {bugsReducer} from './bugsReducer'
 import {seacreaturesReducer} from './seacreaturesReducer'
 import {fossilsReducer} from './fossilsReducer'
 import {picsReducer} from './picturesReducer'
+import {tagsReducer} from './tagsReducer'
 
-const defaultState = {item: {}, itemClicked: false, tagsArray: [], picsArray: []}
+const defaultState = {item: {}, itemClicked: false}
 
 function itemsReducer (state = defaultState.item, action){
     switch(action.type) {
@@ -22,17 +23,6 @@ function itemsReducer (state = defaultState.item, action){
             }
         default:
             return state;
-    }
-}
-
-function tagsReducer (state = defaultState.tagsArray, action){
-    switch(action.type){
-        case 'FETCH_TAGS':
-            return {
-                state: action.payload
-            }
-        default:
-            return state;   
     }
 }
 

@@ -31,7 +31,7 @@ export default class FeedContent extends React.Component {
     }
 
     render(){
-=        return(
+        return(
             <>
             {this.state.coolPhotos.map(photo => photo)}
             <h1>hi</h1>

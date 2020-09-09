@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchTags} from '../Actions/actions'
+import {fetchTags} from '../Actions/tagActions'
 import {fetchPictureTags, fetchPics} from '../Actions/pictureActions'
 import PhotoCard from './PhotoCard'
 
@@ -55,6 +55,7 @@ class Feed extends React.Component {
     }
 
     render(){
+        console.log(this.props.tags)
         return (
             <div className="feeddiv">
                 {this.props.tags === undefined ? null : 
@@ -82,7 +83,7 @@ class Feed extends React.Component {
 const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser.currentUser,
-        tags: state.tags.state,
+        tags: state.tags.tagsArray[0],
         pictureTags: state.pictures.pictureTagsArray[0],
         pictures: state.pictures.picsArray[0]
     }

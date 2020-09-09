@@ -1,7 +1,7 @@
 import React from 'react';
 import {Switch, withRouter, Route} from 'react-router-dom'
 import {setUser} from '../Actions/userActions'
-import {fetchTags} from '../Actions/actions'
+import {fetchTags} from '../Actions/tagActions'
 import {connect} from 'react-redux'
 import '../App.css';
 import Home from '../Components/Home'

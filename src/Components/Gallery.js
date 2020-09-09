@@ -1,7 +1,7 @@
 import React from 'react'
 import PhotoCard from './PhotoCard'
 import {connect} from 'react-redux'
-import {fetchTags} from '../Actions/actions'
+import {fetchTags} from '../Actions/tagActions'
 import {fetchPics} from '../Actions/pictureActions'
 
 class Gallery extends React.Component{

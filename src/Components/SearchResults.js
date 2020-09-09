@@ -22,11 +22,10 @@ class SearchResults extends React.Component{
     }
 
     render(){
-    return(
-        <>
-            {this.indi()}
-        </>
-    )}
+        return(
+            this.indi()
+        )
+    }
 }
 
 export default connect(null, {clickItem})(SearchResults)

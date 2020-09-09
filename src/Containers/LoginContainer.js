@@ -15,8 +15,8 @@ class Login extends React.Component{
             return <UserForm manageUser={this.handleLogin} comingFrom="login"/> 
         } else if (this.props.error === 'Invalid Username or Password') {
             return <>
-            <p className="error">{this.props.error}</p> 
-            <UserForm manageUser={this.handleLogin} comingFrom="login"/> 
+                <p className="error">{this.props.error}</p> 
+                <UserForm manageUser={this.handleLogin} comingFrom="login"/> 
             </>
         } else {
             return <Redirect to="/profile"/>

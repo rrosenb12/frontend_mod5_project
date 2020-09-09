@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchTags} from '../Actions/actions'
+import {fetchTags} from '../Actions/tagActions'
 import cameraicon from '../cameraicon.png'
 
 class UploadImage extends React.Component{

@@ -1,7 +1,7 @@
 import React from 'react'
 import RedditCard from '../Components/RedditCard'
 import {connect} from 'react-redux'
-import {fetchTags} from '../Actions/actions'
+import {fetchTags} from '../Actions/tagActions'
 
 class Home extends React.Component{
 
