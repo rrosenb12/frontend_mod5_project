@@ -13,6 +13,7 @@ class Profile extends React.Component{
 
     componentDidMount(){
         this.props.fetchPics()
+        console.log(this.props.userPictures)
     }
 
     userPics = () => {
@@ -128,7 +129,7 @@ const mapStateToProps = state => {
         userBug: state.bugs.usersBugs,
         userFossil: state.fossils.usersFossils,
         userSeacreature: state.seacreatures.usersSeacreatures,
-        userPictures: state.pictures.picsArray[0]
+        userPictures: state.pictures.picsArray
     }
 }
 

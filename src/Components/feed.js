@@ -25,6 +25,19 @@ class Feed extends React.Component {
         })
     }
 
+    componentDidMount(){
+        console.log("mounted")
+        this.props.pictureTags.filter(pT => this.statetagIds.map(tag => {
+            console.log(tag)
+            if (pT.tag_id === tag) {
+                console.log("hello")
+                let photo = this.props.pictures.find(picture => picture.id === pT.picture_id)
+                this.photos.push(photo)
+                console.log(this.photos)
+            }
+        }))
+    }
+
     handleClick = (e) => {
         fetch('http://localhost:3000/tag_follows', {
             method: 'POST',
@@ -45,17 +58,24 @@ class Feed extends React.Component {
         }))
     }
 
-    getRelevantPictureTags = () => {
-        this.props.pictureTags.filter(pT => this.state.tagIds.map(tag => {
+    getRelevantPictureTags = (tagIds) => {
+        console.log(tagIds)
+        this.props.pictureTags.filter(pT => this.statetagIds.map(tag => {
             if (pT.tag_id === tag) {
+                console.log("hello")
                 let photo = this.props.pictures.find(picture => picture.id === pT.picture_id)
                 this.photos.push(photo)
+                console.log(this.photos)
             }
         }))
     }
 
+    renderPhoto = photo => {
+        return <PhotoCard photo={photo}/>
+    }
+
     render(){
-        console.log(this.props.tags)
+        // console.log(this.state.tagIds)
         return (
             <div className="feeddiv">
                 {this.props.tags === undefined ? null : 
@@ -69,9 +89,9 @@ class Feed extends React.Component {
                                 })}
                             </div>
                         </div>
-                        {this.props.pictureTags !== undefined && this.getRelevantPictureTags()}
+                        {/* {this.props.pictureTags !== undefined && this.getRelevantPictureTags()} */}
                         <div className="photoscontainer">
-                            {this.photos.map(photo => <PhotoCard key={photo.id} photo={photo}/>)}
+                            {/* {this.photos.map(photo => {photo !== undefined && this.renderPhoto(photo)})} */}
                         </div>
                     </>
                 }
@@ -84,8 +104,8 @@ const mapStateToProps = (state) => {
     return {
         currentUser: state.currentUser.currentUser,
         tags: state.tags.tagsArray[0],
-        pictureTags: state.pictures.pictureTagsArray[0],
-        pictures: state.pictures.picsArray[0]
+        pictureTags: state.pictures.pictureTagsArray,
+        pictures: state.pictures.picsArray
     }
 }
 

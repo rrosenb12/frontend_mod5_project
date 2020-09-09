@@ -71,7 +71,7 @@ class Gallery extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {tags: state.tags.state, pictures: state.pictures.picsArray[0]}
+    return {tags: state.tags.state, pictures: state.pictures.picsArray}
 }
 
 export default connect(mapStateToProps, {fetchTags, fetchPics})(Gallery)

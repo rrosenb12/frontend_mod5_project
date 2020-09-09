@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {fetchTags} from '../Actions/tagActions'
+import {withRouter} from 'react-router-dom'
 import cameraicon from '../cameraicon.png'
 
 class UploadImage extends React.Component{
@@ -54,6 +55,7 @@ class UploadImage extends React.Component{
         .then(picture => {
             this.postPictureTag(picture)
         })
+        // .then(this.props.history.push('/profile'))
         .catch(error=>console.log(error));
     }
 
@@ -70,7 +72,8 @@ class UploadImage extends React.Component{
             })
         })
         .then(response => response.json())
-        .catch(error=>console.log(error));
+        .then(this.props.history.push('/profile'))
+        .catch(error=>console.log(error))
     }
 
     render(){
@@ -101,8 +104,10 @@ class UploadImage extends React.Component{
 }
 
 const mapStateToProps = state => {
-    return {user: state.currentUser, tags: state.tags.tagsArray[0]
+    return {
+        user: state.currentUser, 
+        tags: state.tags.tagsArray[0]
     }
 }
 
-export default connect(mapStateToProps, {fetchTags})(UploadImage)
+export default connect(mapStateToProps, {fetchTags})(withRouter(UploadImage))
