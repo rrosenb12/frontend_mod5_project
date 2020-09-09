@@ -27,7 +27,9 @@ h1 {
 
 .navbar .buttons {
   grid-area: 1 / 1 / 2 / 3; 
+  width: 150%;
 }
+
 .navbar .silos {
   grid-area: 1 / 3 / 2 / 4;
   margin-left: auto;
@@ -35,7 +37,7 @@ h1 {
 
 .navbar .buttons .navbarbutton {
   font-family: 'nintendoP_Humming-E_002pr';
-  font-size: 16px;
+  font-size: 85%;
   color: #EDF2F4;
   text-decoration: none;
   text-align: center;
@@ -191,8 +193,6 @@ a.reddithref:hover{
 .wc {
   grid-area: 2 / 1 / 3 / 2;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .wc .welcomecontainer{
@@ -200,7 +200,7 @@ a.reddithref:hover{
   position: relative;
   background: #92DCE5;
   border-radius: .4em;
-  margin-left: 15px;
+  margin-left: 15%;
   height: 60px;
   justify-content: center;
   text-align: center;
@@ -210,14 +210,6 @@ a.reddithref:hover{
 .wc .welcomecontainer .sticker{
   position: relative;
   margin-right: 200px;
-}
-
-.formcontainer {
-  grid-area: 1 / 2 / 2 / 3;
-  text-align: center;
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
 }
 
 .welcomecontainer:before {
@@ -250,21 +242,21 @@ a.reddithref:hover{
   margin-bottom: -50px;
 }
 
-.formcontainer .submitbutton {
-  display: flex;
-  margin-left: 130px;
-  align-items: center;
+.formcontainer {
+  grid-area: 1 / 2 / 2 / 3;
+  width: 90%;
+  height: 100%;
+  margin-left: auto;
 }
 
 .formcontainer .submitbutton .sb {
   font-family: 'nintendoP_Humming-E_002pr';
-  font-size: 12px;
   background-color: #EDF2F4;
-  width: 39%;
+  width: 47%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   border: 3px solid #92DCE5;
   border-radius: .4em;
-  padding: 10px;
-  height: 50px;
   text-align: center;
   color: #2B2D42;
 }
@@ -276,21 +268,15 @@ a.reddithref:hover{
   text-decoration: underline wavy #FCBA04;
 }
 
-.formcontainer .inputfields {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .formcontainer .inputfields .usernameform {
   background-color: #EDF2F4;
   font-family: 'nintendoP_Humming-E_002pr';
-  width: 25%;
-  height: 50px;
+  width: 45%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
   border: 3px solid #FCBA04;
   border-radius: .4em;
-  margin-bottom: 10px;
-  padding-left: 50px;
+  margin-bottom: 1%;
 }
 
 .formcontainer .inputfields .usernameform:focus {
@@ -303,13 +289,12 @@ a.reddithref:hover{
 .formcontainer .inputfields .passwordform{
   background-color: #EDF2F4;
   font-family: 'nintendoP_Humming-E_002pr';
-  width: 25%;
-  height: 50px;
+  width: 41%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
   border: 3px solid #FCBA04;
-  padding-left: 50px;
-  margin-bottom: 10px;
   border-radius: .4em;
-  margin-left: 10px;
+  margin-left: 0.5%;
 }
 
 .formcontainer .inputfields .passwordform:focus{
@@ -317,7 +302,6 @@ a.reddithref:hover{
   border: 3px solid #92DCE5;
   text-decoration: underline wavy #FCBA04;
   text-underline-position: under;
-  ;
 }
 
 /* SEARCH PAGE STYLING */
@@ -414,13 +398,19 @@ a.reddithref:hover{
   width: 45%;
   height: 45%;
   border: 2px solid #01372d;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin-right: 3%;
+  margin-top: 3%;
   display: inline-block;
   justify-content: center;
   align-items: center;
   text-align: center;
   border-radius: 15px;
+}
+
+.searchpage .searchresultscontainer .basicitemcard .itemicon {
+  width: auto;
+  height: auto;
+  max-width: 40%;
 }
 
 .searchpage .searchresultscontainer .basicitemcard .moreinfo {
@@ -501,13 +491,7 @@ a.reddithref:hover{
   flex-wrap: wrap;
   height: 100%;
   width: 100%;
-  align-items: center;
   margin-left: 2%;
-}
-
-.searchpage .selecteditemcontainer .detailedinfo .extradetails {
-  display: inline-block;
-  width: 99%;
 }
 
 /* PROFILE STYLING */
@@ -540,26 +524,17 @@ a.reddithref:hover{
 
 .profilepage .uservillagers .villagercard {
   display: inline-flex;
-  text-align: center;
   height: 40%;
   width: 17%;
   background-color: #92DCE5;
   margin-left: .5%;
-  margin-right: 0%;
   margin-bottom: .5%;
   border-radius: 15px;
 }
 
 .profilepage .uservillagers .villagercard .villager {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-.profilepage .uservillagers .villagercard .villager .villagertop {
-  grid-area: 1 / 1 / 2 / 3;
+  height: 100%;
+  width: 100%;
 }
 
 
@@ -567,49 +542,36 @@ a.reddithref:hover{
   display: flex;
   width: auto;
   height: auto;
-  max-width: 60%;
-  max-height: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50%;
+  max-height: 50%;
   margin-top: 5%;
-  margin-left: 35%;
+  margin-bottom: -10%;
 }
 
-.profilepage .uservillagers .villagercard .villager .villagerbottom {
-  grid-area: 2 / 1 / 3 / 3;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  margin-left: 5%;
+.profilepage .uservillagers .villagercard .villager .villagername {
+  font-size: 100%;
+  text-align: center;
+}
+
+.profilepage .uservillagers .villagercard .villager .villagerbutton {
+  float: right;
   margin-right: 5%;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-}
-
-.profilepage .uservillagers .villagercard .villager .villagerbottom .villagername {
-  grid-area: 1 / 1 / 2 / 2;
-  font-size: 12px;
-}
-
-.profilepage .uservillagers .villagercard .villager .villagerbottom .villagerbutton {
-  grid-area: 1 / 2 / 2 / 3;
-  height: 40%;
-  width: 40%;
-  margin-left: 60%;
   color: #EDF2F4;
   background-color: #F2542D;
   border: 1px solid #2B2D42;
-  border-radius: 5px;
+  border-radius: 50%;
   outline: none;
 }
 
-.profilepage .uservillagers .villagercard .villager .villagerbottom .villagerbutton:hover {
+.profilepage .uservillagers .villagercard .villager .villagerbutton:hover {
   background-color: #2B2D42
 }
 
 .profilepage .userpics {
   grid-area: 3 / 2 / 5 / 4;
+  width: 86%;
   display: flex;
   flex-wrap: wrap;
   margin-left: .5%;
