@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {unClickItem} from '../Actions/actions'
 import {logOutUser} from '../Actions/userActions'
@@ -22,11 +22,11 @@ function NavBar(props) {
                         <button to='/logout' className='navbarbutton' id="logout" onClick={() => 
                                 {   
                                     props.logOutUser()
+                                    props.history.push("/")
                                 }
                             }>Logout  
                         </button>
                         <NavLink to='/upload'className='navbarbutton' id="upload">Upload Image</NavLink>
-                        <NavLink to='/feed' className='navbarbutton' id='feed'>The Feed</NavLink>
                     </>
                 }
                 <NavLink to='/search'className='navbarbutton' id="search">Search</NavLink>
@@ -47,4 +47,4 @@ const mapStateToProps = state => {
     return {currentUser: state.currentUser.currentUser}
 }
 
-export default connect(mapStateToProps, {unClickItem, logOutUser})(NavBar)
+export default connect(mapStateToProps, {unClickItem, logOutUser})(withRouter(NavBar))

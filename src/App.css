@@ -83,9 +83,6 @@ button#logout{
 #gallery:hover{
   color: #92DCE5;
 }
-#feed:hover{
-  color: #DB6C79;
-}
 
 /* HOME PAGE STYLING */
 
@@ -764,64 +761,6 @@ input[type="file"] {
   transform: rotate(90deg) translateY(-100vh);
   transform-origin: top left;
   display: flex;
-}
-
-/* FEED STYLING */
-
-.feeddiv {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-}
-
-.feeddiv .feedname {
-  grid-area: 1 / 1 / 2 / 2;
-  text-align: center;
-  height: 50%;
-}
-
-.feeddiv .feedoptions {
-  grid-area: 2 / 1 / 4 / 2;
-  margin-left: 1%;
-  margin-right: 1%;
-  text-align: center;
-}
-
-.feeddiv .feedoptions .fedbuttons {
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-}
-
-.feeddiv .feedoptions .feedbuttons .feedbutton {
-  font-family: 'nintendoP_Humming-E_002pr';
-  font-size: 75%;
-  background-color: #EDF2F4;
-  width: fit-content;
-  border: 3px solid #2B2D42;
-  border-radius: .4em;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  color: #2B2D42;
-  margin-left: 1%;
-  margin-bottom: 1%;
-}
-
-.feeddiv .feedoptions .feedbutton:hover{
-  background-color: #DB6C79;
-  color: #EDF2F4;
-  border: 3px solid #EDF2F4;
-}
-
-.feeddiv .photoscontainer {
-  grid-area: 1 / 2 / 4 / 3;
-  display: flex;
-  flex-wrap: wrap;
-  overflow-y: auto;
-  margin-top: 2%;
 }
 
 /* PHOTO CARD STYLING */
